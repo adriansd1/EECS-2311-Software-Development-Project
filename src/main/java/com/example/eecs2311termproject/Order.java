@@ -1,8 +1,8 @@
 package com.example.eecs2311termproject;
 import java.util.*;
 
-//The class is currently an abstract one since I am not currently able to implement specific methods yet.
-public abstract class Order { 
+
+public class Order { 
 	private String orderID;
 	private Customer customer;
 	private String status;
@@ -19,7 +19,7 @@ public abstract class Order {
         this.items = new ArrayList<>();
         this.status = "Pending";
         this.orderTime = new Date(); // sets current time as order time
-        this.totalPrice = 0.0;
+        this.totalPrice = calculateTotalPrice(); //update totalPrice by recalculating it using the calculateTotalPrice() method
         this.specialRequests = "";
         this.promotionsApplied = "";
     }
@@ -30,6 +30,7 @@ public abstract class Order {
     
     public void setOrder(ArrayList<OrderItem> items) {
     	this.items = items;
+        totalPrice = calculateTotalPrice(); //after updating the list of items, recalculates the totalprice
     }
     
     public String getStatus() {
@@ -68,7 +69,8 @@ public abstract class Order {
     	if (checkItemAvailability(item)) {
 	    	items.add(item);
 	    	System.out.println("Added" + item.name + "to your order!");
-	    	totalPrice = totalPrice + item.getPrice(); 
+	    	//totalPrice = totalPrice + item.getPrice(); 
+            totalPrice = calculateTotalPrice();
     	}
     	else {
 	    	System.out.println("Sorry," + item.name + "isn't available right now.");
@@ -78,6 +80,7 @@ public abstract class Order {
     public void removeOrder(OrderItem item) {
     	items.remove(item);
     	System.out.println("Removed" + item.name + "from your order!");
+        totalPrice = calculateTotalPrice(); //recalculating
     }
     
     public void cancelOrder() {
@@ -100,32 +103,35 @@ public abstract class Order {
             System.out.println("Order cancellation aborted.");
         }
     }
-    
-    public abstract boolean checkItemAvailability(OrderItem item); // Work on this later
-    
-    public abstract void applyPromotions(String promotionsApplied);  // Work on this later
-    
-    public double getPrice() {
-    	return totalPrice;
+    public boolean processPayment(double amount) {
+        // Check if the provided amount is sufficient
+        if (amount >= totalPrice) {
+            // Perform the payment processing logic
+            System.out.println("Payment successful! Total Amount: $" + totalPrice);
+            // Optionally, update the order status to "Paid"
+            updateStatus("Paid");
+            return true;
+        } else {
+            System.out.println("Insufficient funds. Payment failed.");
+            return false;
+        }
+    }
+
+    private double calculateTotalPrice() {
+        return items.stream().mapToDouble(OrderItem::getPrice).sum();
     }
     
     @Override
     public String toString() {
-    	return "";
+        // Implement the toString method to provide a meaningful representation of the Order
+        return "OrderID: " + orderID +
+                "\nCustomer: " + customer.getCustomerName() +
+                "\nStatus: " + status +
+                "\nTotal Price: $" + totalPrice +
+                "\nOrder Time: " + orderTime +
+                "\nSpecial Requests: " + specialRequests +
+                "\nPromotions Applied: " + promotionsApplied +
+                "\nItems: " + items;
     }
 
-}
-
-/* Currently using these classes in order to prevent compiling errors. 
-I will remove them once I receive the other classes. */
-class Customer {
-	private String customerName;
-}
-
-abstract class OrderItem {
-	String name;
-	double price;
-	
-	public abstract double getPrice();
-	
 }
