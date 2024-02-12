@@ -41,7 +41,7 @@ public class Food {
         return fat;
     }
 
-    public ArrayList<String> getIngredients() {
+    public static ArrayList<String> getIngredients() {
         return ingredients;
     }
 
