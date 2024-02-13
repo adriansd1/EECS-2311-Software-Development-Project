@@ -3,6 +3,9 @@ package com.example.eecs2311termproject;
 import java.util.ArrayList;
 
 public class Food {
+    protected String foodName;
+
+    protected double price;
     protected int calories;
     protected double protein;
     protected double carbs;
@@ -12,7 +15,7 @@ public class Food {
     protected ArrayList<String> allergies;
 
     // Constructor
-    public Food(int calories, double protein, double carbs, double fat,
+    public Food(String foodName, int calories, double protein, double carbs, double fat,
                 ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions,
                 ArrayList<String> allergies) {
         this.calories = calories;
@@ -22,6 +25,19 @@ public class Food {
         this.ingredients = ingredients;
         this.dietaryRestrictions = dietaryRestrictions;
         this.allergies = allergies;
+        this.foodName = foodName;
+    }
+
+    public Food(String foodName, double price, int calories, double protein, double carbs, double fat){
+        this.calories = calories;
+        this.protein = protein;
+        this.carbs = carbs;
+        this.fat = fat;
+        this.ingredients = new ArrayList<>();
+        this.dietaryRestrictions = new ArrayList<>();
+        this.allergies = new ArrayList<>();
+        this.foodName = foodName;
+        this.price = price;
     }
 
     // Getter methods
@@ -55,4 +71,11 @@ public class Food {
         return allergies;
     }
 
+    public String getName() {
+        return foodName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 }

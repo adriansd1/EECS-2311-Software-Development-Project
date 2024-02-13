@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="adding some client side features">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/FoodMenus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Client side improved by adding welcome message as well as foodMenus functionality added">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject/Images/pngaaa.com-4077801.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/FoodMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/FoodMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +46,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e643b5ab-4b62-48a0-8213-97d9c5b2ad9f" />
+        <option name="url" value="https://github.com/adriansd1/EECS-2311-Software-Development-Project.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -66,9 +78,15 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/samda/IdeaProjects/EECS-2311-Term-Project/src/main/resources/com/example/eecs2311termproject/Images&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\samda\IdeaProjects\EECS-2311-Term-Project\src\main\resources\com\example\eecs2311termproject\Images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -99,12 +117,20 @@
       <option name="project" value="LOCAL" />
       <updated>1707072841456</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Client side improved by adding welcome message as well as foodMenus functionality added">
+      <created>1707842389369</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707842389369</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project first commit" />
     <MESSAGE value="adding some client side features" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding some client side features" />
+    <MESSAGE value="Client side improved by adding welcome message as well as foodMenus functionality added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client side improved by adding welcome message as well as foodMenus functionality added" />
   </component>
 </project>

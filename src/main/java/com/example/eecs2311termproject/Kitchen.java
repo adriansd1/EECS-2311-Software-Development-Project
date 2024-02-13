@@ -1,14 +1,16 @@
 package com.example.eecs2311termproject;
 import java.util.ArrayList;
-public class Kitchen extends Food {
+//Why does this extend class, needs GUI follow client side to define functionality
+public class Kitchen {//extends Food {
     ArrayList<Food> ingredientsStock;
     ArrayList<String> order;
     Boolean orderstate;
     private Food[] ingredientStock;
 
-    public Kitchen(int calories, double protein, double carbs, double fat, ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions, ArrayList<String> allergies) {
-        super(calories, protein, carbs, fat, ingredients, dietaryRestrictions, allergies);
-    }
+    //Commented out as it causes errors and makes code unrunnable
+    //public Kitchen(int calories, double protein, double carbs, double fat, ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions, ArrayList<String> allergies) {
+        //super(calories, protein, carbs, fat, ingredients, dietaryRestrictions, allergies);
+    //}
 
     public ArrayList<String> sendOrder() {
         return order;

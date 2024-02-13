@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -19,7 +20,11 @@ public class ClientSide extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //Initialize Page Title
-        stage.setTitle("Sushi Buffet Menu");
+        stage.setTitle("Edrick Sushi Buffet");
+
+        //Software Icon
+        Image icon = new Image(getClass().getResourceAsStream("/com/example/eecs2311termproject/Images/pngaaa.com-4077801.png"));
+        stage.getIcons().add(icon);
 
         //Initialize Border Pane
         BorderPane borderPane = new BorderPane();
@@ -123,10 +128,11 @@ public class ClientSide extends Application {
         welcomeLabel.setStyle("-fx-font-size: 20px;");
         restaurantName.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         italicText.setStyle("-fx-font-size: 20px; -fx-font-style: italic;");
+        historyLabel1.setPadding(new Insets(5, 0, 0 ,0));
         historyLabel1.setStyle("-fx-font-size: 16px;");
         historyLabel2.setStyle("-fx-font-size: 16px;");
         ownerMessage.setStyle("-fx-font-size: 16px; -fx-font-style: italic;");
-        ownerMessage.setPadding(new Insets(10, 0, 0 ,0));
+        ownerMessage.setPadding(new Insets(5, 0, 0 ,0));
 
         welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage);
         welcomeMessage.setAlignment(Pos.CENTER);
