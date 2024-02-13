@@ -4,16 +4,16 @@ import java.util.*;
 
 public class Order { 
 	private String orderID;
-	private Customer customer;
+    //Causing errors private Customer customer;
 	private String status;
-    private ArrayList<OrderItem> items; 
+    //Causing errors private ArrayList<OrderItem> items;
     private Date orderTime;
     private double totalPrice;
     private String specialRequests;
     private String promotionsApplied;
 
-    
-    public Order(String orderID, Customer customer, ArrayList<OrderItem> items) {
+    //Causes errors makes project unrunnable
+    /*public Order(String orderID, Customer customer, ArrayList<OrderItem> items) {
     	this.orderID = orderID;
     	this.customer = new Customer();
         this.items = new ArrayList<>();
@@ -32,6 +32,7 @@ public class Order {
     	this.items = items;
         totalPrice = calculateTotalPrice(); //after updating the list of items, recalculates the totalprice
     }
+    */
     
     public String getStatus() {
     	return status;
@@ -65,6 +66,7 @@ public class Order {
     	this.promotionsApplied = promotionsApplied;
     }
 
+    /*
     public void addOrder(OrderItem item) {
     	if (checkItemAvailability(item)) {
 	    	items.add(item);
@@ -82,7 +84,7 @@ public class Order {
     	System.out.println("Removed" + item.name + "from your order!");
         totalPrice = calculateTotalPrice(); //recalculating
     }
-    
+    */
     public void cancelOrder() {
         Scanner scanner = new Scanner(System.in);
         
@@ -94,7 +96,7 @@ public class Order {
         if ("yes".equals(response)) {
             // Logic to cancel the order
             this.totalPrice = 0;
-            this.items = new ArrayList<>();
+           //Errors this.items = new ArrayList<>();
             this.status = "Cancelled";
             System.out.println("Your order has been cancelled.");
         } 
@@ -118,20 +120,21 @@ public class Order {
     }
 
     private double calculateTotalPrice() {
-        return items.stream().mapToDouble(OrderItem::getPrice).sum();
+       //Errors return items.stream().mapToDouble(OrderItem::getPrice).sum();
+        return 0.0; //temp to prevent errors
     }
     
     @Override
     public String toString() {
         // Implement the toString method to provide a meaningful representation of the Order
         return "OrderID: " + orderID +
-                "\nCustomer: " + customer.getCustomerName() +
+              //  "\nCustomer: " + customer.getCustomerName() +
                 "\nStatus: " + status +
                 "\nTotal Price: $" + totalPrice +
                 "\nOrder Time: " + orderTime +
-                "\nSpecial Requests: " + specialRequests +
+                "\nSpecial Requests: " + specialRequests /* +
                 "\nPromotions Applied: " + promotionsApplied +
-                "\nItems: " + items;
+                "\nItems: " + items*/;
     }
 
 }

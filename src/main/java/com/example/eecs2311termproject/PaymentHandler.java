@@ -3,7 +3,8 @@ package com.example.eecs2311termproject;
 public class PaymentHandler {
     public static double calculateTotalPrice(Order order) {
         //Access the Order's totalPrice directly
-        return order.getPrice();
+        // return order.getPrice();
+        return 0.0; //To prevent errors
     }
 
     public static boolean processPayment(Order order, double amount) {

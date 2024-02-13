@@ -25,12 +25,13 @@ public class Kitchen extends Food {
                 if (stockIngredient.getIngredients().contains(ingredient)) {
                     ingredientfound = true;
                     break;
-                }else if (!(stockIngredient.getIngredients().contains(ingredient)) {
+                }else if (!(stockIngredient.getIngredients().contains(ingredient))) {
                     return false;
                 }
                 return true;
         }
     }
+        return true; //Prevent errors
     }
     public void cookrice(){
         System.out.print("Cooking rice");

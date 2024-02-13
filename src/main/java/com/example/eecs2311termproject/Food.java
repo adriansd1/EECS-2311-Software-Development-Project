@@ -42,8 +42,10 @@ public class Food {
     }
 
     public static ArrayList<String> getIngredients() {
-        return ingredients;
+       // return ingredients;
+        return null;
     }
+
 
     public ArrayList<String> getDietaryRestrictions() {
         return dietaryRestrictions;

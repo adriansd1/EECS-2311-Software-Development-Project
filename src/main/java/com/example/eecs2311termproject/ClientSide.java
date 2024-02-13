@@ -2,6 +2,7 @@ package com.example.eecs2311termproject;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -9,10 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -46,7 +44,6 @@ public class ClientSide extends Application {
 
         //Set height of Menu Bars
         menuBar.setStyle("-fx-pref-height:  100;");
-        //kitchenMenu.setStyle("-fx-pref-height: 100;");
 
         //Menu Initializations with styles
         Menu sushiMenu = new Menu("Sushi");
@@ -93,25 +90,49 @@ public class ClientSide extends Application {
         //Adding Drink options
         drinkMenu.getItems().addAll(sodaItem, juiceItem, sakeItem, beerItem);
 
-
+        //Add all menus to menu bar
         menuBar.getMenus().addAll(sushiMenu, noodleMenu, riceMenu, dessertMenu, drinkMenu);
 
+        //Add spacer so user items are on left while kitchen side is on the right
         Region spacer = new Region();
         spacer.getStyleClass().add("menu-bar");
         HBox.setHgrow(spacer, Priority.SOMETIMES);
         HBox menuHBox = new HBox(menuBar, spacer, kitchenBar);
 
+        //Setting stage and layout
         borderPane.setTop(menuHBox);
-
         Scene scene = new Scene(borderPane, 640, 480);
-        //Scene scene = new Scene(borderPane, 320, 240);
         stage.setScene(scene);
 
+        //On button clicks
         MenuHandler menuHandler = new MenuHandler();
+        makiItem.setOnAction(menuHandler::handleMaki);
+        nigiriItem.setOnAction(menuHandler::handleNigiri);
+        handrollItem.setOnAction(menuHandler::handleHandroll);
+        sashimiItem.setOnAction(menuHandler::handleSashimi);
 
-        makiItem.setOnAction(menuHandler::handleSushi);
+        //Welcome message
+        VBox welcomeMessage = new VBox();
+        Label welcomeLabel = new Label("Welcome to ");
+        Label restaurantName = new Label("Edrick Sushi!");
+        Label italicText = new Label("Please explore our menu.");
+        Label historyLabel1 = new Label("Our restaurant has been serving  delicious sushi dishes for over a decade,");
+        Label historyLabel2 = new Label("combining traditional Japanese flavors with innovative recipes.");
+        Label ownerMessage = new Label("A message from the owner: We're thrilled to have you dine with us and experience the exquisite taste of our handcrafted sushi rolls. Enjoy your meal!");
 
+        welcomeLabel.setStyle("-fx-font-size: 20px;");
+        restaurantName.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
+        italicText.setStyle("-fx-font-size: 20px; -fx-font-style: italic;");
+        historyLabel1.setStyle("-fx-font-size: 16px;");
+        historyLabel2.setStyle("-fx-font-size: 16px;");
+        ownerMessage.setStyle("-fx-font-size: 16px; -fx-font-style: italic;");
+        ownerMessage.setPadding(new Insets(10, 0, 0 ,0));
 
+        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage);
+        welcomeMessage.setAlignment(Pos.CENTER);
+        borderPane.setCenter(welcomeMessage);
+
+        //Show output
         stage.show();
     }
 
