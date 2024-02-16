@@ -16,6 +16,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * @author samda
+ * @Description: This class contains the client side of the application and contains the GUI
+ * and paths to various menus for the user to choose from
+ */
 public class ClientSide extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -125,6 +130,7 @@ public class ClientSide extends Application {
         Label historyLabel2 = new Label("combining traditional Japanese flavors with innovative recipes.");
         Label ownerMessage = new Label("A message from the owner: We're thrilled to have you dine with us and experience the exquisite taste of our handcrafted sushi rolls. Enjoy your meal!");
 
+        //Styles and formatting for welcome message
         welcomeLabel.setStyle("-fx-font-size: 20px;");
         restaurantName.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         italicText.setStyle("-fx-font-size: 20px; -fx-font-style: italic;");

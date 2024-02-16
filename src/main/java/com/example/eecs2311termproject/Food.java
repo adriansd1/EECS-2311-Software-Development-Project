@@ -2,6 +2,10 @@ package com.example.eecs2311termproject;
 
 import java.util.ArrayList;
 
+/**
+ * @author Avery Backus
+ * @Description Food Class to create food instances
+ */
 public class Food {
     protected String foodName;
 
