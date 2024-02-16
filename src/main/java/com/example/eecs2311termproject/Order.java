@@ -2,7 +2,70 @@ package com.example.eecs2311termproject;
 import java.util.*;
 
 
-public class Order { 
+public class Order {
+    protected double runningTotal;
+    protected int tableNumber;
+    protected boolean orderCompleted;
+    protected ArrayList<Food> foodOrder;
+
+    Order(int tableNumber){
+        this.tableNumber = tableNumber;
+        this.foodOrder = new ArrayList<>();
+    }
+
+    public void addFood(Food f){
+        this.foodOrder.add(f);
+        runningTotal += f.getPrice();
+    }
+
+    public void addFood(ArrayList<Food> foods){
+        if (foods != null) {
+            for (Food f : foods) {
+                foodOrder.add(f);
+                runningTotal += f.getPrice();
+            }
+        }
+    }
+
+    public void removeFood(Food foodToRemove) {
+        if (foodOrder.remove(foodToRemove)) {
+            runningTotal -= foodToRemove.getPrice();
+        }
+    }
+
+    public double getRunningTotal() {
+        return this.runningTotal;
+    }
+
+    public void setTableNumber(int tableNumber){
+        this.tableNumber = tableNumber;
+    }
+    public int getTableNumber() {
+        return this.tableNumber;
+    }
+
+    public void setOrderCompleted(boolean orderCompleted) {
+        this.orderCompleted = orderCompleted;
+    }
+
+    public boolean isOrderCompleted() {
+        return this.orderCompleted;
+    }
+
+    public ArrayList<Food> getFoodOrder() {
+        return this.foodOrder;
+    }
+
+
+
+
+    // the above is temporary/simple implementation for now
+    //unsure about below
+
+
+
+
+
 	private String orderID;
     //Causing errors private Customer customer;
 	private String status;

@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added Menu for Maki which will be repeated for the rest of the food menus, improvements made to these menus so foods can be easily added to these menus. I also included some more fields to food class to ensure cost and name are tracked. Also added software Icon">
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/FoodMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/FoodMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +23,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="EECS-2311-Term-Project" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
