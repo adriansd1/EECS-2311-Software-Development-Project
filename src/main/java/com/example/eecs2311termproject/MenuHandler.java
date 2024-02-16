@@ -22,17 +22,20 @@ public class MenuHandler {
     public void handleNigiri(ActionEvent event) {
         //Print line for debugging
         System.out.println("Nigiri Button");
+        NigiriPage.display();
     }
 
     //Handling Handroll menu option
     public void handleHandroll(ActionEvent event) {
         //Print line for debugging
         System.out.println("Handroll Button");
+        HandRollPage.display();
     }
 
     //Handling Sashimi menu option
     public void handleSashimi(ActionEvent event) {
         //Print line for debugging
         System.out.println("Sashimi Button");
+        SashimiPage.display();
     }
 }
