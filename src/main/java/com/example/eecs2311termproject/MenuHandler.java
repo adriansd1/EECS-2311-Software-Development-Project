@@ -38,4 +38,9 @@ public class MenuHandler {
         System.out.println("Sashimi Button");
         SashimiPage.display();
     }
+
+    public void handleTickets(ActionEvent event){
+        System.out.println("Ticket Button");
+        TicketsPage.display();
+    }
 }
