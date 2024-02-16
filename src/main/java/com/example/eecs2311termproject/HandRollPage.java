@@ -19,11 +19,11 @@ import javafx.stage.Stage;
  * add them to the users order so that they choose quantities of different items which will be
  * added to their order
  */
-public class makiPage extends Page{
+public class HandRollPage extends Page{
     //Set-up and display GUI
     public static void display() {
         //Setting stage and container
-        Stage makiStage = new Stage();
+        Stage handRollStage = new Stage();
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.TOP_CENTER);
 
@@ -31,19 +31,19 @@ public class makiPage extends Page{
         Button homeButton = new Button("Home");
 
         //Title for menu
-        Label titleLabel = new Label("Maki Menu");
+        Label titleLabel = new Label("Hand Roll Menu");
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
 
-        //Maki Food items for menu
-        Food tunaMaki = new Food("Tuna Roll", 0.50, 26, 1.17, 4.92, 0.07);
-        Food salmonMaki = new Food("Salmon Maki", 0.50, 28, 1.12, 4.92, 0.23);
-        Food californiaRoll = new Food("California Roll", 0.60, 33, 1.38, 6.31, 0.12);
+        //Handroll Food items for menu
+        Food tunaHandRoll = new Food("Tuna Hand Roll", 1.20, 194, 24.0, 21, 0.8);
+        Food salmonHandRoll = new Food("Salmon Hand Roll", 1.20, 162, 10.0, 16.0, 6.3);
+        Food eelHandRoll = new Food("Eel Hand Roll", 1.60, 170, 7.0, 22.0, 6.0);
 
         //Added items to food menu
-        FoodMenu makiMenu = new FoodMenu();
-        makiMenu.addFoods(tunaMaki);
-        makiMenu.addFoods(salmonMaki);
-        makiMenu.addFoods(californiaRoll);
+        FoodMenu handRollMenu = new FoodMenu();
+        handRollMenu.addFoods(tunaHandRoll);
+        handRollMenu.addFoods(salmonHandRoll);
+        handRollMenu.addFoods(eelHandRoll);
 
         //HBox to hold the squares containing the foods
         HBox foodItems = new HBox(10);
@@ -52,23 +52,23 @@ public class makiPage extends Page{
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane tunaSquare = createFoodSquare(tunaMaki.getName(), tunaMaki.getPrice());
-        StackPane salmonSquare = createFoodSquare(salmonMaki.getName(), salmonMaki.getPrice());
-        StackPane caliSquare = createFoodSquare(californiaRoll.getName(), californiaRoll.getPrice());
+        StackPane tunaSquare = createFoodSquare(tunaHandRoll.getName(), tunaHandRoll.getPrice());
+        StackPane salmonSquare = createFoodSquare(salmonHandRoll.getName(), salmonHandRoll.getPrice());
+        StackPane eelSquare = createFoodSquare(eelHandRoll.getName(), eelHandRoll.getPrice());
 
         //Adding foods to HBox
-        foodItems.getChildren().addAll(tunaSquare, salmonSquare, caliSquare);
+        foodItems.getChildren().addAll(tunaSquare, salmonSquare, eelSquare);
 
         //On action to close menu when pressing home button
         homeButton.setOnAction(e -> {
-            makiStage.close();
+            handRollStage.close();
         });
 
         //Add title, homeButton and menu options to scene
         layout.getChildren().addAll(titleLabel, homeButton, foodItems);
         Scene scene = new Scene(layout, 400, 300);
         //Set and show scene
-        makiStage.setScene(scene);
-        makiStage.show();
+        handRollStage.setScene(scene);
+        handRollStage.show();
     }
 }

@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added Menu for Maki which will be repeated for the rest of the food menus, improvements made to these menus so foods can be easily added to these menus. I also included some more fields to food class to ensure cost and name are tracked. Also added software Icon">
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/HandRollPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/NigiriPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/SashimiPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/FoodMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/FoodMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" afterDir="false" />
     </list>
@@ -128,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707865170272</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code">
+      <created>1708056578058</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708056578058</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -136,6 +145,7 @@
     <MESSAGE value="adding some client side features" />
     <MESSAGE value="Client side improved by adding welcome message as well as foodMenus functionality added" />
     <MESSAGE value="Added Menu for Maki which will be repeated for the rest of the food menus, improvements made to these menus so foods can be easily added to these menus. I also included some more fields to food class to ensure cost and name are tracked. Also added software Icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Menu for Maki which will be repeated for the rest of the food menus, improvements made to these menus so foods can be easily added to these menus. I also included some more fields to food class to ensure cost and name are tracked. Also added software Icon" />
+    <MESSAGE value="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code" />
   </component>
 </project>
