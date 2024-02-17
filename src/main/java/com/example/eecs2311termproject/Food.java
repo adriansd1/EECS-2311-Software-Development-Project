@@ -8,7 +8,6 @@ import java.util.ArrayList;
  */
 public class Food {
     protected String foodName;
-
     protected double price;
     protected int calories;
     protected double protein;
@@ -40,6 +39,11 @@ public class Food {
         this.ingredients = new ArrayList<>();
         this.dietaryRestrictions = new ArrayList<>();
         this.allergies = new ArrayList<>();
+        this.foodName = foodName;
+        this.price = price;
+    }
+
+    public Food(String foodName, double price){
         this.foodName = foodName;
         this.price = price;
     }

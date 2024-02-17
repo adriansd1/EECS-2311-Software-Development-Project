@@ -56,6 +56,10 @@ public abstract class Page {
         Button addButton = new Button("Add");
         addButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
+            Food f = new Food(name, quantity*price);
+            ClientSide.clientOrder.addFood(f);
+            System.out.println(ClientSide.clientOrder.runningTotal);
+
         });
 
         //VBox to hold square and add button now

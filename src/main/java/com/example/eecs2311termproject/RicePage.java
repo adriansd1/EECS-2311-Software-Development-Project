@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -12,15 +13,15 @@ import javafx.stage.Stage;
 
 /**
  * @author samda
- * @Description GUI and Business Logic implemented to receive orders from the Sashimi Menu and
+ * @Description GUI and Business Logic implemented to receive orders from the Rice Menu and
  * add them to the users order so that they choose quantities of different items which will be
  * added to their order
  */
-public class SashimiPage extends Page{
+public class RicePage extends Page {
     //Set-up and display GUI
     public static void display() {
         //Setting stage and container
-        Stage sashimiStage = new Stage();
+        Stage riceStage = new Stage();
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.TOP_CENTER);
 
@@ -28,19 +29,21 @@ public class SashimiPage extends Page{
         Button homeButton = new Button("Home");
 
         //Title for menu
-        Label titleLabel = new Label("Sashimi Menu");
+        Label titleLabel = new Label("Rice Menu");
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
 
-        //Sashimi Food items for menu
-        Food tunaSashimi = new Food("Tuna Sashimi", 0.20, 31, 6.63, 0.0, 0.27);
-        Food salmonSashimi = new Food("Salmon Sashimi", 0.20, 41, 6.13, 0.0, 1.68);
-        Food octopusSashimi = new Food("Octopus Sashimi", 0.65, 10, 2.0, 0.0, 0.0);
+        //Rice Food items for menu
+        Food curryRice = new Food("Curry Rice", 10.70,  680, 23.0, 67.0, 14.0);
+        Food onigiriRice = new Food("Onigiri", 2.20, 190, 4.13, 23.0, 5.2);
+        Food omuRice = new Food("Omurice", 6.65, 470, 12.0, 67.0, 21.0);
+        Food donburiRice = new Food("Donburi", 9.75, 675, 14.0, 63.0, 19.0);
 
         //Added items to food menu
-        FoodMenu sashimiMenu = new FoodMenu();
-        sashimiMenu.addFoods(tunaSashimi);
-        sashimiMenu.addFoods(salmonSashimi);
-        sashimiMenu.addFoods(octopusSashimi);
+        FoodMenu riceMenu = new FoodMenu();
+        riceMenu.addFoods(curryRice);
+        riceMenu.addFoods(onigiriRice);
+        riceMenu.addFoods(omuRice);
+        riceMenu.addFoods(donburiRice);
 
         //HBox to hold the squares containing the foods
         HBox foodItems = new HBox(10);
@@ -49,23 +52,24 @@ public class SashimiPage extends Page{
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane tunaSquare = createFoodSquare(tunaSashimi.getName(), tunaSashimi.getPrice());
-        StackPane salmonSquare = createFoodSquare(salmonSashimi.getName(), salmonSashimi.getPrice());
-        StackPane octSquare = createFoodSquare(octopusSashimi.getName(), octopusSashimi.getPrice());
+        StackPane currySquare = createFoodSquare(curryRice.getName(), curryRice.getPrice());
+        StackPane onigiriSquare = createFoodSquare(onigiriRice.getName(), onigiriRice.getPrice());
+        StackPane omuSquare = createFoodSquare(omuRice.getName(), omuRice.getPrice());
+        StackPane donSquare = createFoodSquare(donburiRice.getName(), donburiRice.getPrice());
 
         //Adding foods to HBox
-        foodItems.getChildren().addAll(tunaSquare, salmonSquare, octSquare);
+        foodItems.getChildren().addAll(currySquare, onigiriSquare, omuSquare, donSquare);
 
         //On action to close menu when pressing home button
         homeButton.setOnAction(e -> {
-            sashimiStage.close();
+            riceStage.close();
         });
 
         //Add title, homeButton and menu options to scene
         layout.getChildren().addAll(titleLabel, homeButton, foodItems);
         Scene scene = new Scene(layout, 400, 300);
         //Set and show scene
-        sashimiStage.setScene(scene);
-        sashimiStage.show();
+        riceStage.setScene(scene);
+        riceStage.show();
     }
 }

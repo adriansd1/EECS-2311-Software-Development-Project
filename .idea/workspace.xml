@@ -4,16 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/HandRollPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/NigiriPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/SashimiPage.java" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/AlcPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/DessertPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/DrinkPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/RamenPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/RicePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/UdonPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/makiPage.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/SashimiPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/SashimiPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +34,7 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="EECS-2311-Term-Project" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -144,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708056578058</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic">
+      <created>1708062345777</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708062345777</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -153,6 +159,7 @@
     <MESSAGE value="Client side improved by adding welcome message as well as foodMenus functionality added" />
     <MESSAGE value="Added Menu for Maki which will be repeated for the rest of the food menus, improvements made to these menus so foods can be easily added to these menus. I also included some more fields to food class to ensure cost and name are tracked. Also added software Icon" />
     <MESSAGE value="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code" />
+    <MESSAGE value="Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic" />
   </component>
 </project>

@@ -66,6 +66,8 @@ public class Order {
 
 
 
+
+    //Unused
 	private String orderID;
     //Causing errors private Customer customer;
 	private String status;
@@ -112,7 +114,16 @@ public class Order {
     public void setOrderID(String orderID) {
     	this.orderID = orderID;
     }
-    
+
+
+
+
+
+
+
+
+
+    //Code unused
     public String getSpecialRequests() {
     	return specialRequests;
     }
