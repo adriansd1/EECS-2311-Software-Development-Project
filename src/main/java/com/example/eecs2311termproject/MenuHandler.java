@@ -80,4 +80,11 @@ public class MenuHandler {
         System.out.println("Dessert Button");
         DessertPage.display();
     }
+
+    //Handling View Order button
+    public void handleViewOrder(ActionEvent actionEvent) {
+        //Print line for debugging
+        System.out.println("View Order button");
+        ViewOrder.display();
+    }
 }

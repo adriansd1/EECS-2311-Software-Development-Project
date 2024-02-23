@@ -6,10 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -87,21 +84,22 @@ public class ClientSide extends Application {
 
         //Initialize Drink menu options
         MenuItem sodaItem = new MenuItem("Soda/Pop");
-        //MenuItem juiceItem = new MenuItem("Juice");
-        //MenuItem sakeItem = new MenuItem("Sake");
-        //MenuItem beerItem = new MenuItem("Beer");
         MenuItem alcoholItem = new MenuItem("Alcoholic Beverages");
 
+        //Initialize Dessert menu option
         MenuItem dessert = new MenuItem("Dessert");
+
+        //Initialize View Order button
+        Button viewOrderButton = new Button("View My Order");
 
         //Adding Sushi options
         sushiMenu.getItems().addAll(makiItem, nigiriItem, handrollItem, sashimiItem);
         //Adding Noodle options
-        noodleMenu.getItems().addAll(ramenItem, udonItem);//, sobaItem, somenItem);
+        noodleMenu.getItems().addAll(ramenItem, udonItem);
         //Adding Rice options
         riceMenu.getItems().addAll(curryItem, onigiriItem, omuriceItem, donburiItem);
         //Adding Drink options
-        drinkMenu.getItems().addAll(sodaItem, /*juiceItem, sakeItem, beerItem*/ alcoholItem);
+        drinkMenu.getItems().addAll(sodaItem, alcoholItem);
         //Adding Dessert options
         dessertMenu.getItems().addAll(dessert);
 
@@ -139,11 +137,13 @@ public class ClientSide extends Application {
 
         //On button click for dessert
         dessertMenu.setOnAction(menuHandler::handleDessert);
+        //On button click to view order
+        viewOrderButton.setOnAction(menuHandler::handleViewOrder);
 
         //Welcome message
         VBox welcomeMessage = new VBox();
         Label welcomeLabel = new Label("Welcome to ");
-        Label restaurantName = new Label("Edrick Sushi!");
+        Label restaurantName = new Label("Edrick's Sushi!");
         Label italicText = new Label("Please explore our menu.");
         Label historyLabel1 = new Label("Our restaurant has been serving  delicious sushi dishes for over a decade,");
         Label historyLabel2 = new Label("combining traditional Japanese flavors with innovative recipes.");
@@ -157,9 +157,9 @@ public class ClientSide extends Application {
         historyLabel1.setStyle("-fx-font-size: 16px;");
         historyLabel2.setStyle("-fx-font-size: 16px;");
         ownerMessage.setStyle("-fx-font-size: 16px; -fx-font-style: italic;");
-        ownerMessage.setPadding(new Insets(5, 0, 0 ,0));
+        ownerMessage.setPadding(new Insets(5, 0, 15,0));
 
-        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage);
+        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, viewOrderButton);
         welcomeMessage.setAlignment(Pos.CENTER);
         borderPane.setCenter(welcomeMessage);
 

@@ -29,7 +29,7 @@ public class DrinkPage extends Page {
 
         //Title for menu
         Label titleLabel = new Label("Drink Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Drink items for menu
         Food coke = new Food("Coke", 1.00,  160, 0.3, 42.0, 0.0);

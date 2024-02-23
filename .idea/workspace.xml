@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/AlcPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/DessertPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/DrinkPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/RamenPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/RicePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/UdonPage.java" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/LoginScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/DrinkPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/DrinkPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/SashimiPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/SashimiPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +25,17 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="EECS-2311-Term-Project" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -150,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708062345777</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food">
+      <created>1708134814423</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708134814423</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -160,6 +168,7 @@
     <MESSAGE value="Added Menu for Maki which will be repeated for the rest of the food menus, improvements made to these menus so foods can be easily added to these menus. I also included some more fields to food class to ensure cost and name are tracked. Also added software Icon" />
     <MESSAGE value="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code" />
     <MESSAGE value="Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic" />
+    <MESSAGE value="GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food" />
   </component>
 </project>
