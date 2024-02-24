@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/LoginScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Beginning to implement the view order class so that the order can be viewed by the customer before it is sent to kitchen side(must be implemented how to send to the kitchen) and to add the table number before confirming(also must be implemented). Some UI changes as well and a potential login screen which may be deleted">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/DrinkPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/DrinkPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708134814423</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Beginning to implement the view order class so that the order can be viewed by the customer before it is sent to kitchen side(must be implemented how to send to the kitchen) and to add the table number before confirming(also must be implemented). Some UI changes as well and a potential login screen which may be deleted">
+      <created>1708732765990</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708732765990</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -169,6 +176,7 @@
     <MESSAGE value="Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code" />
     <MESSAGE value="Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic" />
     <MESSAGE value="GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food" />
+    <MESSAGE value="Beginning to implement the view order class so that the order can be viewed by the customer before it is sent to kitchen side(must be implemented how to send to the kitchen) and to add the table number before confirming(also must be implemented). Some UI changes as well and a potential login screen which may be deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="Beginning to implement the view order class so that the order can be viewed by the customer before it is sent to kitchen side(must be implemented how to send to the kitchen) and to add the table number before confirming(also must be implemented). Some UI changes as well and a potential login screen which may be deleted" />
   </component>
 </project>

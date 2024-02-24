@@ -13,6 +13,8 @@ public class Food {
     protected double protein;
     protected double carbs;
     protected double fat;
+
+    protected int quantity = 0;
     protected ArrayList<String> ingredients;
     protected ArrayList<String> dietaryRestrictions;
     protected ArrayList<String> allergies;
@@ -70,6 +72,10 @@ public class Food {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "Food Name: " + foodName + " Price: " + price + " Quantity: " + quantity;
+    }
 
     public ArrayList<String> getDietaryRestrictions() {
         return dietaryRestrictions;
@@ -85,5 +91,9 @@ public class Food {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity += quantity;
     }
 }

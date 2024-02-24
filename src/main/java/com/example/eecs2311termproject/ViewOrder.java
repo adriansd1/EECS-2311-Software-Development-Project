@@ -40,9 +40,8 @@ public class ViewOrder {
         //
         //DELETE
 
-
-        //HBox to hold the squares containing the foods
-        HBox orderItems = new HBox(10);
+        //VBox to hold the squares containing the foods
+        VBox orderItems = new VBox(10);
         orderItems.setAlignment(Pos.TOP_LEFT);
         orderItems.setPadding(new Insets(10));
         orderItems.setAlignment(Pos.CENTER);
@@ -52,7 +51,7 @@ public class ViewOrder {
         StackPane sakeSquare = createFoodSquare(sake.getName(), sake.getPrice());
         StackPane margSquare = createFoodSquare(margarita.getName(), margarita.getPrice());
 
-        //Adding foods to HBox
+        //Adding foods to VBox
         orderItems.getChildren().addAll(beerSquare, sakeSquare, margSquare);
 
         //On action to close menu when pressing home button
@@ -68,6 +67,7 @@ public class ViewOrder {
         orderStage.show();
     }
 
+    //Method to create squares to hold food items
     private static StackPane createFoodSquare(String name, double price) {
         //Style for square
         Rectangle square = new Rectangle(250, 50);
@@ -83,14 +83,10 @@ public class ViewOrder {
         itemQuantity.setMaxWidth(40);
         itemQuantity.setAlignment(Pos.CENTER);
 
-
-
         //Add buttons and text field to control box
         HBox quantityControls = new HBox(5);
         quantityControls.setAlignment(Pos.CENTER);
         quantityControls.getChildren().addAll(itemQuantity);
-
-
 
         //VBox to hold square and add button now
         HBox squareContent = new HBox(5);

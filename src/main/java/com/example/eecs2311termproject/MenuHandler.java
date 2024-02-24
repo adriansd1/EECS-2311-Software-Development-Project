@@ -85,6 +85,7 @@ public class MenuHandler {
     public void handleViewOrder(ActionEvent actionEvent) {
         //Print line for debugging
         System.out.println("View Order button");
+        System.out.println(ClientSide.clientOrder.toString());
         ViewOrder.display();
     }
 }
