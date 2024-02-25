@@ -39,6 +39,11 @@ public class MenuHandler {
         SashimiPage.display();
     }
 
+
+    public void handleTickets(ActionEvent event){
+        System.out.println("Ticket Button");
+        TicketsPage.display();
+    }
     //Handling Ramen menu option
     public void handleRamen(ActionEvent event) {
         //Print line for debugging

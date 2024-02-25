@@ -123,6 +123,7 @@ public class ClientSide extends Application {
         nigiriItem.setOnAction(menuHandler::handleNigiri);
         handrollItem.setOnAction(menuHandler::handleHandroll);
         sashimiItem.setOnAction(menuHandler::handleSashimi);
+        kitchenTicketsMenu.setOnAction(menuHandler::handleTickets);
 
         //On button clicks for noodles
         ramenItem.setOnAction(menuHandler::handleRamen);

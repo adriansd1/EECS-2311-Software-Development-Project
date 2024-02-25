@@ -59,6 +59,14 @@ public class Order {
         return this.foodOrder;
     }
 
+    public String getStringOfFoods(){
+        StringBuilder foodString = new StringBuilder();
+        for (Food food : foodOrder) {
+            foodString.append(food.foodName).append("\n");
+        }
+        return foodString.toString();
+    }
+
 
 
 
