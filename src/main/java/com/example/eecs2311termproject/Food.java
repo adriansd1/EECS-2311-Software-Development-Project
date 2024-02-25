@@ -23,13 +23,14 @@ public class Food {
     }
 
     // Constructor
-    public Food(String foodName, int calories, double protein, double carbs, double fat,
+    public Food(String foodName, double price, int calories, double protein, double carbs, double fat,
                 ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions,
                 ArrayList<String> allergies) {
         this.calories = calories;
         this.protein = protein;
         this.carbs = carbs;
         this.fat = fat;
+        this.price = price;
         this.ingredients = ingredients;
         this.dietaryRestrictions = dietaryRestrictions;
         this.allergies = allergies;
