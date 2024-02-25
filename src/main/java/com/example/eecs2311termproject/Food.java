@@ -8,12 +8,13 @@ import java.util.ArrayList;
  */
 public class Food {
     protected String foodName;
-
     protected double price;
     protected int calories;
     protected double protein;
     protected double carbs;
     protected double fat;
+
+    protected int quantity = 0;
     protected ArrayList<String> ingredients;
     protected ArrayList<String> dietaryRestrictions;
     protected ArrayList<String> allergies;
@@ -44,6 +45,11 @@ public class Food {
         this.price = price;
     }
 
+    public Food(String foodName, double price){
+        this.foodName = foodName;
+        this.price = price;
+    }
+
     // Getter methods
     public int getCalories() {
         return calories;
@@ -66,6 +72,10 @@ public class Food {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "Food Name: " + foodName + " Price: " + price + " Quantity: " + quantity;
+    }
 
     public ArrayList<String> getDietaryRestrictions() {
         return dietaryRestrictions;
@@ -81,5 +91,9 @@ public class Food {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity += quantity;
     }
 }

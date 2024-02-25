@@ -3,7 +3,7 @@ import java.util.*;
 
 
 public class Order {
-    protected double runningTotal;
+    protected double runningTotal = 0.0;
     protected int tableNumber;
     protected boolean orderCompleted;
     protected ArrayList<Food> foodOrder;
@@ -15,7 +15,7 @@ public class Order {
 
     public void addFood(Food f){
         this.foodOrder.add(f);
-        runningTotal += f.getPrice();
+        //runningTotal += f.getPrice();
     }
 
     public void addFood(ArrayList<Food> foods){
@@ -33,6 +33,9 @@ public class Order {
         }
     }
 
+    public void setRunningTotal(double runningTotal){
+        this.runningTotal += runningTotal;
+    }
     public double getRunningTotal() {
         return this.runningTotal;
     }
@@ -74,6 +77,8 @@ public class Order {
 
 
 
+
+    //Unused
 	private String orderID;
     //Causing errors private Customer customer;
 	private String status;
@@ -120,7 +125,16 @@ public class Order {
     public void setOrderID(String orderID) {
     	this.orderID = orderID;
     }
-    
+
+
+
+
+
+
+
+
+
+    //Code unused
     public String getSpecialRequests() {
     	return specialRequests;
     }
@@ -198,14 +212,13 @@ public class Order {
     @Override
     public String toString() {
         // Implement the toString method to provide a meaningful representation of the Order
-        return "OrderID: " + orderID +
-              //  "\nCustomer: " + customer.getCustomerName() +
-                "\nStatus: " + status +
-                "\nTotal Price: $" + totalPrice +
-                "\nOrder Time: " + orderTime +
-                "\nSpecial Requests: " + specialRequests /* +
-                "\nPromotions Applied: " + promotionsApplied +
-                "\nItems: " + items*/;
+        StringBuilder t = new StringBuilder();
+        for(Food f: ClientSide.clientOrder.getFoodOrder()){
+            if(!t.toString().contains(f.toString()))
+            t.append(f.toString());
+            t.append("\n");
+        }
+        return t.toString();
     }
 
 }

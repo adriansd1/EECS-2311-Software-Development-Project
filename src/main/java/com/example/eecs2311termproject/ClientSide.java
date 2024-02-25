@@ -6,10 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -22,10 +19,12 @@ import java.io.IOException;
  * and paths to various menus for the user to choose from
  */
 public class ClientSide extends Application {
+    public static Order clientOrder = new Order(1);
+
     @Override
     public void start(Stage stage) throws IOException {
         //Initialize Page Title
-        stage.setTitle("Edrick Sushi Buffet");
+        stage.setTitle("Edrick's Sushi Buffet");
 
         //Software Icon
         Image icon = new Image(getClass().getResourceAsStream("/com/example/eecs2311termproject/Images/pngaaa.com-4077801.png"));
@@ -76,8 +75,6 @@ public class ClientSide extends Application {
         //Initialize Noodle menu options
         MenuItem ramenItem = new MenuItem("Ramen");
         MenuItem udonItem = new MenuItem("Udon");
-        MenuItem sobaItem = new MenuItem("Soba");
-        MenuItem somenItem = new MenuItem("Somen");
 
         //Initialize Rice menu options
         MenuItem curryItem = new MenuItem("Curry Rice");
@@ -87,18 +84,24 @@ public class ClientSide extends Application {
 
         //Initialize Drink menu options
         MenuItem sodaItem = new MenuItem("Soda/Pop");
-        MenuItem juiceItem = new MenuItem("Juice");
-        MenuItem sakeItem = new MenuItem("Sake");
-        MenuItem beerItem = new MenuItem("Beer");
+        MenuItem alcoholItem = new MenuItem("Alcoholic Beverages");
+
+        //Initialize Dessert menu option
+        MenuItem dessert = new MenuItem("Dessert");
+
+        //Initialize View Order button
+        Button viewOrderButton = new Button("View My Order");
 
         //Adding Sushi options
         sushiMenu.getItems().addAll(makiItem, nigiriItem, handrollItem, sashimiItem);
         //Adding Noodle options
-        noodleMenu.getItems().addAll(ramenItem, udonItem, sobaItem, somenItem);
+        noodleMenu.getItems().addAll(ramenItem, udonItem);
         //Adding Rice options
         riceMenu.getItems().addAll(curryItem, onigiriItem, omuriceItem, donburiItem);
         //Adding Drink options
-        drinkMenu.getItems().addAll(sodaItem, juiceItem, sakeItem, beerItem);
+        drinkMenu.getItems().addAll(sodaItem, alcoholItem);
+        //Adding Dessert options
+        dessertMenu.getItems().addAll(dessert);
 
         //Add all menus to menu bar
         menuBar.getMenus().addAll(sushiMenu, noodleMenu, riceMenu, dessertMenu, drinkMenu);
@@ -114,7 +117,7 @@ public class ClientSide extends Application {
         Scene scene = new Scene(borderPane, 640, 480);
         stage.setScene(scene);
 
-        //On button clicks
+        //On button clicks for sushi
         MenuHandler menuHandler = new MenuHandler();
         makiItem.setOnAction(menuHandler::handleMaki);
         nigiriItem.setOnAction(menuHandler::handleNigiri);
@@ -122,10 +125,26 @@ public class ClientSide extends Application {
         sashimiItem.setOnAction(menuHandler::handleSashimi);
         kitchenTicketsMenu.setOnAction(menuHandler::handleTickets);
 
+        //On button clicks for noodles
+        ramenItem.setOnAction(menuHandler::handleRamen);
+        udonItem.setOnAction(menuHandler::handleUdon);
+
+        //On button click for rice
+        riceMenu.setOnAction(menuHandler::handleRice);
+
+        //On button click for drinks
+        alcoholItem.setOnAction(menuHandler::handleAlc);
+        sodaItem.setOnAction(menuHandler::handleDrink);
+
+        //On button click for dessert
+        dessertMenu.setOnAction(menuHandler::handleDessert);
+        //On button click to view order
+        viewOrderButton.setOnAction(menuHandler::handleViewOrder);
+
         //Welcome message
         VBox welcomeMessage = new VBox();
         Label welcomeLabel = new Label("Welcome to ");
-        Label restaurantName = new Label("Edrick Sushi!");
+        Label restaurantName = new Label("Edrick's Sushi!");
         Label italicText = new Label("Please explore our menu.");
         Label historyLabel1 = new Label("Our restaurant has been serving  delicious sushi dishes for over a decade,");
         Label historyLabel2 = new Label("combining traditional Japanese flavors with innovative recipes.");
@@ -139,9 +158,9 @@ public class ClientSide extends Application {
         historyLabel1.setStyle("-fx-font-size: 16px;");
         historyLabel2.setStyle("-fx-font-size: 16px;");
         ownerMessage.setStyle("-fx-font-size: 16px; -fx-font-style: italic;");
-        ownerMessage.setPadding(new Insets(5, 0, 0 ,0));
+        ownerMessage.setPadding(new Insets(5, 0, 15,0));
 
-        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage);
+        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, viewOrderButton);
         welcomeMessage.setAlignment(Pos.CENTER);
         borderPane.setCenter(welcomeMessage);
 

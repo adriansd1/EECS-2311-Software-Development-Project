@@ -12,15 +12,15 @@ import javafx.stage.Stage;
 
 /**
  * @author samda
- * @Description GUI and Business Logic implemented to receive orders from the Sashimi Menu and
+ * @Description GUI and Business Logic implemented to receive orders from the Ramen Menu and
  * add them to the users order so that they choose quantities of different items which will be
  * added to their order
  */
-public class SashimiPage extends Page{
+public class RamenPage extends Page {
     //Set-up and display GUI
     public static void display() {
         //Setting stage and container
-        Stage sashimiStage = new Stage();
+        Stage ramenStage = new Stage();
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.TOP_CENTER);
 
@@ -28,19 +28,19 @@ public class SashimiPage extends Page{
         Button homeButton = new Button("Home");
 
         //Title for menu
-        Label titleLabel = new Label("Sashimi Menu");
+        Label titleLabel = new Label("Ramen Menu");
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
 
-        //Sashimi Food items for menu
-        Food tunaSashimi = new Food("Tuna Sashimi", 0.20, 31, 6.63, 0.0, 0.27);
-        Food salmonSashimi = new Food("Salmon Sashimi", 0.20, 41, 6.13, 0.0, 1.68);
-        Food octopusSashimi = new Food("Octopus Sashimi", 0.65, 10, 2.0, 0.0, 0.0);
+        //Ramen Food items for menu
+        Food beefRamen = new Food("Beef Ramen", 8.70,  680, 17.0, 57.0, 14.0);
+        Food misoRamen = new Food("Miso Ramen", 5.20, 199, 14.13, 23.0, 5.2);
+        Food chickenRamen = new Food("Chicken Ramen", 7.65, 570, 12.0, 81.0, 21.0);
 
         //Added items to food menu
-        FoodMenu sashimiMenu = new FoodMenu();
-        sashimiMenu.addFoods(tunaSashimi);
-        sashimiMenu.addFoods(salmonSashimi);
-        sashimiMenu.addFoods(octopusSashimi);
+        FoodMenu ramenMenu = new FoodMenu();
+        ramenMenu.addFoods(beefRamen);
+        ramenMenu.addFoods(misoRamen);
+        ramenMenu.addFoods(chickenRamen);
 
         //HBox to hold the squares containing the foods
         HBox foodItems = new HBox(10);
@@ -49,23 +49,24 @@ public class SashimiPage extends Page{
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane tunaSquare = createFoodSquare(tunaSashimi.getName(), tunaSashimi.getPrice());
-        StackPane salmonSquare = createFoodSquare(salmonSashimi.getName(), salmonSashimi.getPrice());
-        StackPane octSquare = createFoodSquare(octopusSashimi.getName(), octopusSashimi.getPrice());
+        StackPane beefSquare = createFoodSquare(beefRamen.getName(), beefRamen.getPrice());
+        StackPane misoSquare = createFoodSquare(misoRamen.getName(), misoRamen.getPrice());
+        StackPane chickenSquare = createFoodSquare(chickenRamen.getName(), chickenRamen.getPrice());
 
         //Adding foods to HBox
-        foodItems.getChildren().addAll(tunaSquare, salmonSquare, octSquare);
+        foodItems.getChildren().addAll(beefSquare, misoSquare, chickenSquare);
 
         //On action to close menu when pressing home button
         homeButton.setOnAction(e -> {
-            sashimiStage.close();
+            ramenStage.close();
         });
 
         //Add title, homeButton and menu options to scene
         layout.getChildren().addAll(titleLabel, homeButton, foodItems);
         Scene scene = new Scene(layout, 400, 300);
         //Set and show scene
-        sashimiStage.setScene(scene);
-        sashimiStage.show();
+        ramenStage.setScene(scene);
+        ramenStage.show();
     }
+
 }
