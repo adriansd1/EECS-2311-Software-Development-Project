@@ -129,26 +129,11 @@ public class Order {
     }
 
 
-    public void cancelOrder() { // Allowed Cancel order to return a value for appropriate testing.
-        Scanner scanner = new Scanner(System.in);
-        
-        // Prompt the user for confirmation
-        System.out.println("Are you sure you want to cancel your order? (yes/no)");
-        String response = scanner.nextLine().trim().toLowerCase();
-
-        // Check the user's response
-        if ("yes".equals(response)) {
-            // Logic to cancel the order
+    public void cancelOrder() {
             this.runningTotal = 0;
-           //Errors this.items = new ArrayList<>();
-            this.status = "Cancelled";
-            System.out.println("Your order has been cancelled.");
-        } 
-        
-        else {
-            System.out.println("Order cancellation aborted.");
+            foodOrder = new ArrayList<>();
         }
-    }
+
     public boolean processPayment(double amount) {
         // Check if the provided amount is sufficient
         if (amount >= runningTotal) {

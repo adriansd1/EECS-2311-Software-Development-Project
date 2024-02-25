@@ -104,38 +104,16 @@ class OrderTest {
         assertNotEquals("Paid", order.getStatus(), "Order status should not be 'Paid' after unsuccessful payment.");
     }
 
-    private void provideInput(String data) {
-        testIn = new ByteArrayInputStream(data.getBytes());
-        System.setIn(testIn);
-    }
-
-    @AfterEach
-    public void restoreSystemInputOutput() {
-        System.setIn(systemIn);
-    }
-
     @Test
-    void cancelOrderCancelsCorrectly() {
-        provideInput("yes\n"); // Simulate the user input "yes" to confirm cancellation
-
+    void cancelOrder() {
         order.addFood(new Food("Test Food", 10.0)); // Ensure this Food has a non-zero price
         double initialTotalPrice = order.getRunningTotal(); // Assuming getRunningTotal() returns totalPrice
         order.cancelOrder();
 
         assertTrue(initialTotalPrice > 0, "Initial total price should be greater than 0.");
         assertEquals(0, order.getRunningTotal(), "Total price should be reset to 0 after cancellation.");
+        assertTrue(order.getFoodOrder().isEmpty(), "Order list should be empty.");
     }
 
-    @Test
-    void cancelOrderDoesNotCancelWhenDeclined() {
-        // Assuming the order has a non-zero total price before attempting to cancel
-        order.setRunningTotal(100.0); // Set an initial total price
-
-        provideInput("no\n"); // Simulate the user input "no" to decline cancellation
-
-        order.cancelOrder();
-
-        assertEquals(100.0, order.getRunningTotal(), "Total price should remain unchanged after declining cancellation.");
-    }
 
 }
