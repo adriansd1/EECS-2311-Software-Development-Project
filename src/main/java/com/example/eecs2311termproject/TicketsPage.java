@@ -34,6 +34,8 @@ public class TicketsPage {
             order.orderCompleted = true;
         });
 
+
+
         //VBox to hold square and complete button now
         VBox squareContent = new VBox(5);
         squareContent.setAlignment(Pos.CENTER);
@@ -69,18 +71,20 @@ public class TicketsPage {
         foodItems.setPadding(new Insets(10));
         foodItems.setAlignment(Pos.CENTER);
 
-        //temp food and order
-        Food tunaMaki = new Food("Tuna Roll", 0.50, 26, 1.17, 4.92, 0.07);
-        Order tempOrder = new Order(1);
-        tempOrder.addFood(tunaMaki);
+        for(Food f: ClientSide.clientOrder.getFoodOrder()){
+            //Squares containing foods and prices
+            StackPane foodSquare = createTicketSquare(ViewOrder.currentOrder);
+            //Adding foods to VBox
+            foodItems.getChildren().add(foodSquare);
+        }
 
 
         //Squares containing foods and prices
-        StackPane orderSquare = createTicketSquare(tempOrder);
+        //StackPane orderSquare = createTicketSquare(tempOrder);
 
 
         //Adding foods to HBox
-        foodItems.getChildren().addAll(orderSquare);
+        //foodItems.getChildren().addAll(foodSquare);
 
         //On action to close menu when pressing home button
         homeButton.setOnAction(e -> {

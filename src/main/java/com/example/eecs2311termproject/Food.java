@@ -19,6 +19,9 @@ public class Food {
     protected ArrayList<String> dietaryRestrictions;
     protected ArrayList<String> allergies;
 
+    public Food(){
+    }
+
     // Constructor
     public Food(String foodName, int calories, double protein, double carbs, double fat,
                 ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions,

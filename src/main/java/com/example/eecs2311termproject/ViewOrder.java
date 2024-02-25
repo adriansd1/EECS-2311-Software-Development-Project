@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -13,8 +14,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class ViewOrder {
     //Set-up and display GUI
+    public static Order currentOrder = ClientSide.clientOrder;
     public static void display() {
         //Setting stage and container
         Stage orderStage = new Stage();
@@ -28,17 +33,7 @@ public class ViewOrder {
         Label titleLabel = new Label("Your Order");
         //ADD WITHIN LABEL TEXTVIEW TO ENTER TABLE NUMBER
 
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
-
-        //TEST VALUES MUST BE DELETED
-        //
-        //
-        Food beer = new Food("Beer. 5%", 5.70,  260, 5.0, 35.0, 0.0);
-        Food sake = new Food("Sake. 37%", 2.20, 70, 0.6, 2.0, 0.0);
-        Food margarita = new Food("Maragrita. 8%", 7.65, 380, 12.0, 61.0, 3.5);
-        //
-        //
-        //DELETE
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //VBox to hold the squares containing the foods
         VBox orderItems = new VBox(10);
@@ -46,13 +41,12 @@ public class ViewOrder {
         orderItems.setPadding(new Insets(10));
         orderItems.setAlignment(Pos.CENTER);
 
-        //Squares containing foods and prices
-        StackPane beerSquare = createFoodSquare(beer.getName(), beer.getPrice());
-        StackPane sakeSquare = createFoodSquare(sake.getName(), sake.getPrice());
-        StackPane margSquare = createFoodSquare(margarita.getName(), margarita.getPrice());
-
-        //Adding foods to VBox
-        orderItems.getChildren().addAll(beerSquare, sakeSquare, margSquare);
+       for(Food f: ClientSide.clientOrder.getFoodOrder()){
+           //Squares containing foods and prices
+           StackPane foodSquare = createFoodSquare(f.getName(), f.getPrice(), f.quantity);
+           //Adding foods to VBox
+           orderItems.getChildren().add(foodSquare);
+       }
 
         //On action to close menu when pressing home button
         confirmOrderButton.setOnAction(e -> {
@@ -61,17 +55,24 @@ public class ViewOrder {
 
         //Add title, homeButton and menu options to scene
         layout.getChildren().addAll(titleLabel, confirmOrderButton, orderItems);
-        Scene scene = new Scene(layout, 400, 300);
+
+        // Wrap the layout in a ScrollPane
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(layout);
+        scrollPane.setFitToWidth(true);
+
+        //Make scene(scrollable)
+        Scene scene = new Scene(scrollPane, 400, 300);
         //Set and show scene
         orderStage.setScene(scene);
         orderStage.show();
     }
 
     //Method to create squares to hold food items
-    private static StackPane createFoodSquare(String name, double price) {
+    private static StackPane createFoodSquare(String name, double price, int quantity) {
         //Style for square
         Rectangle square = new Rectangle(250, 50);
-        square.setFill(Color.LIGHTGRAY);
+        square.setFill(Color.AZURE);
         square.setStroke(Color.BLACK);
 
         //Labels for name and price of food
@@ -79,7 +80,7 @@ public class ViewOrder {
         Label priceLabel = new Label("$" + price);
 
         //Item quantity field
-        TextField itemQuantity = new TextField("1");
+        TextField itemQuantity = new TextField(String.valueOf(quantity));
         itemQuantity.setMaxWidth(40);
         itemQuantity.setAlignment(Pos.CENTER);
 
