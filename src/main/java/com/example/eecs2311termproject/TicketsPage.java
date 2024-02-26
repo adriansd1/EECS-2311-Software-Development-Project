@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 public class TicketsPage {
 
-    protected static StackPane createTicketSquare(Order order) {
+    protected static StackPane createTicketSquare(Order order, HBox foodItems) {
         //Style for square
         Rectangle square = new Rectangle(250, 250);
         square.setFill(Color.LIGHTGRAY);
@@ -28,13 +28,14 @@ public class TicketsPage {
 
 
 
+
         //Button to complete order
         Button completeButton = new Button("Complete");
         completeButton.setOnAction(e -> {
             order.orderCompleted = true;
+            foodItems.getChildren().remove(square.getParent());
+            order.getFoodOrder().clear();
         });
-
-
 
         //VBox to hold square and complete button now
         VBox squareContent = new VBox(5);
@@ -73,7 +74,7 @@ public class TicketsPage {
 
         for(Food f: ClientSide.clientOrder.getFoodOrder()){
             //Squares containing foods and prices
-            StackPane foodSquare = createTicketSquare(ViewOrder.currentOrder);
+            StackPane foodSquare = createTicketSquare(ViewOrder.currentOrder, foodItems);
             //Adding foods to VBox
             foodItems.getChildren().add(foodSquare);
         }
@@ -81,6 +82,10 @@ public class TicketsPage {
 
         //Squares containing foods and prices
         //StackPane orderSquare = createTicketSquare(tempOrder);
+
+        //for(Food f: ViewOrder.currentOrder.getFoodOrder()){
+            StackPane orderSquare = createTicketSquare(ViewOrder.currentOrder, foodItems);
+        //}
 
 
         //Adding foods to HBox

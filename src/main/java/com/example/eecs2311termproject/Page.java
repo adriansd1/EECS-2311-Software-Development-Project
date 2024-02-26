@@ -56,15 +56,29 @@ public abstract class Page {
         Button addButton = new Button("Add");
         addButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
-            Food f = new Food(name, price);
-            if(ClientSide.clientOrder.getFoodOrder().contains(f)) {
-                ClientSide.clientOrder.getFoodOrder().get(ClientSide.clientOrder.getFoodOrder().indexOf(f)).setQuantity(quantity);
+            Food f = new Food(name, price); //test
+
+            boolean found = false;
+
+            for (Food foodItem : ClientSide.clientOrder.getFoodOrder()) {
+                if (foodItem.getName().equals(f.getName()) && foodItem.getPrice() == f.getPrice()) {
+                    foodItem.setQuantity(quantity);
+                    ClientSide.clientOrder.setRunningTotal(quantity * price);
+                    found = true;
+
+                    PostgreSQL.updateQuantity(f.getName(), quantity);
+
+                    break;
+                }
             }
-            else {
+
+            if (!found) {
                 f.setQuantity(quantity);
                 ClientSide.clientOrder.addFood(f);
                 ClientSide.clientOrder.setRunningTotal(quantity * price);
                 System.out.println(ClientSide.clientOrder.getRunningTotal());
+
+                PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity);
             }
 
 
