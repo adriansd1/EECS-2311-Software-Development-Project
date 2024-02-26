@@ -19,12 +19,15 @@ import java.util.ArrayList;
 
 public class ViewOrder {
     //Set-up and display GUI
-    public static Order currentOrder = ClientSide.clientOrder;
+    public static Order currentOrder;
     public static void display() {
         //Setting stage and container
         Stage orderStage = new Stage();
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.TOP_CENTER);
+
+        //Setting current order
+        //currentOrder.getFoodOrder().addAll(ClientSide.clientOrder.getFoodOrder());
 
         //Home button to close menu
         Button confirmOrderButton = new Button("Confirm Order");
@@ -41,15 +44,21 @@ public class ViewOrder {
         orderItems.setPadding(new Insets(10));
         orderItems.setAlignment(Pos.CENTER);
 
-       for(Food f: ClientSide.clientOrder.getFoodOrder()){
-           //Squares containing foods and prices
-           StackPane foodSquare = createFoodSquare(f.getName(), f.getPrice(), f.quantity);
-           //Adding foods to VBox
-           orderItems.getChildren().add(foodSquare);
-       }
+
+        for (int i = 1; i<=PostgreSQL.getRowCount(); i++) {
+            //Squares containing foods and prices
+            StackPane foodSquare = createFoodSquare(PostgreSQL.readFoodNameFromDatabase(i), PostgreSQL.readPriceFromDatabase(i), PostgreSQL.readQuantityFromDatabase(i), orderItems);
+            //Adding foods to VBox
+            orderItems.getChildren().add(foodSquare);
+        }
+
 
         //On action to close menu when pressing home button
         confirmOrderButton.setOnAction(e -> {
+            orderItems.getChildren().clear();
+            //TicketsPage.currentTicket.getFoodOrder().addAll(currentOrder.getFoodOrder());
+           // currentOrder.getFoodOrder().clear();
+            ClientSide.clientOrder.getFoodOrder().clear();
             orderStage.close();
         });
 
@@ -69,7 +78,7 @@ public class ViewOrder {
     }
 
     //Method to create squares to hold food items
-    private static StackPane createFoodSquare(String name, double price, int quantity) {
+    private static StackPane createFoodSquare(String name, double price, int quantity, VBox itemContainer) {
         //Style for square
         Rectangle square = new Rectangle(250, 50);
         square.setFill(Color.AZURE);
@@ -79,7 +88,12 @@ public class ViewOrder {
         Label nameLabel = new Label(name);
         Label priceLabel = new Label("$" + price);
 
-        //Item quantity field
+        //Button to remove food item
+        Button removeItemButton = new Button("x");
+
+
+
+        //Item quantity field MAKE THIS LABEL
         TextField itemQuantity = new TextField(String.valueOf(quantity));
         itemQuantity.setMaxWidth(40);
         itemQuantity.setAlignment(Pos.CENTER);
@@ -92,11 +106,19 @@ public class ViewOrder {
         //VBox to hold square and add button now
         HBox squareContent = new HBox(5);
         squareContent.setAlignment(Pos.CENTER);
-        squareContent.getChildren().addAll(nameLabel, priceLabel, quantityControls);
+        squareContent.getChildren().addAll(nameLabel, priceLabel, quantityControls, removeItemButton);
 
         //Stack pane to hold all previous items
         StackPane squarePane = new StackPane();
         squarePane.getChildren().addAll(square, squareContent);
+
+        removeItemButton.setOnAction(e -> {
+            // Get the index of the StackPane containing the square
+            int index = itemContainer.getChildren().indexOf(squarePane);
+            // Remove the StackPane containing the square from the VBox
+            itemContainer.getChildren().remove(index);
+            PostgreSQL.deleteFood(name);
+        });
 
         return squarePane;
     }

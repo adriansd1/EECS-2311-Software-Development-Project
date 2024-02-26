@@ -8,6 +8,11 @@ public class Order {
     protected boolean orderCompleted;
     protected ArrayList<Food> foodOrder;
 
+    public Order(){
+        tableNumber = 1;
+        foodOrder = new ArrayList<>();
+    }
+
     Order(int tableNumber){
         this.tableNumber = tableNumber;
         this.foodOrder = new ArrayList<>();

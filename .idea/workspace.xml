@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/TicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/TicketsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +67,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2bgfh7r016qPevlC39ladtvaLae" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -69,10 +78,14 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.ClientSide.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build EECS-2311-Software-Development-Project.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/postgresql-42.7.2.jar&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -103,6 +116,13 @@
         <item itemvalue="Application.ClientSide" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -184,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708917652783</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines">
+      <option name="closed" value="true" />
+      <created>1708917754432</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708917754432</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

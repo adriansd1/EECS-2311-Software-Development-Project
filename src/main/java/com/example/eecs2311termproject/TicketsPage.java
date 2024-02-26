@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -15,7 +16,9 @@ import javafx.stage.Stage;
 
 public class TicketsPage {
 
-    protected static StackPane createTicketSquare(Order order, HBox foodItems) {
+    public static Order currentTicket;
+
+    protected static StackPane createTicketSquare(String foodName, int quantity, HBox foodItems) {
         //Style for square
         Rectangle square = new Rectangle(250, 250);
         square.setFill(Color.LIGHTGRAY);
@@ -23,8 +26,9 @@ public class TicketsPage {
 
 
         //Labels for order's table number
-        Label nameLabel = new Label("Table Number: " + String.valueOf(order.getTableNumber()));
-        Label orderItemsLabel = new Label("Items: " + order.getStringOfFoods());
+        Label nameLabel = new Label("Table Number: 1"); // + String.valueOf(order.getTableNumber()));
+        Label orderItemsLabel = new Label("Items: " + foodName);//order.getStringOfFoods());
+        Label orderItemQuantityLabel = new Label("Quantity: " + quantity);
 
 
 
@@ -32,15 +36,18 @@ public class TicketsPage {
         //Button to complete order
         Button completeButton = new Button("Complete");
         completeButton.setOnAction(e -> {
-            order.orderCompleted = true;
+            //order.orderCompleted = true;
             foodItems.getChildren().remove(square.getParent());
-            order.getFoodOrder().clear();
+            //for(Food f: order.getFoodOrder()){
+                PostgreSQL.deleteFood(foodName);  //f.getName());
+            //}
+            //order.getFoodOrder().clear();
         });
 
         //VBox to hold square and complete button now
         VBox squareContent = new VBox(5);
         squareContent.setAlignment(Pos.CENTER);
-        squareContent.getChildren().addAll(nameLabel, orderItemsLabel, completeButton);
+        squareContent.getChildren().addAll(nameLabel, orderItemsLabel, orderItemQuantityLabel, completeButton);
 
         //Stack pane to hold all previous items
         StackPane squarePane = new StackPane();
@@ -48,8 +55,6 @@ public class TicketsPage {
 
         return squarePane;
     }
-
-
 
     public static void display() {
         //Setting stage and container
@@ -65,27 +70,24 @@ public class TicketsPage {
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
 
 
-
         //HBox to hold the squares containing the foods
         HBox foodItems = new HBox(10);
         foodItems.setAlignment(Pos.TOP_LEFT);
         foodItems.setPadding(new Insets(10));
         foodItems.setAlignment(Pos.CENTER);
 
-        for(Food f: ClientSide.clientOrder.getFoodOrder()){
-            //Squares containing foods and prices
-            StackPane foodSquare = createTicketSquare(ViewOrder.currentOrder, foodItems);
-            //Adding foods to VBox
-            foodItems.getChildren().add(foodSquare);
-        }
+        //if(currentTicket != null) {
+            for (int i = 1; i<=PostgreSQL.getRowCount(); i++) {
+                //Squares containing foods and quantity
+                String name = PostgreSQL.readFoodNameFromDatabase(i);
+                int quantity = PostgreSQL.readQuantityFromDatabase(i);
+                StackPane foodSquare = createTicketSquare(name, quantity, foodItems);
+                //Adding foods to VBox
+                foodItems.getChildren().add(foodSquare);
+            }
 
-
-        //Squares containing foods and prices
-        //StackPane orderSquare = createTicketSquare(tempOrder);
-
-        //for(Food f: ViewOrder.currentOrder.getFoodOrder()){
-            StackPane orderSquare = createTicketSquare(ViewOrder.currentOrder, foodItems);
-        //}
+            //StackPane orderSquare = createTicketSquare(currentTicket, foodItems);
+       // }
 
 
         //Adding foods to HBox
@@ -98,7 +100,14 @@ public class TicketsPage {
 
         //Add title, homeButton and menu options to scene
         layout.getChildren().addAll(titleLabel, homeButton, foodItems);
-        Scene scene = new Scene(layout, 400, 300);
+
+        // Wrap the layout in a ScrollPane
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(layout);
+        scrollPane.setFitToWidth(true);
+
+        Scene scene = new Scene(scrollPane, 400, 300);
+
         //Set and show scene
         ticketStage.setScene(scene);
         ticketStage.show();
