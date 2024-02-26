@@ -71,9 +71,9 @@ public class Food {
         return fat;
     }
 
-    public static ArrayList<String> getIngredients() {
+    public ArrayList<String> getIngredients() {
        // return ingredients;
-        return null;
+        return ingredients;
     }
 
     @Override
