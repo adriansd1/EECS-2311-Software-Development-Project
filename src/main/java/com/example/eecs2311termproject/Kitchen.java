@@ -20,8 +20,9 @@ public class Kitchen {//extends Food {
         this.order = orders;
     }
 
+    /*
     public boolean checkingredients() {
-        for (String ingredient : Food.getIngredients()) {
+        for (String ingredient : food.getIngredients()) {
             boolean ingredientfound = false;
             for (Food stockIngredient : ingredientStock) {
                 if (stockIngredient.getIngredients().contains(ingredient)) {
@@ -35,6 +36,8 @@ public class Kitchen {//extends Food {
     }
         return true; //Prevent errors
     }
+
+     */
     public void cookrice(){
         System.out.print("Cooking rice");
         System.out.print("Rice ready!");
