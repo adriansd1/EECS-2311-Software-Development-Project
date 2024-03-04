@@ -29,7 +29,7 @@ public class UdonPage extends Page{
 
         //Title for menu
         Label titleLabel = new Label("Udon Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Udon Food items for menu
         Food beefUdon = new Food("Beef Udon", 8.50,  680, 19.0, 38.0, 16.0);

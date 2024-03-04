@@ -100,7 +100,7 @@
   <component name="RunManager">
     <configuration name="ClientSide" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
-      <module name="EECS-2311-Term-Project.main" />
+      <module name="EECS-2311-Term-Project" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.eecs2311termproject.*" />

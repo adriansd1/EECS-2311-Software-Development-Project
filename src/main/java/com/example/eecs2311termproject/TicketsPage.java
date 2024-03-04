@@ -26,8 +26,8 @@ public class TicketsPage {
 
 
         //Labels for order's table number
-        Label nameLabel = new Label("Table Number: 1"); // + String.valueOf(order.getTableNumber()));
-        Label orderItemsLabel = new Label("Items: " + foodName);//order.getStringOfFoods());
+        Label nameLabel = new Label("Table Number: 1");
+        Label orderItemsLabel = new Label("Items: " + foodName);
         Label orderItemQuantityLabel = new Label("Quantity: " + quantity);
 
 
@@ -36,12 +36,8 @@ public class TicketsPage {
         //Button to complete order
         Button completeButton = new Button("Complete");
         completeButton.setOnAction(e -> {
-            //order.orderCompleted = true;
             foodItems.getChildren().remove(square.getParent());
-            //for(Food f: order.getFoodOrder()){
-                PostgreSQL.deleteFood(foodName);  //f.getName());
-            //}
-            //order.getFoodOrder().clear();
+            PostgreSQL.deleteFood(foodName);
         });
 
         //VBox to hold square and complete button now
@@ -67,7 +63,7 @@ public class TicketsPage {
 
         //Title for menu
         Label titleLabel = new Label("Current Orders");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
 
         //HBox to hold the squares containing the foods
@@ -76,22 +72,14 @@ public class TicketsPage {
         foodItems.setPadding(new Insets(10));
         foodItems.setAlignment(Pos.CENTER);
 
-        //if(currentTicket != null) {
-            for (int i = 1; i<=PostgreSQL.getRowCount(); i++) {
-                //Squares containing foods and quantity
-                String name = PostgreSQL.readFoodNameFromDatabase(i);
-                int quantity = PostgreSQL.readQuantityFromDatabase(i);
-                StackPane foodSquare = createTicketSquare(name, quantity, foodItems);
-                //Adding foods to VBox
-                foodItems.getChildren().add(foodSquare);
-            }
-
-            //StackPane orderSquare = createTicketSquare(currentTicket, foodItems);
-       // }
-
-
-        //Adding foods to HBox
-        //foodItems.getChildren().addAll(foodSquare);
+        for (int i = 1; i<=PostgreSQL.getRowCount(); i++) {
+            //Squares containing foods and quantity
+            String name = PostgreSQL.readFoodNameFromDatabase(i);
+            int quantity = PostgreSQL.readQuantityFromDatabase(i);
+            StackPane foodSquare = createTicketSquare(name, quantity, foodItems);
+            //Adding foods to VBox
+            foodItems.getChildren().add(foodSquare);
+        }
 
         //On action to close menu when pressing home button
         homeButton.setOnAction(e -> {

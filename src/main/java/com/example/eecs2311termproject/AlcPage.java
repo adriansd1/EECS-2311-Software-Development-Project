@@ -29,7 +29,7 @@ public class AlcPage extends Page {
 
         //Title for menu
         Label titleLabel = new Label("Alcohol Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Drink items for menu
         Food beer = new Food("Beer. 5%", 5.70,  260, 5.0, 35.0, 0.0);

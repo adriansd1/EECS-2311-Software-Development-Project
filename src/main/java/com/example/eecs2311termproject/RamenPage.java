@@ -29,7 +29,7 @@ public class RamenPage extends Page {
 
         //Title for menu
         Label titleLabel = new Label("Ramen Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Ramen Food items for menu
         Food beefRamen = new Food("Beef Ramen", 8.70,  680, 17.0, 57.0, 14.0);

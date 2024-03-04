@@ -32,7 +32,7 @@ public class NigiriPage extends Page {
 
         //Title for menu
         Label titleLabel = new Label("Nigiri Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Nigiri Food items for menu
         Food tunaNigiri = new Food("Tuna Nigiri", 0.40, 46, 1.94, 9.16, 0.12);

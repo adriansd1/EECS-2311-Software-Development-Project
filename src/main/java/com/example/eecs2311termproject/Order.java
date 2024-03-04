@@ -108,14 +108,6 @@ public class Order {
     	this.orderID = orderID;
     }
 
-
-
-
-
-
-
-
-
     //Code unused, will apply later.
     public String getSpecialRequests() {
     	return specialRequests;
@@ -153,10 +145,6 @@ public class Order {
         }
     }
 
-    private double calculateTotalPrice() {
-       //Errors return items.stream().mapToDouble(OrderItem::getPrice).sum();
-        return 0.0; //temp to prevent errors
-    }
     
     @Override
     public String toString() {

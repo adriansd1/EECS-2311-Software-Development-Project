@@ -56,8 +56,6 @@ public class ViewOrder {
         //On action to close menu when pressing home button
         confirmOrderButton.setOnAction(e -> {
             orderItems.getChildren().clear();
-            //TicketsPage.currentTicket.getFoodOrder().addAll(currentOrder.getFoodOrder());
-           // currentOrder.getFoodOrder().clear();
             ClientSide.clientOrder.getFoodOrder().clear();
             orderStage.close();
         });

@@ -32,7 +32,7 @@ public class HandRollPage extends Page{
 
         //Title for menu
         Label titleLabel = new Label("Hand Roll Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Handroll Food items for menu
         Food tunaHandRoll = new Food("Tuna Hand Roll", 1.20, 194, 24.0, 21, 0.8);
