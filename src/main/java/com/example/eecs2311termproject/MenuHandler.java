@@ -93,4 +93,11 @@ public class MenuHandler {
         System.out.println(ClientSide.clientOrder.toString());
         ViewOrder.display();
     }
+
+    public void handleBuffet(ActionEvent actionEvent) {
+        //Print line for debugging
+        System.out.println("Buffet Button");
+        //System.out.println(ClientSide.clientOrder.toString());
+        BuffetPage.display();
+    }
 }
