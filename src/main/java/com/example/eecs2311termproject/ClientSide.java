@@ -92,6 +92,11 @@ public class ClientSide extends Application {
         //Initialize View Order button
         Button viewOrderButton = new Button("View My Order");
 
+        //Initialize all you can eat and pay as you go buttons
+        Button buffetButton = new Button("All You Can Eat");
+
+
+
         //Adding Sushi options
         sushiMenu.getItems().addAll(makiItem, nigiriItem, handrollItem, sashimiItem);
         //Adding Noodle options
@@ -141,6 +146,9 @@ public class ClientSide extends Application {
         //On button click to view order
         viewOrderButton.setOnAction(menuHandler::handleViewOrder);
 
+        //On button for dining type
+        buffetButton.setOnAction(menuHandler::handleBuffet);
+
         //Welcome message
         VBox welcomeMessage = new VBox();
         Label welcomeLabel = new Label("Welcome to ");
@@ -148,7 +156,8 @@ public class ClientSide extends Application {
         Label italicText = new Label("Please explore our menu.");
         Label historyLabel1 = new Label("Our restaurant has been serving  delicious sushi dishes for over a decade,");
         Label historyLabel2 = new Label("combining traditional Japanese flavors with innovative recipes.");
-        Label ownerMessage = new Label("A message from the owner: We're thrilled to have you dine with us and experience the exquisite taste of our handcrafted sushi rolls. Enjoy your meal!");
+        Label ownerMessage = new Label("A message from the owner: We're thrilled to have you dine with us and experience the exquisite taste of our handcrafted sushi rolls. Enjoy your meal! \n");
+        Label buffetLabel = new Label( "Click here for all you can eat!");
 
         //Styles and formatting for welcome message
         welcomeLabel.setStyle("-fx-font-size: 20px;");
@@ -157,10 +166,13 @@ public class ClientSide extends Application {
         historyLabel1.setPadding(new Insets(5, 0, 0 ,0));
         historyLabel1.setStyle("-fx-font-size: 16px;");
         historyLabel2.setStyle("-fx-font-size: 16px;");
+        buffetLabel.setStyle("-fx-font-size: 16px;");
+        buffetLabel.setUnderline(true);
         ownerMessage.setStyle("-fx-font-size: 16px; -fx-font-style: italic;");
         ownerMessage.setPadding(new Insets(5, 0, 15,0));
 
-        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, viewOrderButton);
+
+        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
         welcomeMessage.setAlignment(Pos.CENTER);
         borderPane.setCenter(welcomeMessage);
 
