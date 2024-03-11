@@ -56,7 +56,7 @@ public abstract class Page {
         Button addButton = new Button("Add");
         addButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
-            Food f = new Food(name, price); //test
+            Food f = new Food(name, price);
 
             boolean found = false;
 

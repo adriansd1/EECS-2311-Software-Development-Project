@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines">
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/TicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/TicketsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708917754432</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come">
+      <option name="closed" value="true" />
+      <created>1708961807944</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708961807944</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,6 +241,7 @@
     <MESSAGE value="GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food" />
     <MESSAGE value="Beginning to implement the view order class so that the order can be viewed by the customer before it is sent to kitchen side(must be implemented how to send to the kitchen) and to add the table number before confirming(also must be implemented). Some UI changes as well and a potential login screen which may be deleted" />
     <MESSAGE value="PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines" />
-    <option name="LAST_COMMIT_MESSAGE" value="PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines" />
+    <MESSAGE value="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come" />
+    <option name="LAST_COMMIT_MESSAGE" value="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come" />
   </component>
 </project>
