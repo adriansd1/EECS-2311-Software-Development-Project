@@ -73,28 +73,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ClientSide.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build EECS-2311-Software-Development-Project.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/postgresql-42.7.2.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ClientSide.executor": "Run",
+    "Gradle.Build EECS-2311-Software-Development-Project.executor": "Run",
+    "Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor": "Run",
+    "Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Downloads/postgresql-42.7.2.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\samda\IdeaProjects\EECS-2311-Term-Project\src\main\resources\com\example\eecs2311termproject\Images" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject/Images" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ClientSide (1)">
+    <configuration name="ClientSide (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
+      <module name="EECS-2311-Term-Project.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.eecs2311termproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClientSide" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
       <module name="EECS-2311-Term-Project" />
@@ -110,6 +128,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClientSide (1)" />
         <item itemvalue="Application.ClientSide" />
       </list>
     </recent_temporary>

@@ -36,6 +36,11 @@ public class SashimiPage extends Page{
         Food salmonSashimi = new Food("Salmon Sashimi", 0.20, 41, 6.13, 0.0, 1.68);
         Food octopusSashimi = new Food("Octopus Sashimi", 0.65, 10, 2.0, 0.0, 0.0);
 
+
+        String imagePathFortunaSashimi = "com/example/eecs2311termproject/Images/tuna sashimi.jpeg";
+        String imagePathForsalmonSashimi = "com/example/eecs2311termproject/Images/salmon sashimi.jpeg";
+        String imagePathForoctopusSashimi  = "com/example/eecs2311termproject/Images/octopus sashimi.jpg";
+
         //Added items to food menu
         FoodMenu sashimiMenu = new FoodMenu();
         sashimiMenu.addFoods(tunaSashimi);
@@ -49,9 +54,9 @@ public class SashimiPage extends Page{
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane tunaSquare = createFoodSquare(tunaSashimi.getName(), tunaSashimi.getPrice());
-        StackPane salmonSquare = createFoodSquare(salmonSashimi.getName(), salmonSashimi.getPrice());
-        StackPane octSquare = createFoodSquare(octopusSashimi.getName(), octopusSashimi.getPrice());
+        StackPane tunaSquare = createFoodSquare(tunaSashimi.getName(), tunaSashimi.getPrice(), imagePathFortunaSashimi);
+        StackPane salmonSquare = createFoodSquare(salmonSashimi.getName(), salmonSashimi.getPrice(), imagePathForsalmonSashimi);
+        StackPane octSquare = createFoodSquare(octopusSashimi.getName(), octopusSashimi.getPrice(), imagePathForoctopusSashimi);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(tunaSquare, salmonSquare, octSquare);
