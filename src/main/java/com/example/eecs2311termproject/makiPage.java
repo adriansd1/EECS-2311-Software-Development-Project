@@ -5,12 +5,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 /**
@@ -39,6 +36,10 @@ public class makiPage extends Page{
         Food salmonMaki = new Food("Salmon Maki", 0.50, 28, 1.12, 4.92, 0.23);
         Food californiaRoll = new Food("California Roll", 0.60, 33, 1.38, 6.31, 0.12);
 
+        String imagePathFortunaMaki = "com/example/eecs2311termproject/Images/tuna roll.jpeg";
+        String imagePathForsalmonMaki = "com/example/eecs2311termproject/Images/salmon maki.jpg";
+        String imagePathForcaliforniaRoll  = "com/example/eecs2311termproject/Images/california roll.jpeg";
+
         //Added items to food menu
         FoodMenu makiMenu = new FoodMenu();
         makiMenu.addFoods(tunaMaki);
@@ -52,9 +53,9 @@ public class makiPage extends Page{
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane tunaSquare = createFoodSquare(tunaMaki.getName(), tunaMaki.getPrice());
-        StackPane salmonSquare = createFoodSquare(salmonMaki.getName(), salmonMaki.getPrice());
-        StackPane caliSquare = createFoodSquare(californiaRoll.getName(), californiaRoll.getPrice());
+        StackPane tunaSquare = createFoodSquare(tunaMaki.getName(), tunaMaki.getPrice(), imagePathFortunaMaki);
+        StackPane salmonSquare = createFoodSquare(salmonMaki.getName(), salmonMaki.getPrice(), imagePathForsalmonMaki);
+        StackPane caliSquare = createFoodSquare(californiaRoll.getName(), californiaRoll.getPrice(), imagePathForcaliforniaRoll);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(tunaSquare, salmonSquare, caliSquare);

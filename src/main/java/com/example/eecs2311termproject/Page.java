@@ -12,11 +12,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public abstract class Page {
 
     //Method to create square panes for food
-    protected static StackPane createFoodSquare(String name, double price) {
+    protected static StackPane createFoodSquare(String name, double price, String imagePath) {
         //Style for square
         Rectangle square = new Rectangle(250, 250);
         square.setFill(Color.LIGHTGRAY);
@@ -46,6 +49,8 @@ public abstract class Page {
                 itemQuantity.setText(String.valueOf(quantity - 1));
             }
         });
+
+
 
         //Add buttons and text field to control box
         HBox quantityControls = new HBox(5);
@@ -88,6 +93,15 @@ public abstract class Page {
         VBox squareContent = new VBox(5);
         squareContent.setAlignment(Pos.CENTER);
         squareContent.getChildren().addAll(nameLabel, priceLabel, quantityControls, addButton);
+
+        // Load the image
+        Image image = new Image(imagePath);
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(120);
+        imageView.setFitHeight(120);
+
+        // Add the image view to the content
+        squareContent.getChildren().add(imageView);
 
         //Stack pane to hold all previous items
         StackPane squarePane = new StackPane();
