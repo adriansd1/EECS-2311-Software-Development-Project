@@ -78,4 +78,6 @@ public class RicePage extends Page {
         riceStage.setScene(scene);
         riceStage.show();
     }
+
+
 }
