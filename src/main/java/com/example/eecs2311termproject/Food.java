@@ -71,7 +71,7 @@ public class Food {
         return fat;
     }
 
-    public ArrayList<String> getIngredients() {
+    public  ArrayList<String> getIngredients() {
        // return ingredients;
         return ingredients;
     }
@@ -99,5 +99,9 @@ public class Food {
 
     public void setQuantity(int quantity) {
         this.quantity += quantity;
+    }
+
+    public void setIngredients(ArrayList<String> ingredients) {
+        this.ingredients = ingredients;
     }
 }

@@ -5,7 +5,7 @@ public class Kitchen {
     ArrayList<Food> ingredientsStock;
     ArrayList<String> order;
     Boolean orderstate;
-    private Food[] ingredientStock;
+    public Food[] ingredientStock;
 
     public ArrayList<String> sendOrder() {
         return order;

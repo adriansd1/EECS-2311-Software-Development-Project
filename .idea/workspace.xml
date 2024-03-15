@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/KitchenTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +95,11 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -99,7 +111,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientSide (1)">
+  <component name="RunManager" selected="Application.ClientSide">
     <configuration name="ClientSide (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
       <module name="EECS-2311-Term-Project.main" />
