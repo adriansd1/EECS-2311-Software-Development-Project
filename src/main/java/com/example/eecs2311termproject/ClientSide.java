@@ -178,7 +178,9 @@ public class ClientSide extends Application {
 
         //Show output
         stage.show();
+
     }
+
 
     public static void main(String[] args) {
         launch();

@@ -20,6 +20,7 @@ import javafx.util.Duration;
 
 
 public abstract class Page {
+    private static VBox lastDisplayedLayout = null;
 
     //Method to create square panes for food
     protected static StackPane createFoodSquare(String name, double price, String imagePath) {
@@ -118,6 +119,16 @@ public abstract class Page {
         return squarePane;
     }
     private static void displayFoodInfo(String foodName, VBox squareContent) {
+
+        if (lastDisplayedLayout != null) {
+            // If food information is already displayed, hide it by removing it from squareContent
+            squareContent.getChildren().remove(lastDisplayedLayout);
+            // Clear the reference to the last displayed layout
+            lastDisplayedLayout = null;
+            return;
+        }
+
+
         Food food = getFoodDetails(foodName);
         if (food != null) {
             VBox layout = new VBox(10);
@@ -143,6 +154,7 @@ public abstract class Page {
 
             // Add the food info layout to the square content VBox
             squareContent.getChildren().add(layout);
+            lastDisplayedLayout = layout;
         }
     }
 
