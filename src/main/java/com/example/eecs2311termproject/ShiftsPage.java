@@ -1,5 +1,7 @@
 package com.example.eecs2311termproject;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ShiftsPage {
 
@@ -63,7 +66,6 @@ public class ShiftsPage {
         return "1234".equals(pin);
     }
 
-    // Method to show shifts with employee names
     private static void showShifts(VBox layout, Stage stage) {
         layout.getChildren().clear(); // Clear existing content
         GridPane shiftsGrid = new GridPane();
@@ -72,12 +74,52 @@ public class ShiftsPage {
         shiftsGrid.setVgap(10);
         shiftsGrid.setPadding(new Insets(20));
 
-        // Add employee names to squares
-        String[] employees = {"Alice", "Bob", "Charlie"};
+        // Add employee names, roles, time worked, clock in, and clock out buttons to squares
+        String[][] employees = {{"Alice", "Waiter"}, {"Bob", "Chef"}, {"Charlie", "Manager"}};
         for (int i = 0; i < employees.length; i++) {
-            Label employeeLabel = new Label(employees[i]);
-            employeeLabel.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-padding: 10px;");
-            shiftsGrid.add(employeeLabel, i, 0);
+            Label nameLabel = new Label(employees[i][0]);
+            Label roleLabel = new Label(employees[i][1]);
+            Label timeLabel = new Label("Time Worked: 0 hours 0 minutes 0 seconds"); // Initial time worked
+            Button clockInButton = new Button("Clock In");
+            Button clockOutButton = new Button("Clock Out");
+
+            VBox personBox = new VBox(5);
+            personBox.setAlignment(Pos.CENTER);
+            personBox.getChildren().addAll(nameLabel, roleLabel, timeLabel, clockInButton, clockOutButton);
+            personBox.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-padding: 10px;");
+
+            // Clock in action
+            int finalI = i;
+            Timeline clockInTimer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+                // Update time worked label
+                String[] timeParts = timeLabel.getText().split(" ");
+                int hours = Integer.parseInt(timeParts[2]);
+                int minutes = Integer.parseInt(timeParts[4]);
+                int seconds = Integer.parseInt(timeParts[6]);
+                seconds++;
+                if (seconds == 60) {
+                    seconds = 0;
+                    minutes++;
+                    if (minutes == 60) {
+                        minutes = 0;
+                        hours++;
+                    }
+                }
+                timeLabel.setText("Time Worked: " + hours + " hours " + minutes + " minutes " + seconds + " seconds");
+            }));
+            clockInButton.setOnAction(e -> {
+                clockInTimer.setCycleCount(Timeline.INDEFINITE);
+                clockInTimer.play();
+            });
+
+            // Clock out action
+            int finalI1 = i;
+            clockOutButton.setOnAction(e -> {
+                clockInTimer.stop();
+                System.out.println("Clock Out: " + employees[finalI1][0] + " Total Time Worked: " + timeLabel.getText());
+            });
+
+            shiftsGrid.add(personBox, i, 0);
         }
 
         // Add grid to layout
@@ -85,4 +127,7 @@ public class ShiftsPage {
         // Update the scene
         stage.sizeToScene();
     }
+
+
+
 }
