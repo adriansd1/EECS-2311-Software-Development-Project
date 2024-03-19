@@ -100,4 +100,9 @@ public class MenuHandler {
         //System.out.println(ClientSide.clientOrder.toString());
         BuffetPage.display();
     }
+
+    public void handleShifts(ActionEvent actionEvent) {
+        System.out.println("Shifts Page");
+        ShiftsPage.display();
+    }
 }

@@ -141,6 +141,8 @@ public class ClientSide extends Application {
         alcoholItem.setOnAction(menuHandler::handleAlc);
         sodaItem.setOnAction(menuHandler::handleDrink);
 
+        kitchenShiftsMenu.setOnAction(menuHandler::handleShifts);
+
         //On button click for dessert
         dessertMenu.setOnAction(menuHandler::handleDessert);
         //On button click to view order
