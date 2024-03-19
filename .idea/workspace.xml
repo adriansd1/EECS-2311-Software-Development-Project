@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Commit of login page for shifts">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ShiftsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ShiftsPage.java" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject/videos/sushi_video.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,13 +69,16 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2bgfh7r016qPevlC39ladtvaLae" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.ClientSide (1).executor": "Run",
     "Application.ClientSide.executor": "Run",
     "Gradle.Build EECS-2311-Software-Development-Project.executor": "Run",
@@ -108,7 +109,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientSide (1)">
+  <component name="RunManager" selected="Application.ClientSide">
     <configuration name="ClientSide (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
       <module name="EECS-2311-Term-Project.main" />
@@ -137,8 +138,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientSide (1)" />
         <item itemvalue="Application.ClientSide" />
+        <item itemvalue="Application.ClientSide (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -269,6 +270,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Project first commit" />
     <MESSAGE value="adding some client side features" />
     <MESSAGE value="Client side improved by adding welcome message as well as foodMenus functionality added" />
@@ -280,7 +282,8 @@
     <MESSAGE value="PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines" />
     <MESSAGE value="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come" />
     <MESSAGE value="Commit of login page for shifts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit of login page for shifts" />
+    <MESSAGE value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EECS_2311_Term_Project$ClientSide__1_.ic" NAME="ClientSide (1) Coverage Results" MODIFIED="1710459821623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
