@@ -5,12 +5,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 /**
@@ -32,12 +29,16 @@ public class HandRollPage extends Page{
 
         //Title for menu
         Label titleLabel = new Label("Hand Roll Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Handroll Food items for menu
         Food tunaHandRoll = new Food("Tuna Hand Roll", 1.20, 194, 24.0, 21, 0.8);
         Food salmonHandRoll = new Food("Salmon Hand Roll", 1.20, 162, 10.0, 16.0, 6.3);
         Food eelHandRoll = new Food("Eel Hand Roll", 1.60, 170, 7.0, 22.0, 6.0);
+
+        String imagePathFortunaHandRoll = "com/example/eecs2311termproject/Images/tuna handroll.jpeg";
+        String imagePathForsalmonHandRoll = "com/example/eecs2311termproject/Images/salmon handroll.jpeg";
+        String imagePathForeelHandRoll = "com/example/eecs2311termproject/Images/eel handroll.jpeg";
 
         //Added items to food menu
         FoodMenu handRollMenu = new FoodMenu();
@@ -52,9 +53,9 @@ public class HandRollPage extends Page{
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane tunaSquare = createFoodSquare(tunaHandRoll.getName(), tunaHandRoll.getPrice());
-        StackPane salmonSquare = createFoodSquare(salmonHandRoll.getName(), salmonHandRoll.getPrice());
-        StackPane eelSquare = createFoodSquare(eelHandRoll.getName(), eelHandRoll.getPrice());
+        StackPane tunaSquare = createFoodSquare(tunaHandRoll.getName(), tunaHandRoll.getPrice(), imagePathFortunaHandRoll);
+        StackPane salmonSquare = createFoodSquare(salmonHandRoll.getName(), salmonHandRoll.getPrice(), imagePathForsalmonHandRoll);
+        StackPane eelSquare = createFoodSquare(eelHandRoll.getName(), eelHandRoll.getPrice(), imagePathForeelHandRoll);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(tunaSquare, salmonSquare, eelSquare);

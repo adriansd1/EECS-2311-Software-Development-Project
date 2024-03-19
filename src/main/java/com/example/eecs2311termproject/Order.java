@@ -3,10 +3,15 @@ import java.util.*;
 
 
 public class Order {
-    protected double runningTotal;
+    protected double runningTotal = 0.0;
     protected int tableNumber;
     protected boolean orderCompleted;
     protected ArrayList<Food> foodOrder;
+
+    public Order(){
+        tableNumber = 1;
+        foodOrder = new ArrayList<>();
+    }
 
     Order(int tableNumber){
         this.tableNumber = tableNumber;
@@ -33,6 +38,9 @@ public class Order {
         }
     }
 
+    public void setRunningTotal(double runningTotal){
+        this.runningTotal += runningTotal;
+    }
     public double getRunningTotal() {
         return this.runningTotal;
     }
@@ -56,6 +64,14 @@ public class Order {
         return this.foodOrder;
     }
 
+    public String getStringOfFoods(){
+        StringBuilder foodString = new StringBuilder();
+        for (Food food : foodOrder) {
+            foodString.append(food.foodName).append("\n");
+        }
+        return foodString.toString();
+    }
+
 
 
 
@@ -67,38 +83,15 @@ public class Order {
 
 
 
-    //Unused
-	private String orderID;
-    //Causing errors private Customer customer;
-	private String status;
-    //Causing errors private ArrayList<OrderItem> items;
-    private Date orderTime;
-    private double totalPrice;
-    private String specialRequests;
-    private String promotionsApplied;
+    //Unused, apply later.
+	protected String orderID;
+    protected String status;
+    protected Date orderTime;
+    protected double totalPrice;
+    protected String specialRequests;
+    protected String promotionsApplied;
 
-    //Causes errors makes project unrunnable
-    /*public Order(String orderID, Customer customer, ArrayList<OrderItem> items) {
-    	this.orderID = orderID;
-    	this.customer = new Customer();
-        this.items = new ArrayList<>();
-        this.status = "Pending";
-        this.orderTime = new Date(); // sets current time as order time
-        this.totalPrice = calculateTotalPrice(); //update totalPrice by recalculating it using the calculateTotalPrice() method
-        this.specialRequests = "";
-        this.promotionsApplied = "";
-    }
-    
-    public ArrayList<OrderItem> getOrder() {
-    	return items; 
-    }
-    
-    public void setOrder(ArrayList<OrderItem> items) {
-    	this.items = items;
-        totalPrice = calculateTotalPrice(); //after updating the list of items, recalculates the totalprice
-    }
-    */
-    
+
     public String getStatus() {
     	return status;
     }
@@ -115,15 +108,7 @@ public class Order {
     	this.orderID = orderID;
     }
 
-
-
-
-
-
-
-
-
-    //Code unused
+    //Code unused, will apply later.
     public String getSpecialRequests() {
     	return specialRequests;
     }
@@ -140,50 +125,17 @@ public class Order {
     	this.promotionsApplied = promotionsApplied;
     }
 
-    /*
-    public void addOrder(OrderItem item) {
-    	if (checkItemAvailability(item)) {
-	    	items.add(item);
-	    	System.out.println("Added" + item.name + "to your order!");
-	    	//totalPrice = totalPrice + item.getPrice(); 
-            totalPrice = calculateTotalPrice();
-    	}
-    	else {
-	    	System.out.println("Sorry," + item.name + "isn't available right now.");
-    	}
-    }
-    
-    public void removeOrder(OrderItem item) {
-    	items.remove(item);
-    	System.out.println("Removed" + item.name + "from your order!");
-        totalPrice = calculateTotalPrice(); //recalculating
-    }
-    */
-    public void cancelOrder() {
-        Scanner scanner = new Scanner(System.in);
-        
-        // Prompt the user for confirmation
-        System.out.println("Are you sure you want to cancel your order? (yes/no)");
-        String response = scanner.nextLine().trim().toLowerCase();
 
-        // Check the user's response
-        if ("yes".equals(response)) {
-            // Logic to cancel the order
-            this.totalPrice = 0;
-           //Errors this.items = new ArrayList<>();
-            this.status = "Cancelled";
-            System.out.println("Your order has been cancelled.");
-        } 
-        
-        else {
-            System.out.println("Order cancellation aborted.");
+    public void cancelOrder() {
+            this.runningTotal = 0;
+            foodOrder = new ArrayList<>();
         }
-    }
+
     public boolean processPayment(double amount) {
         // Check if the provided amount is sufficient
-        if (amount >= totalPrice) {
+        if (amount >= runningTotal) {
             // Perform the payment processing logic
-            System.out.println("Payment successful! Total Amount: $" + totalPrice);
+            System.out.println("Payment successful! Total Amount: $" + runningTotal);
             // Optionally, update the order status to "Paid"
             updateStatus("Paid");
             return true;
@@ -193,22 +145,17 @@ public class Order {
         }
     }
 
-    private double calculateTotalPrice() {
-       //Errors return items.stream().mapToDouble(OrderItem::getPrice).sum();
-        return 0.0; //temp to prevent errors
-    }
     
     @Override
     public String toString() {
         // Implement the toString method to provide a meaningful representation of the Order
-        return "OrderID: " + orderID +
-              //  "\nCustomer: " + customer.getCustomerName() +
-                "\nStatus: " + status +
-                "\nTotal Price: $" + totalPrice +
-                "\nOrder Time: " + orderTime +
-                "\nSpecial Requests: " + specialRequests /* +
-                "\nPromotions Applied: " + promotionsApplied +
-                "\nItems: " + items*/;
+        StringBuilder t = new StringBuilder();
+        for(Food f: ClientSide.clientOrder.getFoodOrder()){
+            if(!t.toString().contains(f.toString()))
+            t.append(f.toString());
+            t.append("\n");
+        }
+        return t.toString();
     }
 
 }

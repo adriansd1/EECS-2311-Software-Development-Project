@@ -38,6 +38,12 @@ public class DrinkPage extends Page {
         Food water = new Food("Water", 0.0, 0, 0.0, 0.0, 0.0);
         Food orangeJuice = new Food("Orange Juice", 1.2, 110, 0.5, 32.0, 0.0);
 
+        String imagePathForCoke = "com/example/eecs2311termproject/Images/coke.jpeg";
+        String imagePathForsprite = "com/example/eecs2311termproject/Images/sprite.jpeg";
+        String imagePathForfanta = "com/example/eecs2311termproject/Images/fanta.jpeg";
+        String imagePathForOrangeJuice = "com/example/eecs2311termproject/Images/orange juice.jpg";
+        String imagePathForWater = "com/example/eecs2311termproject/Images/water.jpg";
+
         //Added items to food menu
         FoodMenu drinkMenu = new FoodMenu();
         drinkMenu.addFoods(coke);
@@ -53,11 +59,11 @@ public class DrinkPage extends Page {
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane waterSquare = createFoodSquare(water.getName(), water.getPrice());
-        StackPane cokeSquare = createFoodSquare(coke.getName(), coke.getPrice());
-        StackPane spriteSquare = createFoodSquare(sprite.getName(), sprite.getPrice());
-        StackPane fantaSquare = createFoodSquare(fanta.getName(), fanta.getPrice());
-        StackPane orangeSquare = createFoodSquare(orangeJuice.getName(), orangeJuice.getPrice());
+        StackPane waterSquare = createFoodSquare(water.getName(), water.getPrice(), imagePathForWater);
+        StackPane cokeSquare = createFoodSquare(coke.getName(), coke.getPrice(), imagePathForCoke);
+        StackPane spriteSquare = createFoodSquare(sprite.getName(), sprite.getPrice(), imagePathForsprite);
+        StackPane fantaSquare = createFoodSquare(fanta.getName(), fanta.getPrice(), imagePathForfanta);
+        StackPane orangeSquare = createFoodSquare(orangeJuice.getName(), orangeJuice.getPrice(), imagePathForOrangeJuice);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(waterSquare, cokeSquare, spriteSquare, fantaSquare, orangeSquare);

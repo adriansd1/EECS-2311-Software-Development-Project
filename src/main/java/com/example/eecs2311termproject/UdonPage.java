@@ -29,12 +29,16 @@ public class UdonPage extends Page{
 
         //Title for menu
         Label titleLabel = new Label("Udon Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Udon Food items for menu
         Food beefUdon = new Food("Beef Udon", 8.50,  680, 19.0, 38.0, 16.0);
         Food curryUdon = new Food("Curry Udon", 7.75, 720, 14.13, 37.0, 19.2);
         Food tempuraUdon = new Food("Tempura Udon", 7.65, 570, 22.0, 42.0, 8.8);
+
+        String imagePathForbeefUdon = "com/example/eecs2311termproject/Images/beef udon.jpeg";
+        String imagePathForcurryUdon = "com/example/eecs2311termproject/Images/curry udon.jpg";
+        String imagePathFortempuraUdon  = "com/example/eecs2311termproject/Images/tempura udon.jpg";
 
         //Added items to food menu
         FoodMenu udonMenu = new FoodMenu();
@@ -49,9 +53,9 @@ public class UdonPage extends Page{
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane beefSquare = createFoodSquare(beefUdon.getName(), beefUdon.getPrice());
-        StackPane currySquare = createFoodSquare(curryUdon.getName(), curryUdon.getPrice());
-        StackPane tempuraSquare = createFoodSquare(tempuraUdon.getName(), tempuraUdon.getPrice());
+        StackPane beefSquare = createFoodSquare(beefUdon.getName(), beefUdon.getPrice(), imagePathForbeefUdon);
+        StackPane currySquare = createFoodSquare(curryUdon.getName(), curryUdon.getPrice(), imagePathForcurryUdon);
+        StackPane tempuraSquare = createFoodSquare(tempuraUdon.getName(), tempuraUdon.getPrice(), imagePathFortempuraUdon);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(beefSquare, currySquare, tempuraSquare);

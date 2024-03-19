@@ -29,12 +29,16 @@ public class RamenPage extends Page {
 
         //Title for menu
         Label titleLabel = new Label("Ramen Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Ramen Food items for menu
         Food beefRamen = new Food("Beef Ramen", 8.70,  680, 17.0, 57.0, 14.0);
         Food misoRamen = new Food("Miso Ramen", 5.20, 199, 14.13, 23.0, 5.2);
         Food chickenRamen = new Food("Chicken Ramen", 7.65, 570, 12.0, 81.0, 21.0);
+
+        String imagePathForbeefRamen = "com/example/eecs2311termproject/Images/beef ramen.jpg";
+        String imagePathForchickenRamen = "com/example/eecs2311termproject/Images/chicken ramen.jpg";
+        String imagePathFormisoRamen = "com/example/eecs2311termproject/Images/miso ramen.jpg";
 
         //Added items to food menu
         FoodMenu ramenMenu = new FoodMenu();
@@ -49,9 +53,9 @@ public class RamenPage extends Page {
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane beefSquare = createFoodSquare(beefRamen.getName(), beefRamen.getPrice());
-        StackPane misoSquare = createFoodSquare(misoRamen.getName(), misoRamen.getPrice());
-        StackPane chickenSquare = createFoodSquare(chickenRamen.getName(), chickenRamen.getPrice());
+        StackPane beefSquare = createFoodSquare(beefRamen.getName(), beefRamen.getPrice(), imagePathForbeefRamen);
+        StackPane misoSquare = createFoodSquare(misoRamen.getName(), misoRamen.getPrice(), imagePathFormisoRamen);
+        StackPane chickenSquare = createFoodSquare(chickenRamen.getName(), chickenRamen.getPrice(), imagePathForchickenRamen);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(beefSquare, misoSquare, chickenSquare);

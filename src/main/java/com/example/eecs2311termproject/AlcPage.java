@@ -29,12 +29,16 @@ public class AlcPage extends Page {
 
         //Title for menu
         Label titleLabel = new Label("Alcohol Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Drink items for menu
         Food beer = new Food("Beer. 5%", 5.70,  260, 5.0, 35.0, 0.0);
         Food sake = new Food("Sake. 37%", 2.20, 70, 0.6, 2.0, 0.0);
         Food margarita = new Food("Maragrita. 8%", 7.65, 380, 12.0, 61.0, 3.5);
+
+        String imagePathForbeer = "com/example/eecs2311termproject/Images/beer.jpeg";
+        String imagePathForsake = "com/example/eecs2311termproject/Images/sake.jpg";
+        String imagePathFormargarita = "com/example/eecs2311termproject/Images/margarita.jpg";
 
         //Added items to food menu
         FoodMenu alcMenu = new FoodMenu();
@@ -49,9 +53,9 @@ public class AlcPage extends Page {
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane beerSquare = createFoodSquare(beer.getName(), beer.getPrice());
-        StackPane sakeSquare = createFoodSquare(sake.getName(), sake.getPrice());
-        StackPane margSquare = createFoodSquare(margarita.getName(), margarita.getPrice());
+        StackPane beerSquare = createFoodSquare(beer.getName(), beer.getPrice(), imagePathForbeer);
+        StackPane sakeSquare = createFoodSquare(sake.getName(), sake.getPrice(), imagePathForsake);
+        StackPane margSquare = createFoodSquare(margarita.getName(), margarita.getPrice(), imagePathFormargarita);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(beerSquare, sakeSquare, margSquare);

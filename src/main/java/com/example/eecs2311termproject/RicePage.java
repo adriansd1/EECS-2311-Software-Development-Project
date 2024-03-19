@@ -38,6 +38,12 @@ public class RicePage extends Page {
         Food omuRice = new Food("Omurice", 6.65, 470, 12.0, 67.0, 21.0);
         Food donburiRice = new Food("Donburi", 9.75, 675, 14.0, 63.0, 19.0);
 
+        // Image paths for each food item
+        String imagePathForcurryRice = "com/example/eecs2311termproject/Images/curry rice.jpg";
+        String imagePathForonigiriRice = "com/example/eecs2311termproject/Images/onigiri.jpg";
+        String imagePathForomuRice = "com/example/eecs2311termproject/Images/omurice.jpg";
+        String imagePathFordonburiRice = "com/example/eecs2311termproject/Images/donburi.jpg";
+
         //Added items to food menu
         FoodMenu riceMenu = new FoodMenu();
         riceMenu.addFoods(curryRice);
@@ -52,10 +58,10 @@ public class RicePage extends Page {
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane currySquare = createFoodSquare(curryRice.getName(), curryRice.getPrice());
-        StackPane onigiriSquare = createFoodSquare(onigiriRice.getName(), onigiriRice.getPrice());
-        StackPane omuSquare = createFoodSquare(omuRice.getName(), omuRice.getPrice());
-        StackPane donSquare = createFoodSquare(donburiRice.getName(), donburiRice.getPrice());
+        StackPane currySquare = createFoodSquare(curryRice.getName(), curryRice.getPrice(), imagePathForcurryRice);
+        StackPane onigiriSquare = createFoodSquare(onigiriRice.getName(), onigiriRice.getPrice(),imagePathForonigiriRice );
+        StackPane omuSquare = createFoodSquare(omuRice.getName(), omuRice.getPrice(), imagePathForomuRice);
+        StackPane donSquare = createFoodSquare(donburiRice.getName(), donburiRice.getPrice(), imagePathFordonburiRice);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(currySquare, onigiriSquare, omuSquare, donSquare);
@@ -72,4 +78,6 @@ public class RicePage extends Page {
         riceStage.setScene(scene);
         riceStage.show();
     }
+
+
 }

@@ -39,6 +39,11 @@ public class MenuHandler {
         SashimiPage.display();
     }
 
+
+    public void handleTickets(ActionEvent event){
+        System.out.println("Ticket Button");
+        TicketsPage.display();
+    }
     //Handling Ramen menu option
     public void handleRamen(ActionEvent event) {
         //Print line for debugging
@@ -85,6 +90,19 @@ public class MenuHandler {
     public void handleViewOrder(ActionEvent actionEvent) {
         //Print line for debugging
         System.out.println("View Order button");
+        System.out.println(ClientSide.clientOrder.toString());
         ViewOrder.display();
+    }
+
+    public void handleBuffet(ActionEvent actionEvent) {
+        //Print line for debugging
+        System.out.println("Buffet Button");
+        //System.out.println(ClientSide.clientOrder.toString());
+        BuffetPage.display();
+    }
+
+    public void handleShifts(ActionEvent actionEvent) {
+        System.out.println("Shifts Page");
+        ShiftsPage.display();
     }
 }

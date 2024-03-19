@@ -32,12 +32,17 @@ public class NigiriPage extends Page {
 
         //Title for menu
         Label titleLabel = new Label("Nigiri Menu");
-        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;"); // -fx-alignment: top-center;");
+        titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Nigiri Food items for menu
         Food tunaNigiri = new Food("Tuna Nigiri", 0.40, 46, 1.94, 9.16, 0.12);
         Food salmonNigiri = new Food("Salmon Nigiri", 0.40, 48, 1.85, 9.0, 0.36);
         Food yellowtailNigiri = new Food("Yellowtail Nigiri", 0.60, 54, 3.0, 8.0, 1.0);
+
+        // Image paths for each food item
+        String imagePathForTuna = "com/example/eecs2311termproject/Images/tuna nigiri.jpeg";
+        String imagePathForSalmon = "com/example/eecs2311termproject/Images/salmon nigiri.jpg";
+        String imagePathForYellowtail = "com/example/eecs2311termproject/Images/yellowtail nigiri.jpg";
 
         //Added items to food menu
         FoodMenu nigiriMenu = new FoodMenu();
@@ -52,9 +57,9 @@ public class NigiriPage extends Page {
         foodItems.setAlignment(Pos.CENTER);
 
         //Squares containing foods and prices
-        StackPane tunaSquare = createFoodSquare(tunaNigiri.getName(), tunaNigiri.getPrice());
-        StackPane salmonSquare = createFoodSquare(salmonNigiri.getName(), salmonNigiri.getPrice());
-        StackPane yellowTailSquare = createFoodSquare(yellowtailNigiri.getName(), yellowtailNigiri.getPrice());
+        StackPane tunaSquare = createFoodSquare(tunaNigiri.getName(), tunaNigiri.getPrice(), imagePathForTuna);
+        StackPane salmonSquare = createFoodSquare(salmonNigiri.getName(), salmonNigiri.getPrice(), imagePathForSalmon);
+        StackPane yellowTailSquare = createFoodSquare(yellowtailNigiri.getName(), yellowtailNigiri.getPrice(), imagePathForYellowtail);
 
         //Adding foods to HBox
         foodItems.getChildren().addAll(tunaSquare, salmonSquare, yellowTailSquare);
