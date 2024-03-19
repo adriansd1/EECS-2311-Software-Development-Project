@@ -10,6 +10,9 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 import java.io.IOException;
 
@@ -153,6 +156,7 @@ public class ClientSide extends Application {
 
         //Welcome message
         VBox welcomeMessage = new VBox();
+        welcomeMessage.setAlignment(Pos.CENTER);
         Label welcomeLabel = new Label("Welcome to ");
         Label restaurantName = new Label("Edrick's Sushi!");
         Label italicText = new Label("Please explore our menu.");
@@ -175,8 +179,33 @@ public class ClientSide extends Application {
 
 
         welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
-        welcomeMessage.setAlignment(Pos.CENTER);
-        borderPane.setCenter(welcomeMessage);
+
+        // Media setup
+        String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
+        Media media = new Media(videoPath);
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(0);
+        MediaView mediaView = new MediaView(mediaPlayer);
+
+        // Customize mediaView properties
+        mediaView.setFitWidth(640);
+        mediaView.setPreserveRatio(true);
+
+        // Adding mediaView to the scene
+        VBox videoBox = new VBox(mediaView);
+        videoBox.setAlignment(Pos.CENTER);
+
+        // Start playing the video automatically
+        mediaPlayer.play();
+
+        VBox centerContent = new VBox();
+        centerContent.setAlignment(Pos.CENTER);
+        centerContent.setSpacing(10);
+        centerContent.getChildren().addAll(welcomeMessage, videoBox);
+
+
+        // Set the container as the center of the BorderPane
+        borderPane.setCenter(centerContent);
 
         //Show output
         stage.show();
