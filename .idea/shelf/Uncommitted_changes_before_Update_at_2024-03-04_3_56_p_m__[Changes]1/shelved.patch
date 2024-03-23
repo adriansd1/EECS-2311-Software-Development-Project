@@ -1,0 +1,155 @@
+Index: src/main/java/com/example/eecs2311termproject/Kitchen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.eecs2311termproject;\r\nimport java.util.ArrayList;\r\n//Why does this extend class, needs GUI follow client side to define functionality\r\npublic class Kitchen {//extends Food {\r\n    ArrayList<Food> ingredientsStock;\r\n    ArrayList<String> order;\r\n    Boolean orderstate;\r\n    private Food[] ingredientStock;\r\n\r\n    //Commented out as it causes errors and makes code unrunnable\r\n    //public Kitchen(int calories, double protein, double carbs, double fat, ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions, ArrayList<String> allergies) {\r\n        //super(calories, protein, carbs, fat, ingredients, dietaryRestrictions, allergies);\r\n    //}\r\n\r\n    public ArrayList<String> sendOrder() {\r\n        return order;\r\n    }\r\n\r\n    public void recieveOrder(ArrayList<String> orders) {\r\n        this.order = orders;\r\n    }\r\n\r\n    public boolean checkingredients() {\r\n        for (String ingredient : Food.getIngredients()) {\r\n            boolean ingredientfound = false;\r\n            for (Food stockIngredient : ingredientStock) {\r\n                if (stockIngredient.getIngredients().contains(ingredient)) {\r\n                    ingredientfound = true;\r\n                    break;\r\n                }else if (!(stockIngredient.getIngredients().contains(ingredient))) {\r\n                    return false;\r\n                }\r\n                return true;\r\n        }\r\n    }\r\n        return true; //Prevent errors\r\n    }\r\n    public void cookrice(){\r\n        System.out.print(\"Cooking rice\");\r\n        System.out.print(\"Rice ready!\");\r\n    }\r\n    public void slicefish(){\r\n        System.out.print(\"Slicing fish\");\r\n        System.out.print(\"Fish Ready!\");\r\n\r\n    }\r\n    public void handleSpecialRequests(Order order) {\r\n        String specialRequests = order.getSpecialRequests();\r\n        if (!specialRequests.isEmpty()) {\r\n            System.out.println(\"Handling special requests for order: \" + order);\r\n            // Your implementation to handle each special request\r\n            }\r\n        else{\r\n            System.out.println(\"No special requests for order: \" + order);\r\n        }\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/eecs2311termproject/Kitchen.java b/src/main/java/com/example/eecs2311termproject/Kitchen.java
+--- a/src/main/java/com/example/eecs2311termproject/Kitchen.java	
++++ b/src/main/java/com/example/eecs2311termproject/Kitchen.java	
+@@ -5,7 +5,7 @@
+     ArrayList<Food> ingredientsStock;
+     ArrayList<String> order;
+     Boolean orderstate;
+-    private Food[] ingredientStock;
++    public Food[] ingredientStock;
+ 
+     //Commented out as it causes errors and makes code unrunnable
+     //public Kitchen(int calories, double protein, double carbs, double fat, ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions, ArrayList<String> allergies) {
+Index: src/main/java/com/example/eecs2311termproject/Food.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.eecs2311termproject;\r\n\r\nimport java.util.ArrayList;\r\n\r\n/**\r\n * @author Avery Backus\r\n * @Description Food Class to create food instances\r\n */\r\npublic class Food {\r\n    protected String foodName;\r\n    protected double price;\r\n    protected int calories;\r\n    protected double protein;\r\n    protected double carbs;\r\n    protected double fat;\r\n\r\n    protected int quantity = 0;\r\n    protected ArrayList<String> ingredients;\r\n    protected ArrayList<String> dietaryRestrictions;\r\n    protected ArrayList<String> allergies;\r\n\r\n    // Constructor\r\n    public Food(String foodName, int calories, double protein, double carbs, double fat,\r\n                ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions,\r\n                ArrayList<String> allergies) {\r\n        this.calories = calories;\r\n        this.protein = protein;\r\n        this.carbs = carbs;\r\n        this.fat = fat;\r\n        this.ingredients = ingredients;\r\n        this.dietaryRestrictions = dietaryRestrictions;\r\n        this.allergies = allergies;\r\n        this.foodName = foodName;\r\n    }\r\n\r\n    public Food(String foodName, double price, int calories, double protein, double carbs, double fat){\r\n        this.calories = calories;\r\n        this.protein = protein;\r\n        this.carbs = carbs;\r\n        this.fat = fat;\r\n        this.ingredients = new ArrayList<>();\r\n        this.dietaryRestrictions = new ArrayList<>();\r\n        this.allergies = new ArrayList<>();\r\n        this.foodName = foodName;\r\n        this.price = price;\r\n    }\r\n\r\n    public Food(String foodName, double price){\r\n        this.foodName = foodName;\r\n        this.price = price;\r\n    }\r\n\r\n    // Getter methods\r\n    public int getCalories() {\r\n        return calories;\r\n    }\r\n\r\n    public double getProtein() {\r\n        return protein;\r\n    }\r\n\r\n    public double getCarbs() {\r\n        return carbs;\r\n    }\r\n\r\n    public double getFat() {\r\n        return fat;\r\n    }\r\n\r\n    public static ArrayList<String> getIngredients() {\r\n       // return ingredients;\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Food Name: \" + foodName + \" Price: \" + price + \" Quantity: \" + quantity;\r\n    }\r\n\r\n    public ArrayList<String> getDietaryRestrictions() {\r\n        return dietaryRestrictions;\r\n    }\r\n\r\n    public ArrayList<String> getAllergies() {\r\n        return allergies;\r\n    }\r\n\r\n    public String getName() {\r\n        return foodName;\r\n    }\r\n\r\n    public double getPrice() {\r\n        return price;\r\n    }\r\n\r\n    public void setQuantity(int quantity) {\r\n        this.quantity += quantity;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/eecs2311termproject/Food.java b/src/main/java/com/example/eecs2311termproject/Food.java
+--- a/src/main/java/com/example/eecs2311termproject/Food.java	
++++ b/src/main/java/com/example/eecs2311termproject/Food.java	
+@@ -96,4 +96,8 @@
+     public void setQuantity(int quantity) {
+         this.quantity += quantity;
+     }
++
++    public void setIngredients(ArrayList<String> ingredients) {
++        this.ingredients = ingredients;
++    }
+ }
+Index: src/main/java/com/example/eecs2311termproject/KitchenTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/eecs2311termproject/KitchenTest.java b/src/main/java/com/example/eecs2311termproject/KitchenTest.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/com/example/eecs2311termproject/KitchenTest.java	
+@@ -0,0 +1,71 @@
++package com.example.eecs2311termproject;
++
++import org.testng.annotations.Test;
++import org.junit.jupiter.api.BeforeEach;
++import java.util.ArrayList;
++import static org.junit.jupiter.api.Assertions.*;
++
++public class KitchenTest {
++
++    private Kitchen kitchen;
++    private ArrayList<String> sampleOrder;
++
++    @BeforeEach
++    public void setUp() {
++        kitchen = new Kitchen();
++        sampleOrder = new ArrayList<>();
++        sampleOrder.add("rice");
++        sampleOrder.add("fish");
++    }
++
++    @Test
++    public void testSendOrder() {
++        kitchen.recieveOrder(sampleOrder);
++        assertEquals(sampleOrder, kitchen.sendOrder());
++    }
++
++    @Test
++    public void testReceiveOrder() {
++        kitchen.recieveOrder(sampleOrder);
++        assertNotNull(kitchen.sendOrder());
++    }
++
++    @Test
++    public void testCheckIngredientsSuccess() {
++        // Assuming the kitchen has rice and fish in stock
++        kitchen.ingredientStock = new Food[2];
++        //kitchen.ingredientStock[0] = new Food();
++        kitchen.ingredientStock[0].setIngredients(new ArrayList<String>() {
++            {
++                add("rice");
++            }
++        }
++        );
++        //kitchen.ingredientStock[1] = new Food();
++        kitchen.ingredientStock[1].setIngredients(new ArrayList<String>() {{ add("fish"); }});
++
++        assertTrue(kitchen.checkingredients());
++    }
++
++    @Test
++    public void testCheckIngredientsFailure() {
++        // Assuming the kitchen has rice but not fish in stock
++        kitchen.ingredientStock = new Food[1];
++        //kitchen.ingredientStock[0] = new Food();
++        kitchen.ingredientStock[0].setIngredients(new ArrayList<String>() {{ add("rice"); }});
++
++        assertFalse(kitchen.checkingredients());
++    }
++
++    @Test
++    public void testCookRice() {
++        // Not much to test here, just check if it runs without error
++        kitchen.cookrice();
++    }
++
++    @Test
++    public void testSliceFish() {
++        // Not much to test here, just check if it runs without error
++        kitchen.slicefish();
++    }
++}
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>com.example</groupId>\r\n    <artifactId>EECS-2311-Term-Project</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n    <name>EECS-2311-Term-Project</name>\r\n\r\n    <properties>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n        <junit.version>5.9.1</junit.version>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-controls</artifactId>\r\n            <version>19</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-fxml</artifactId>\r\n            <version>19</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-web</artifactId>\r\n            <version>19</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-media</artifactId>\r\n            <version>19</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.controlsfx</groupId>\r\n            <artifactId>controlsfx</artifactId>\r\n            <version>11.1.2</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>com.dlsc.formsfx</groupId>\r\n            <artifactId>formsfx-core</artifactId>\r\n            <version>11.5.0</version>\r\n            <exclusions>\r\n                <exclusion>\r\n                    <groupId>org.openjfx</groupId>\r\n                    <artifactId>*</artifactId>\r\n                </exclusion>\r\n            </exclusions>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>net.synedra</groupId>\r\n            <artifactId>validatorfx</artifactId>\r\n            <version>0.4.0</version>\r\n            <exclusions>\r\n                <exclusion>\r\n                    <groupId>org.openjfx</groupId>\r\n                    <artifactId>*</artifactId>\r\n                </exclusion>\r\n            </exclusions>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.kordamp.ikonli</groupId>\r\n            <artifactId>ikonli-javafx</artifactId>\r\n            <version>12.3.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.kordamp.bootstrapfx</groupId>\r\n            <artifactId>bootstrapfx-core</artifactId>\r\n            <version>0.4.0</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>eu.hansolo</groupId>\r\n            <artifactId>tilesfx</artifactId>\r\n            <version>17.1.15</version>\r\n            <exclusions>\r\n                <exclusion>\r\n                    <groupId>org.openjfx</groupId>\r\n                    <artifactId>*</artifactId>\r\n                </exclusion>\r\n            </exclusions>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>com.github.almasb</groupId>\r\n            <artifactId>fxgl</artifactId>\r\n            <version>17.2</version>\r\n            <exclusions>\r\n                <exclusion>\r\n                    <groupId>org.openjfx</groupId>\r\n                    <artifactId>*</artifactId>\r\n                </exclusion>\r\n            </exclusions>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter-api</artifactId>\r\n            <version>${junit.version}</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter-engine</artifactId>\r\n            <version>${junit.version}</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-compiler-plugin</artifactId>\r\n                <version>3.10.1</version>\r\n                <configuration>\r\n                    <source>19</source>\r\n                    <target>19</target>\r\n                </configuration>\r\n            </plugin>\r\n            <plugin>\r\n                <groupId>org.openjfx</groupId>\r\n                <artifactId>javafx-maven-plugin</artifactId>\r\n                <version>0.0.8</version>\r\n                <executions>\r\n                    <execution>\r\n                        <!-- Default configuration for running with: mvn clean javafx:run -->\r\n                        <id>default-cli</id>\r\n                        <configuration>\r\n                            <mainClass>\r\n                                com.example.eecs2311termproject/com.example.eecs2311termproject.HelloApplication\r\n                            </mainClass>\r\n                            <launcher>app</launcher>\r\n                            <jlinkZipName>app</jlinkZipName>\r\n                            <jlinkImageName>app</jlinkImageName>\r\n                            <noManPages>true</noManPages>\r\n                            <stripDebug>true</stripDebug>\r\n                            <noHeaderFiles>true</noHeaderFiles>\r\n                        </configuration>\r\n                    </execution>\r\n                </executions>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	
++++ b/pom.xml	
+@@ -98,13 +98,24 @@
+             <groupId>org.junit.jupiter</groupId>
+             <artifactId>junit-jupiter-api</artifactId>
+             <version>${junit.version}</version>
+-            <scope>test</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.junit.jupiter</groupId>
+             <artifactId>junit-jupiter-engine</artifactId>
+             <version>${junit.version}</version>
+             <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.testng</groupId>
++            <artifactId>testng</artifactId>
++            <version>RELEASE</version>
++            <scope>compile</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.testng</groupId>
++            <artifactId>testng</artifactId>
++            <version>RELEASE</version>
++            <scope>compile</scope>
+         </dependency>
+     </dependencies>
+ 
