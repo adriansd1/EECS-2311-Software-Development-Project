@@ -64,6 +64,16 @@ public class Order {
         return this.foodOrder;
     }
 
+    protected double tipPercentage;
+
+    public double getTipPercentage() {
+        return tipPercentage;
+    }
+
+    public void setTipPercentage(double tipPercentage) {
+        this.tipPercentage = tipPercentage;
+    }
+
     public String getStringOfFoods(){
         StringBuilder foodString = new StringBuilder();
         for (Food food : foodOrder) {

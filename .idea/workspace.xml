@@ -139,9 +139,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PaymentHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EECS-2311-Term-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.eecs2311termproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.eecs2311termproject" />
+      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.PaymentHandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaymentHandlerTest.processPaymentSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EECS-2311-Term-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.eecs2311termproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.eecs2311termproject" />
+      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.PaymentHandlerTest" />
+      <option name="METHOD_NAME" value="processPaymentSuccessfully" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientSide" />
+        <item itemvalue="JUnit.PaymentHandlerTest" />
+        <item itemvalue="JUnit.PaymentHandlerTest.processPaymentSuccessfully" />
         <item itemvalue="Application.ClientSide (1)" />
       </list>
     </recent_temporary>
