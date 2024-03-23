@@ -88,10 +88,14 @@ public class MenuHandler {
 
     //Handling View Order button
     public void handleViewOrder(ActionEvent actionEvent) {
-        //Print line for debugging
         System.out.println("View Order button");
         System.out.println(ClientSide.clientOrder.toString());
-        ViewOrder.display();
+        displayOrder(ClientSide.clientOrder);
+    }
+
+    // Display Order method
+    private void displayOrder(Order order) {
+        // Logic to display the order details, e.g., using a dialog or a separate scene
     }
 
     public void handleBuffet(ActionEvent actionEvent) {
@@ -105,4 +109,5 @@ public class MenuHandler {
         System.out.println("Shifts Page");
         ShiftsPage.display();
     }
+
 }

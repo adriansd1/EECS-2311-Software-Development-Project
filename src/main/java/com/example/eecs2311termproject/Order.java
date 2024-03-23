@@ -145,17 +145,15 @@ public class Order {
         }
     }
 
-    
+
+    // Override toString() method in Order class
     @Override
     public String toString() {
-        // Implement the toString method to provide a meaningful representation of the Order
-        StringBuilder t = new StringBuilder();
-        for(Food f: ClientSide.clientOrder.getFoodOrder()){
-            if(!t.toString().contains(f.toString()))
-            t.append(f.toString());
-            t.append("\n");
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Food food : foodOrder) {
+            stringBuilder.append(food.toString()).append("\n");
         }
-        return t.toString();
+        return stringBuilder.toString();
     }
 
 }
