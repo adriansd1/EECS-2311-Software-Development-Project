@@ -1,0 +1,439 @@
+Index: src/main/java/com/example/eecs2311termproject/ClientSide.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.eecs2311termproject;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.geometry.Insets;\r\nimport javafx.geometry.Pos;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.layout.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\n/**\r\n * @author samda\r\n * @Description: This class contains the client side of the application and contains the GUI\r\n * and paths to various menus for the user to choose from\r\n */\r\npublic class ClientSide extends Application {\r\n    public static Order clientOrder = new Order(1);\r\n\r\n    @Override\r\n    public void start(Stage stage) throws IOException {\r\n        //Initialize Page Title\r\n        stage.setTitle(\"Edrick's Sushi Buffet\");\r\n\r\n        //Software Icon\r\n        Image icon = new Image(getClass().getResourceAsStream(\"/com/example/eecs2311termproject/Images/pngaaa.com-4077801.png\"));\r\n        stage.getIcons().add(icon);\r\n\r\n        //Initialize Border Pane\r\n        BorderPane borderPane = new BorderPane();\r\n\r\n        //Initialize new Menu Bar\r\n        MenuBar menuBar = new MenuBar();\r\n\r\n        //Menu Bar for kitchen side\r\n        MenuBar kitchenBar = new MenuBar();\r\n\r\n        //Menu for kitchen\r\n        Menu kitchenMenu = new Menu(\"Kitchen\");\r\n        kitchenMenu.setStyle(\"-fx-pref-height:  100; -fx-font-size: 30px;\");\r\n        kitchenBar.getMenus().addAll(kitchenMenu);\r\n\r\n        //Kitchen Options\r\n        MenuItem kitchenTicketsMenu = new MenuItem(\"Tickets\");\r\n        kitchenTicketsMenu.setStyle(\"-fx-pref-height:  100; -fx-font-size: 30px;\");\r\n        MenuItem kitchenShiftsMenu = new MenuItem(\"Clock-In/Out\");\r\n        kitchenShiftsMenu.setStyle(\"-fx-pref-height:  100; -fx-font-size: 30px;\");\r\n        kitchenMenu.getItems().addAll(kitchenTicketsMenu, kitchenShiftsMenu);\r\n\r\n        //Set height of Menu Bars\r\n        menuBar.setStyle(\"-fx-pref-height:  100;\");\r\n\r\n        //Menu Initializations with styles\r\n        Menu sushiMenu = new Menu(\"Sushi\");\r\n        sushiMenu.setStyle(\"-fx-pref-height:  100; -fx-font-size: 30px;\");\r\n        Menu noodleMenu = new Menu(\"Noodles\");\r\n        noodleMenu.setStyle(\"-fx-pref-height:  100; -fx-font-size: 30px;\");\r\n        Menu riceMenu = new Menu(\"Rice\");\r\n        riceMenu.setStyle(\"-fx-pref-height:  100; -fx-font-size: 30px;\");\r\n        Menu dessertMenu = new Menu(\"Dessert\");\r\n        dessertMenu.setStyle(\"-fx-pref-height:  100; -fx-font-size: 30px;\");\r\n        Menu drinkMenu = new Menu(\"Drinks\");\r\n        drinkMenu.setStyle(\"-fx-pref-height:  100; -fx-font-size: 30px;\");\r\n\r\n        //Initialize Sushi menu options\r\n        MenuItem makiItem = new MenuItem(\"Maki\");\r\n        MenuItem nigiriItem = new MenuItem(\"Nigiri\");\r\n        MenuItem handrollItem = new MenuItem(\"Handroll\");\r\n        MenuItem sashimiItem = new MenuItem(\"Sashimi\");\r\n\r\n        //Initialize Noodle menu options\r\n        MenuItem ramenItem = new MenuItem(\"Ramen\");\r\n        MenuItem udonItem = new MenuItem(\"Udon\");\r\n\r\n        //Initialize Rice menu options\r\n        MenuItem curryItem = new MenuItem(\"Curry Rice\");\r\n        MenuItem onigiriItem = new MenuItem(\"Onigiri\");\r\n        MenuItem omuriceItem = new MenuItem(\"Omurice\");\r\n        MenuItem donburiItem = new MenuItem(\"Donburi\");\r\n\r\n        //Initialize Drink menu options\r\n        MenuItem sodaItem = new MenuItem(\"Soda/Pop\");\r\n        MenuItem alcoholItem = new MenuItem(\"Alcoholic Beverages\");\r\n\r\n        //Initialize Dessert menu option\r\n        MenuItem dessert = new MenuItem(\"Dessert\");\r\n\r\n        //Initialize View Order button\r\n        Button viewOrderButton = new Button(\"View My Order\");\r\n\r\n        //Initialize all you can eat and pay as you go buttons\r\n        Button buffetButton = new Button(\"All You Can Eat\");\r\n\r\n\r\n\r\n        //Adding Sushi options\r\n        sushiMenu.getItems().addAll(makiItem, nigiriItem, handrollItem, sashimiItem);\r\n        //Adding Noodle options\r\n        noodleMenu.getItems().addAll(ramenItem, udonItem);\r\n        //Adding Rice options\r\n        riceMenu.getItems().addAll(curryItem, onigiriItem, omuriceItem, donburiItem);\r\n        //Adding Drink options\r\n        drinkMenu.getItems().addAll(sodaItem, alcoholItem);\r\n        //Adding Dessert options\r\n        dessertMenu.getItems().addAll(dessert);\r\n\r\n        //Add all menus to menu bar\r\n        menuBar.getMenus().addAll(sushiMenu, noodleMenu, riceMenu, dessertMenu, drinkMenu);\r\n\r\n        //Add spacer so user items are on left while kitchen side is on the right\r\n        Region spacer = new Region();\r\n        spacer.getStyleClass().add(\"menu-bar\");\r\n        HBox.setHgrow(spacer, Priority.SOMETIMES);\r\n        HBox menuHBox = new HBox(menuBar, spacer, kitchenBar);\r\n\r\n        //Setting stage and layout\r\n        borderPane.setTop(menuHBox);\r\n        Scene scene = new Scene(borderPane, 640, 480);\r\n        stage.setScene(scene);\r\n\r\n        //On button clicks for sushi\r\n        MenuHandler menuHandler = new MenuHandler();\r\n        makiItem.setOnAction(menuHandler::handleMaki);\r\n        nigiriItem.setOnAction(menuHandler::handleNigiri);\r\n        handrollItem.setOnAction(menuHandler::handleHandroll);\r\n        sashimiItem.setOnAction(menuHandler::handleSashimi);\r\n        kitchenTicketsMenu.setOnAction(menuHandler::handleTickets);\r\n\r\n        //On button clicks for noodles\r\n        ramenItem.setOnAction(menuHandler::handleRamen);\r\n        udonItem.setOnAction(menuHandler::handleUdon);\r\n\r\n        //On button click for rice\r\n        riceMenu.setOnAction(menuHandler::handleRice);\r\n\r\n        //On button click for drinks\r\n        alcoholItem.setOnAction(menuHandler::handleAlc);\r\n        sodaItem.setOnAction(menuHandler::handleDrink);\r\n\r\n        kitchenShiftsMenu.setOnAction(menuHandler::handleShifts);\r\n\r\n        //On button click for dessert\r\n        dessertMenu.setOnAction(menuHandler::handleDessert);\r\n        //On button click to view order\r\n        viewOrderButton.setOnAction(menuHandler::handleViewOrder);\r\n\r\n        //On button for dining type\r\n        buffetButton.setOnAction(menuHandler::handleBuffet);\r\n\r\n        //Welcome message\r\n        VBox welcomeMessage = new VBox();\r\n        Label welcomeLabel = new Label(\"Welcome to \");\r\n        Label restaurantName = new Label(\"Edrick's Sushi!\");\r\n        Label italicText = new Label(\"Please explore our menu.\");\r\n        Label historyLabel1 = new Label(\"Our restaurant has been serving  delicious sushi dishes for over a decade,\");\r\n        Label historyLabel2 = new Label(\"combining traditional Japanese flavors with innovative recipes.\");\r\n        Label ownerMessage = new Label(\"A message from the owner: We're thrilled to have you dine with us and experience the exquisite taste of our handcrafted sushi rolls. Enjoy your meal! \\n\");\r\n        Label buffetLabel = new Label( \"Click here for all you can eat!\");\r\n\r\n        //Styles and formatting for welcome message\r\n        welcomeLabel.setStyle(\"-fx-font-size: 20px;\");\r\n        restaurantName.setStyle(\"-fx-font-size: 24px; -fx-font-weight: bold;\");\r\n        italicText.setStyle(\"-fx-font-size: 20px; -fx-font-style: italic;\");\r\n        historyLabel1.setPadding(new Insets(5, 0, 0 ,0));\r\n        historyLabel1.setStyle(\"-fx-font-size: 16px;\");\r\n        historyLabel2.setStyle(\"-fx-font-size: 16px;\");\r\n        buffetLabel.setStyle(\"-fx-font-size: 16px;\");\r\n        buffetLabel.setUnderline(true);\r\n        ownerMessage.setStyle(\"-fx-font-size: 16px; -fx-font-style: italic;\");\r\n        ownerMessage.setPadding(new Insets(5, 0, 15,0));\r\n\r\n\r\n        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);\r\n        welcomeMessage.setAlignment(Pos.CENTER);\r\n        borderPane.setCenter(welcomeMessage);\r\n\r\n        //Show output\r\n        stage.show();\r\n\r\n    }\r\n\r\n\r\n    public static void main(String[] args) {\r\n        launch();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/eecs2311termproject/ClientSide.java b/src/main/java/com/example/eecs2311termproject/ClientSide.java
+--- a/src/main/java/com/example/eecs2311termproject/ClientSide.java	(revision 58caa8c374e2bd7f24c35ea805627767f1881cb6)
++++ b/src/main/java/com/example/eecs2311termproject/ClientSide.java	(date 1711234453946)
+@@ -1,60 +1,56 @@
+ package com.example.eecs2311termproject;
+ 
+ import javafx.application.Application;
+-import javafx.fxml.FXMLLoader;
+ import javafx.geometry.Insets;
+ import javafx.geometry.Pos;
+-import javafx.scene.Node;
+ import javafx.scene.Scene;
+ import javafx.scene.control.*;
+ import javafx.scene.image.Image;
+ import javafx.scene.layout.*;
++import javafx.scene.media.Media;
++import javafx.scene.media.MediaPlayer;
++import javafx.scene.media.MediaView;
+ import javafx.stage.Stage;
+ 
+ import java.io.IOException;
+ 
+-/**
+- * @author samda
+- * @Description: This class contains the client side of the application and contains the GUI
+- * and paths to various menus for the user to choose from
+- */
+ public class ClientSide extends Application {
+     public static Order clientOrder = new Order(1);
+ 
+     @Override
+     public void start(Stage stage) throws IOException {
+-        //Initialize Page Title
++        // Initialize Page Title
+         stage.setTitle("Edrick's Sushi Buffet");
+ 
+-        //Software Icon
++        // Software Icon
+         Image icon = new Image(getClass().getResourceAsStream("/com/example/eecs2311termproject/Images/pngaaa.com-4077801.png"));
+         stage.getIcons().add(icon);
+ 
+-        //Initialize Border Pane
++        // Initialize Border Pane
+         BorderPane borderPane = new BorderPane();
+ 
+-        //Initialize new Menu Bar
++        // Initialize new Menu Bar
+         MenuBar menuBar = new MenuBar();
+ 
+-        //Menu Bar for kitchen side
++        // Menu Bar for kitchen side
+         MenuBar kitchenBar = new MenuBar();
+ 
+-        //Menu for kitchen
++        // Menu for kitchen
+         Menu kitchenMenu = new Menu("Kitchen");
+         kitchenMenu.setStyle("-fx-pref-height:  100; -fx-font-size: 30px;");
+         kitchenBar.getMenus().addAll(kitchenMenu);
+ 
+-        //Kitchen Options
++        // Kitchen Options
+         MenuItem kitchenTicketsMenu = new MenuItem("Tickets");
+         kitchenTicketsMenu.setStyle("-fx-pref-height:  100; -fx-font-size: 30px;");
+         MenuItem kitchenShiftsMenu = new MenuItem("Clock-In/Out");
+         kitchenShiftsMenu.setStyle("-fx-pref-height:  100; -fx-font-size: 30px;");
+         kitchenMenu.getItems().addAll(kitchenTicketsMenu, kitchenShiftsMenu);
+ 
+-        //Set height of Menu Bars
++        // Set height of Menu Bars
+         menuBar.setStyle("-fx-pref-height:  100;");
+ 
+-        //Menu Initializations with styles
++        // Menu Initializations with styles
+         Menu sushiMenu = new Menu("Sushi");
+         sushiMenu.setStyle("-fx-pref-height:  100; -fx-font-size: 30px;");
+         Menu noodleMenu = new Menu("Noodles");
+@@ -66,63 +62,59 @@
+         Menu drinkMenu = new Menu("Drinks");
+         drinkMenu.setStyle("-fx-pref-height:  100; -fx-font-size: 30px;");
+ 
+-        //Initialize Sushi menu options
++        // Initialize Sushi menu options
+         MenuItem makiItem = new MenuItem("Maki");
+         MenuItem nigiriItem = new MenuItem("Nigiri");
+         MenuItem handrollItem = new MenuItem("Handroll");
+         MenuItem sashimiItem = new MenuItem("Sashimi");
+ 
+-        //Initialize Noodle menu options
++        // Initialize Noodle menu options
+         MenuItem ramenItem = new MenuItem("Ramen");
+         MenuItem udonItem = new MenuItem("Udon");
+ 
+-        //Initialize Rice menu options
++        // Initialize Rice menu options
+         MenuItem curryItem = new MenuItem("Curry Rice");
+         MenuItem onigiriItem = new MenuItem("Onigiri");
+         MenuItem omuriceItem = new MenuItem("Omurice");
+         MenuItem donburiItem = new MenuItem("Donburi");
+ 
+-        //Initialize Drink menu options
++        // Initialize Drink menu options
+         MenuItem sodaItem = new MenuItem("Soda/Pop");
+         MenuItem alcoholItem = new MenuItem("Alcoholic Beverages");
+ 
+-        //Initialize Dessert menu option
++        // Initialize Dessert menu option
+         MenuItem dessert = new MenuItem("Dessert");
+ 
+-        //Initialize View Order button
++        // Initialize View Order button
+         Button viewOrderButton = new Button("View My Order");
+ 
+-        //Initialize all you can eat and pay as you go buttons
++        // Initialize all you can eat and pay as you go buttons
+         Button buffetButton = new Button("All You Can Eat");
+ 
+-
+-
+-        //Adding Sushi options
++        // Adding Sushi options
+         sushiMenu.getItems().addAll(makiItem, nigiriItem, handrollItem, sashimiItem);
+-        //Adding Noodle options
++        // Adding Noodle options
+         noodleMenu.getItems().addAll(ramenItem, udonItem);
+-        //Adding Rice options
++        // Adding Rice options
+         riceMenu.getItems().addAll(curryItem, onigiriItem, omuriceItem, donburiItem);
+-        //Adding Drink options
++        // Adding Drink options
+         drinkMenu.getItems().addAll(sodaItem, alcoholItem);
+-        //Adding Dessert options
++        // Adding Dessert options
+         dessertMenu.getItems().addAll(dessert);
+ 
+-        //Add all menus to menu bar
++        // Add all menus to menu bar
+         menuBar.getMenus().addAll(sushiMenu, noodleMenu, riceMenu, dessertMenu, drinkMenu);
+ 
+-        //Add spacer so user items are on left while kitchen side is on the right
++        // Add spacer so user items are on left while kitchen side is on the right
+         Region spacer = new Region();
+         spacer.getStyleClass().add("menu-bar");
+         HBox.setHgrow(spacer, Priority.SOMETIMES);
+         HBox menuHBox = new HBox(menuBar, spacer, kitchenBar);
+ 
+-        //Setting stage and layout
++        // Setting stage and layout
+         borderPane.setTop(menuHBox);
+-        Scene scene = new Scene(borderPane, 640, 480);
+-        stage.setScene(scene);
+ 
+-        //On button clicks for sushi
++        // On button clicks for sushi
+         MenuHandler menuHandler = new MenuHandler();
+         makiItem.setOnAction(menuHandler::handleMaki);
+         nigiriItem.setOnAction(menuHandler::handleNigiri);
+@@ -130,29 +122,30 @@
+         sashimiItem.setOnAction(menuHandler::handleSashimi);
+         kitchenTicketsMenu.setOnAction(menuHandler::handleTickets);
+ 
+-        //On button clicks for noodles
++        // On button clicks for noodles
+         ramenItem.setOnAction(menuHandler::handleRamen);
+         udonItem.setOnAction(menuHandler::handleUdon);
+ 
+-        //On button click for rice
++        // On button click for rice
+         riceMenu.setOnAction(menuHandler::handleRice);
+ 
+-        //On button click for drinks
++        // On button click for drinks
+         alcoholItem.setOnAction(menuHandler::handleAlc);
+         sodaItem.setOnAction(menuHandler::handleDrink);
+ 
+         kitchenShiftsMenu.setOnAction(menuHandler::handleShifts);
+ 
+-        //On button click for dessert
++        // On button click for dessert
+         dessertMenu.setOnAction(menuHandler::handleDessert);
+-        //On button click to view order
++        // On button click to view order
+         viewOrderButton.setOnAction(menuHandler::handleViewOrder);
+ 
+-        //On button for dining type
++        // On button for dining type
+         buffetButton.setOnAction(menuHandler::handleBuffet);
+ 
+-        //Welcome message
++        // Welcome message
+         VBox welcomeMessage = new VBox();
++        welcomeMessage.setAlignment(Pos.CENTER);
+         Label welcomeLabel = new Label("Welcome to ");
+         Label restaurantName = new Label("Edrick's Sushi!");
+         Label italicText = new Label("Please explore our menu.");
+@@ -161,11 +154,11 @@
+         Label ownerMessage = new Label("A message from the owner: We're thrilled to have you dine with us and experience the exquisite taste of our handcrafted sushi rolls. Enjoy your meal! \n");
+         Label buffetLabel = new Label( "Click here for all you can eat!");
+ 
+-        //Styles and formatting for welcome message
++        // Styles and formatting for welcome message
+         welcomeLabel.setStyle("-fx-font-size: 20px;");
+         restaurantName.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
+         italicText.setStyle("-fx-font-size: 20px; -fx-font-style: italic;");
+-        historyLabel1.setPadding(new Insets(5, 0, 0 ,0));
++        historyLabel1.setPadding(new Insets( 5, 0, 0 ,0));
+         historyLabel1.setStyle("-fx-font-size: 16px;");
+         historyLabel2.setStyle("-fx-font-size: 16px;");
+         buffetLabel.setStyle("-fx-font-size: 16px;");
+@@ -173,18 +166,43 @@
+         ownerMessage.setStyle("-fx-font-size: 16px; -fx-font-style: italic;");
+         ownerMessage.setPadding(new Insets(5, 0, 15,0));
+ 
+-
+         welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
+-        welcomeMessage.setAlignment(Pos.CENTER);
+-        borderPane.setCenter(welcomeMessage);
++
++        // Media setup
++        String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
++        Media media = new Media(videoPath);
++        MediaPlayer mediaPlayer = new MediaPlayer(media);
++        mediaPlayer.setVolume(0);
++        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
++        MediaView mediaView = new MediaView(mediaPlayer);
++
++        // Customize mediaView properties
++        mediaView.setFitWidth(640);
++        mediaView.setPreserveRatio(true);
++
++        // Adding mediaView to the scene
++        VBox videoBox = new VBox(mediaView);
++        videoBox.setAlignment(Pos.CENTER);
++
++        // Start playing the video automatically
++        mediaPlayer.play();
++
++        VBox centerContent = new VBox();
++        centerContent.setAlignment(Pos.CENTER);
++        centerContent.setSpacing(10);
++        centerContent.getChildren().addAll(welcomeMessage, videoBox);
++
++        // Set the container as the center of the BorderPane
++        borderPane.setCenter(centerContent);
+ 
+-        //Show output
++        // Show output
++        Scene scene = new Scene(borderPane, 640, 480);
++        stage.setScene(scene);
+         stage.show();
+-
+     }
+-
+ 
+     public static void main(String[] args) {
+         launch();
+     }
+-}
+\ No newline at end of file
++}
++
+Index: src/main/java/module-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module com.example.eecs2311termproject {\r\n    requires javafx.controls;\r\n    requires javafx.fxml;\r\n    requires java.sql;\r\n\r\n\r\n    opens com.example.eecs2311termproject to javafx.fxml;\r\n    exports com.example.eecs2311termproject;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/module-info.java b/src/main/java/module-info.java
+--- a/src/main/java/module-info.java	(revision 58caa8c374e2bd7f24c35ea805627767f1881cb6)
++++ b/src/main/java/module-info.java	(date 1711234460161)
+@@ -2,6 +2,7 @@
+     requires javafx.controls;
+     requires javafx.fxml;
+     requires java.sql;
++  //  requires javafx.media;
+ 
+ 
+     opens com.example.eecs2311termproject to javafx.fxml;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"290a0dde-070b-48f4-885d-3b443cbc056e\" name=\"Changes\" comment=\"PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/KitchenTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"EECS-2311-Term-Project\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"5ff4a353-79c7-473c-a99e-54cb17a8d31c\" />\r\n        <option name=\"url\" value=\"https://github.com/adriansd1/EECS-2311-Software-Development-Project.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2bgfh7r016qPevlC39ladtvaLae\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.ClientSide.executor&quot;: &quot;Run&quot;,\r\n    &quot;Gradle.Build EECS-2311-Software-Development-Project.executor&quot;: &quot;Run&quot;,\r\n    &quot;Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor&quot;: &quot;Run&quot;,\r\n    &quot;Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/postgresql-42.7.2.jar&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;ChangesTree.GroupingKeys&quot;: [\r\n      &quot;directory&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\samda\\IdeaProjects\\EECS-2311-Term-Project\\src\\main\\resources\\com\\example\\eecs2311termproject\\Images\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject/Images\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.ClientSide\">\r\n    <configuration name=\"ClientSide (1)\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.eecs2311termproject.ClientSide\" />\r\n      <module name=\"EECS-2311-Term-Project.main\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.eecs2311termproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"ClientSide\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.eecs2311termproject.ClientSide\" />\r\n      <module name=\"EECS-2311-Term-Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.eecs2311termproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.ClientSide (1)\" />\r\n        <item itemvalue=\"Application.ClientSide\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"290a0dde-070b-48f4-885d-3b443cbc056e\" name=\"Changes\" comment=\"\" />\r\n      <created>1706641759678</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1706641759678</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Project first commit\">\r\n      <created>1706830213588</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706830213588</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Project first commit\">\r\n      <created>1706831071640</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706831071640</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"adding some client side features\">\r\n      <created>1707072841456</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1707072841456</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Client side improved by adding welcome message as well as foodMenus functionality added\">\r\n      <created>1707842389369</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1707842389369</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added Menu for Maki which will be repeated for the rest of the food menus, improvements made to these menus so foods can be easily added to these menus. I also included some more fields to food class to ensure cost and name are tracked. Also added software Icon\">\r\n      <created>1707865170271</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1707865170272</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code\">\r\n      <created>1708056578058</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708056578058</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic\">\r\n      <created>1708062345777</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708062345777</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food\">\r\n      <created>1708134814423</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708134814423</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Beginning to implement the view order class so that the order can be viewed by the customer before it is sent to kitchen side(must be implemented how to send to the kitchen) and to add the table number before confirming(also must be implemented). Some UI changes as well and a potential login screen which may be deleted\">\r\n      <created>1708732765990</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708732765990</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1708917652783</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708917652783</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1708917754432</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708917754432</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1708961807944</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708961807944</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Project first commit\" />\r\n    <MESSAGE value=\"adding some client side features\" />\r\n    <MESSAGE value=\"Client side improved by adding welcome message as well as foodMenus functionality added\" />\r\n    <MESSAGE value=\"Added Menu for Maki which will be repeated for the rest of the food menus, improvements made to these menus so foods can be easily added to these menus. I also included some more fields to food class to ensure cost and name are tracked. Also added software Icon\" />\r\n    <MESSAGE value=\"Completed Maki page and added GUI which allows user to select quantity, this implementation will be used for the rest of the pages and menus. I also added extensive documentation for my code\" />\r\n    <MESSAGE value=\"Extended GUI from Maki class to the other sushi classes, I also added and abstract class to hold the create square method to reduce code redundancy, this might be removed later as it may interfere with business logic\" />\r\n    <MESSAGE value=\"GUI completed for all menus so that they all have food menus and pages with ability to add different quantities of each food\" />\r\n    <MESSAGE value=\"Beginning to implement the view order class so that the order can be viewed by the customer before it is sent to kitchen side(must be implemented how to send to the kitchen) and to add the table number before confirming(also must be implemented). Some UI changes as well and a potential login screen which may be deleted\" />\r\n    <MESSAGE value=\"PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines\" />\r\n    <MESSAGE value=\"PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/EECS_2311_Term_Project$ClientSide__1_.ic\" NAME=\"ClientSide (1) Coverage Results\" MODIFIED=\"1710459821623\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>com.example.eecs2311termproject.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 58caa8c374e2bd7f24c35ea805627767f1881cb6)
++++ b/.idea/workspace.xml	(date 1711234460498)
+@@ -4,21 +4,18 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/KitchenTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources">
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject/videos/sushi_video.mp4" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="CodeInsightWorkspaceSettings">
++    <option name="optimizeImportsOnTheFly" value="true" />
+   </component>
+   <component name="ExternalProjectsData">
+     <projectState path="$PROJECT_DIR$">
+@@ -75,13 +72,17 @@
+   &quot;associatedIndex&quot;: 8
+ }</component>
+   <component name="ProjectId" id="2bgfh7r016qPevlC39ladtvaLae" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
++    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;Application.ClientSide (1).executor&quot;: &quot;Run&quot;,
+     &quot;Application.ClientSide.executor&quot;: &quot;Run&quot;,
+     &quot;Gradle.Build EECS-2311-Software-Development-Project.executor&quot;: &quot;Run&quot;,
+     &quot;Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor&quot;: &quot;Run&quot;,
+@@ -91,7 +92,7 @@
+     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+     &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/postgresql-42.7.2.jar&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+@@ -138,16 +139,50 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="PaymentHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="EECS-2311-Term-Project" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.example.eecs2311termproject.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="com.example.eecs2311termproject" />
++      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.PaymentHandlerTest" />
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="PaymentHandlerTest.processPaymentSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="EECS-2311-Term-Project" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.example.eecs2311termproject.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <option name="PACKAGE_NAME" value="com.example.eecs2311termproject" />
++      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.PaymentHandlerTest" />
++      <option name="METHOD_NAME" value="processPaymentSuccessfully" />
++      <option name="TEST_OBJECT" value="method" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.ClientSide (1)" />
+         <item itemvalue="Application.ClientSide" />
++        <item itemvalue="JUnit.PaymentHandlerTest" />
++        <item itemvalue="JUnit.PaymentHandlerTest.processPaymentSuccessfully" />
++        <item itemvalue="Application.ClientSide (1)" />
+       </list>
+     </recent_temporary>
+   </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
++        <option value="jdk-19.0.2-corretto-19.0.2-4caba194b151-48ba4555" />
+         <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+       </set>
+     </attachedChunks>
+@@ -248,7 +283,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1708961807944</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="Commit of login page for shifts">
++      <option name="closed" value="true" />
++      <created>1710868097007</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1710868097007</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -263,6 +306,7 @@
+     </option>
+   </component>
+   <component name="VcsManagerConfiguration">
++    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+     <MESSAGE value="Project first commit" />
+     <MESSAGE value="adding some client side features" />
+     <MESSAGE value="Client side improved by adding welcome message as well as foodMenus functionality added" />
+@@ -273,7 +317,9 @@
+     <MESSAGE value="Beginning to implement the view order class so that the order can be viewed by the customer before it is sent to kitchen side(must be implemented how to send to the kitchen) and to add the table number before confirming(also must be implemented). Some UI changes as well and a potential login screen which may be deleted" />
+     <MESSAGE value="PostgreSQL database added to project for data persistence, later this will be used to view orders in kitchen side, currently methods are for adding to the database and updating quantity if the food exists(needs to match table numbers when sign in is implemented). Remove from database method will be added tonight this push is being made to test on other machines" />
+     <MESSAGE value="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come" />
+-    <option name="LAST_COMMIT_MESSAGE" value="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come" />
++    <MESSAGE value="Commit of login page for shifts" />
++    <MESSAGE value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
++    <option name="LAST_COMMIT_MESSAGE" value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/EECS_2311_Term_Project$ClientSide__1_.ic" NAME="ClientSide (1) Coverage Results" MODIFIED="1710459821623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
