@@ -36,9 +36,9 @@ public class UdonPage extends Page{
         Food curryUdon = new Food("Curry Udon", 7.75, 720, 14.13, 37.0, 19.2);
         Food tempuraUdon = new Food("Tempura Udon", 7.65, 570, 22.0, 42.0, 8.8);
 
-        String imagePathForbeefUdon = "com/example/eecs2311termproject/Images/beef udon.jpeg";
-        String imagePathForcurryUdon = "com/example/eecs2311termproject/Images/curry udon.jpg";
-        String imagePathFortempuraUdon  = "com/example/eecs2311termproject/Images/tempura udon.jpg";
+        String imagePathForbeefUdon = "/com/example/eecs2311termproject/Images/beef udon.jpeg";
+        String imagePathForcurryUdon = "/com/example/eecs2311termproject/Images/curry udon.jpg";
+        String imagePathFortempuraUdon  = "/com/example/eecs2311termproject/Images/tempura udon.jpg";
 
         //Added items to food menu
         FoodMenu udonMenu = new FoodMenu();

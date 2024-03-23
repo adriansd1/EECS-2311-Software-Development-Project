@@ -37,9 +37,9 @@ public class SashimiPage extends Page{
         Food octopusSashimi = new Food("Octopus Sashimi", 0.65, 10, 2.0, 0.0, 0.0);
 
 
-        String imagePathFortunaSashimi = "com/example/eecs2311termproject/Images/tuna sashimi.jpeg";
-        String imagePathForsalmonSashimi = "com/example/eecs2311termproject/Images/salmon sashimi.jpeg";
-        String imagePathForoctopusSashimi  = "com/example/eecs2311termproject/Images/octopus sashimi.jpg";
+        String imagePathFortunaSashimi = "/com/example/eecs2311termproject/Images/tuna sashimi.jpeg";
+        String imagePathForsalmonSashimi = "/com/example/eecs2311termproject/Images/salmon sashimi.jpeg";
+        String imagePathForoctopusSashimi  = "/com/example/eecs2311termproject/Images/octopus sashimi.jpg";
 
         //Added items to food menu
         FoodMenu sashimiMenu = new FoodMenu();

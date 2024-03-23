@@ -36,9 +36,9 @@ public class makiPage extends Page{
         Food salmonMaki = new Food("Salmon Maki", 0.50, 28, 1.12, 4.92, 0.23);
         Food californiaRoll = new Food("California Roll", 0.60, 33, 1.38, 6.31, 0.12);
 
-        String imagePathFortunaMaki = "com/example/eecs2311termproject/Images/tuna roll.jpeg";
-        String imagePathForsalmonMaki = "com/example/eecs2311termproject/Images/salmon maki.jpg";
-        String imagePathForcaliforniaRoll  = "com/example/eecs2311termproject/Images/california roll.jpeg";
+        String imagePathFortunaMaki = "/com/example/eecs2311termproject/Images/tuna roll.jpeg";
+        String imagePathForsalmonMaki = "/com/example/eecs2311termproject/Images/salmon maki.jpg";
+        String imagePathForcaliforniaRoll  = "/com/example/eecs2311termproject/Images/california roll.jpeg";
 
         //Added items to food menu
         FoodMenu makiMenu = new FoodMenu();

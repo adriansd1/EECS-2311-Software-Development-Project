@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -165,30 +168,29 @@ public class ClientSide extends Application {
 
         welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
 
-//        // Media setup
-//        String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
-//        Media media = new Media(videoPath);
-//        MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.setVolume(0);
-//        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-//        MediaView mediaView = new MediaView(mediaPlayer);
-//
-//        // Customize mediaView properties
-//        mediaView.setFitWidth(640);
-//        mediaView.setPreserveRatio(true);
-//
-//        // Adding mediaView to the scene
-//        VBox videoBox = new VBox(mediaView);
-//        videoBox.setAlignment(Pos.CENTER);
-//
-//        // Start playing the video automatically
-//        mediaPlayer.play();
+        // Media setup
+        String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
+        Media media = new Media(videoPath);
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(0);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        MediaView mediaView = new MediaView(mediaPlayer);
+
+        // Customize mediaView properties
+        mediaView.setFitWidth(640);
+        mediaView.setPreserveRatio(true);
+
+        // Adding mediaView to the scene
+        VBox videoBox = new VBox(mediaView);
+        videoBox.setAlignment(Pos.CENTER);
+
+        // Start playing the video automatically
+        mediaPlayer.play();
 
         VBox centerContent = new VBox();
         centerContent.setAlignment(Pos.CENTER);
         centerContent.setSpacing(10);
-        //centerContent.getChildren().addAll(welcomeMessage, videoBox);
-        centerContent.getChildren().addAll(welcomeMessage);
+        centerContent.getChildren().addAll(welcomeMessage, videoBox);
 
         // Set the container as the center of the BorderPane
         borderPane.setCenter(centerContent);

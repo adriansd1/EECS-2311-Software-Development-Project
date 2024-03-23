@@ -1,51 +1,42 @@
 package com.example.eecs2311termproject;
 
-import javafx.geometry.Insets;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.animation.TranslateTransition;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.io.InputStream;
 
 public abstract class Page {
     private static VBox lastDisplayedLayout = null;
 
-    //Method to create square panes for food
     protected static StackPane createFoodSquare(String name, double price, String imagePath) {
-        //Style for square
         Rectangle square = new Rectangle(250, 400);
         square.setFill(Color.LIGHTGRAY);
         square.setStroke(Color.BLACK);
 
-        //Labels for name and price of food
         Label nameLabel = new Label(name);
         Label priceLabel = new Label("$" + price);
 
-        //Item quantity field
         TextField itemQuantity = new TextField("1");
         itemQuantity.setMaxWidth(40);
         itemQuantity.setAlignment(Pos.CENTER);
 
-        //Plus button to increase number of given food item
         Button plusButton = new Button("+");
         plusButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
             itemQuantity.setText(String.valueOf(quantity + 1));
         });
 
-        //Minus button to decrease number of given food item
         Button minusButton = new Button("-");
         minusButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
@@ -54,12 +45,10 @@ public abstract class Page {
             }
         });
 
-        //Add buttons and text field to control box
         HBox quantityControls = new HBox(5);
         quantityControls.setAlignment(Pos.CENTER);
         quantityControls.getChildren().addAll(minusButton, itemQuantity, plusButton);
 
-        //Button to add food
         Button addButton = new Button("Add");
         addButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
@@ -89,45 +78,39 @@ public abstract class Page {
             }
         });
 
-        //VBox to hold square and add button now
         VBox squareContent = new VBox(5);
         squareContent.setAlignment(Pos.CENTER);
         squareContent.getChildren().addAll(nameLabel, priceLabel, quantityControls, addButton);
 
-        // Info button to display detailed information about the food
         Button infoButton = new Button("Info");
         infoButton.setOnAction(e -> displayFoodInfo(name, squareContent));
 
-        // Load the image
-        Image image = new Image(imagePath);
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(120);
-        imageView.setFitHeight(120);
+        InputStream imageStream = Page.class.getResourceAsStream(imagePath);
+        if (imageStream != null) {
+            Image image = new Image(imageStream);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(120);
+            imageView.setFitHeight(120);
+            squareContent.getChildren().add(imageView);
+        } else {
+            System.err.println("Image resource not found: " + imagePath);
+        }
 
-        // Add info button to squareContent
+
         squareContent.getChildren().add(infoButton);
 
-        // Add the image view to the content
-        squareContent.getChildren().add(imageView);
-
-
-
-        //Stack pane to hold all previous items
         StackPane squarePane = new StackPane();
         squarePane.getChildren().addAll(square, squareContent);
 
         return squarePane;
     }
-    private static void displayFoodInfo(String foodName, VBox squareContent) {
 
+    private static void displayFoodInfo(String foodName, VBox squareContent) {
         if (lastDisplayedLayout != null) {
-            // If food information is already displayed, hide it by removing it from squareContent
             squareContent.getChildren().remove(lastDisplayedLayout);
-            // Clear the reference to the last displayed layout
             lastDisplayedLayout = null;
             return;
         }
-
 
         Food food = getFoodDetails(foodName);
         if (food != null) {
@@ -142,21 +125,17 @@ public abstract class Page {
 
             layout.getChildren().addAll(nameLabel, caloriesLabel, proteinLabel, carbsLabel, fatLabel);
 
-            // Set initial position above the scene
             layout.setTranslateY(-200);
 
-            // Create translate transition to slide the bar down
             TranslateTransition slideDown = new TranslateTransition(Duration.seconds(0.5), layout);
-            slideDown.setToY(0); // Set final position
-
-            // Play the animation
+            slideDown.setToY(0);
             slideDown.play();
 
-            // Add the food info layout to the square content VBox
             squareContent.getChildren().add(layout);
             lastDisplayedLayout = layout;
         }
     }
+
 
     private static Food getFoodDetails(String foodName) {
         // Mocking food details based on the food name

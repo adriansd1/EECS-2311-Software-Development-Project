@@ -5,7 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -39,10 +38,10 @@ public class RicePage extends Page {
         Food donburiRice = new Food("Donburi", 9.75, 675, 14.0, 63.0, 19.0);
 
         // Image paths for each food item
-        String imagePathForcurryRice = "com/example/eecs2311termproject/Images/curry rice.jpg";
-        String imagePathForonigiriRice = "com/example/eecs2311termproject/Images/onigiri.jpg";
-        String imagePathForomuRice = "com/example/eecs2311termproject/Images/omurice.jpg";
-        String imagePathFordonburiRice = "com/example/eecs2311termproject/Images/donburi.jpg";
+        String imagePathForcurryRice = "/com/example/eecs2311termproject/Images/curry rice.jpg";
+        String imagePathForonigiriRice = "/com/example/eecs2311termproject/Images/onigiri.jpg";
+        String imagePathForomuRice = "/com/example/eecs2311termproject/Images/omurice.jpg";
+        String imagePathFordonburiRice = "/com/example/eecs2311termproject/Images/donburi.jpg";
 
         //Added items to food menu
         FoodMenu riceMenu = new FoodMenu();

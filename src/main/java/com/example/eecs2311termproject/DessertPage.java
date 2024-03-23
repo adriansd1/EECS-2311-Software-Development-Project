@@ -37,10 +37,10 @@ public class DessertPage extends Page{
         Food brownie = new Food("Brownie", 1.00, 330, 4.4, 51.0, 12.2);
         Food jello = new Food("Jello", 0.25, 20, 0.5, 6.5, 0.0);
 
-        String imagePathForiceCream = "com/example/eecs2311termproject/Images/ice cream.jpg";
-        String imagePathForcookie = "com/example/eecs2311termproject/Images/cookie.jpeg";
-        String imagePathForbrownie = "com/example/eecs2311termproject/Images/brownie.jpg";
-        String imagePathForjello = "com/example/eecs2311termproject/Images/jello.jpg";
+        String imagePathForiceCream = "/com/example/eecs2311termproject/Images/ice cream.jpg";
+        String imagePathForcookie = "/com/example/eecs2311termproject/Images/cookie.jpeg";
+        String imagePathForbrownie = "/com/example/eecs2311termproject/Images/brownie.jpg";
+        String imagePathForjello = "/com/example/eecs2311termproject/Images/jello.jpg";
 
         //Added items to food menu
         FoodMenu dessertMenu = new FoodMenu();

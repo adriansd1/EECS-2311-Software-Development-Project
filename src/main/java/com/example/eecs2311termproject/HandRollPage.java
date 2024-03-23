@@ -32,9 +32,9 @@ public class HandRollPage extends Page{
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Handroll Food items for menu
-        Food tunaHandRoll = new Food("Tuna Hand Roll", 1.20, 194, 24.0, 21, 0.8);
-        Food salmonHandRoll = new Food("Salmon Hand Roll", 1.20, 162, 10.0, 16.0, 6.3);
-        Food eelHandRoll = new Food("Eel Hand Roll", 1.60, 170, 7.0, 22.0, 6.0);
+        Food tunaHandRoll = new Food("/Tuna Hand Roll", 1.20, 194, 24.0, 21, 0.8);
+        Food salmonHandRoll = new Food("/Salmon Hand Roll", 1.20, 162, 10.0, 16.0, 6.3);
+        Food eelHandRoll = new Food("/Eel Hand Roll", 1.60, 170, 7.0, 22.0, 6.0);
 
         String imagePathFortunaHandRoll = "com/example/eecs2311termproject/Images/tuna handroll.jpeg";
         String imagePathForsalmonHandRoll = "com/example/eecs2311termproject/Images/salmon handroll.jpeg";

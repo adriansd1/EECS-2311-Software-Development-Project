@@ -38,11 +38,11 @@ public class DrinkPage extends Page {
         Food water = new Food("Water", 0.0, 0, 0.0, 0.0, 0.0);
         Food orangeJuice = new Food("Orange Juice", 1.2, 110, 0.5, 32.0, 0.0);
 
-        String imagePathForCoke = "com/example/eecs2311termproject/Images/coke.jpeg";
-        String imagePathForsprite = "com/example/eecs2311termproject/Images/sprite.jpeg";
-        String imagePathForfanta = "com/example/eecs2311termproject/Images/fanta.jpeg";
-        String imagePathForOrangeJuice = "com/example/eecs2311termproject/Images/orange juice.jpg";
-        String imagePathForWater = "com/example/eecs2311termproject/Images/water.jpg";
+        String imagePathForCoke = "/com/example/eecs2311termproject/Images/coke.jpeg";
+        String imagePathForsprite = "/com/example/eecs2311termproject/Images/sprite.jpeg";
+        String imagePathForfanta = "/com/example/eecs2311termproject/Images/fanta.jpeg";
+        String imagePathForOrangeJuice = "/com/example/eecs2311termproject/Images/orange juice.jpg";
+        String imagePathForWater = "/com/example/eecs2311termproject/Images/water.jpg";
 
         //Added items to food menu
         FoodMenu drinkMenu = new FoodMenu();

@@ -36,9 +36,9 @@ public class RamenPage extends Page {
         Food misoRamen = new Food("Miso Ramen", 5.20, 199, 14.13, 23.0, 5.2);
         Food chickenRamen = new Food("Chicken Ramen", 7.65, 570, 12.0, 81.0, 21.0);
 
-        String imagePathForbeefRamen = "com/example/eecs2311termproject/Images/beef ramen.jpg";
-        String imagePathForchickenRamen = "com/example/eecs2311termproject/Images/chicken ramen.jpg";
-        String imagePathFormisoRamen = "com/example/eecs2311termproject/Images/miso ramen.jpg";
+        String imagePathForbeefRamen = "/com/example/eecs2311termproject/Images/beef ramen.jpg";
+        String imagePathForchickenRamen = "/com/example/eecs2311termproject/Images/chicken ramen.jpg";
+        String imagePathFormisoRamen = "/com/example/eecs2311termproject/Images/miso ramen.jpg";
 
         //Added items to food menu
         FoodMenu ramenMenu = new FoodMenu();

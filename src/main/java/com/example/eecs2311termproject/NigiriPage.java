@@ -5,12 +5,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 /**
@@ -40,9 +37,9 @@ public class NigiriPage extends Page {
         Food yellowtailNigiri = new Food("Yellowtail Nigiri", 0.60, 54, 3.0, 8.0, 1.0);
 
         // Image paths for each food item
-        String imagePathForTuna = "com/example/eecs2311termproject/Images/tuna nigiri.jpeg";
-        String imagePathForSalmon = "com/example/eecs2311termproject/Images/salmon nigiri.jpg";
-        String imagePathForYellowtail = "com/example/eecs2311termproject/Images/yellowtail nigiri.jpg";
+        String imagePathForTuna = "/com/example/eecs2311termproject/Images/tuna nigiri.jpeg";
+        String imagePathForSalmon = "/com/example/eecs2311termproject/Images/salmon nigiri.jpg";
+        String imagePathForYellowtail = "/com/example/eecs2311termproject/Images/yellowtail nigiri.jpg";
 
         //Added items to food menu
         FoodMenu nigiriMenu = new FoodMenu();
