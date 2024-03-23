@@ -4,9 +4,13 @@ import java.util.ArrayList;
 public class Kitchen {
     ArrayList<Food> ingredientsStock;
     ArrayList<String> order;
-    Boolean orderstate;
     public Food[] ingredientStock;
-
+    private boolean orderState;
+    public Kitchen() {
+        this.ingredientsStock = new ArrayList<>();
+        this.order = new ArrayList<>();
+        this.orderState = false;
+    }
     public ArrayList<String> sendOrder() {
         return order;
     }
@@ -34,6 +38,7 @@ public class Kitchen {
             System.out.println("No special requests for order: " + order);
         }
     }
+
 }
 
 

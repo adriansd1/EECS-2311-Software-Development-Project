@@ -21,6 +21,8 @@ import javafx.util.Duration;
 
 public abstract class Page {
     private static VBox lastDisplayedLayout = null;
+    private static String lastDisplayedFoodName = null;
+
 
     //Method to create square panes for food
     protected static StackPane createFoodSquare(String name, double price, String imagePath) {
@@ -156,7 +158,10 @@ public abstract class Page {
             squareContent.getChildren().add(layout);
             lastDisplayedLayout = layout;
         }
-    }
+        }
+
+
+
 
     private static Food getFoodDetails(String foodName) {
         // Mocking food details based on the food name

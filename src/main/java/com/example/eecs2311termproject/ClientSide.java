@@ -10,9 +10,9 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
+//import javafx.scene.media.Media;
+//import javafx.scene.media.MediaPlayer;
+//import javafx.scene.media.MediaView;
 
 import java.io.IOException;
 
@@ -99,7 +99,6 @@ public class ClientSide extends Application {
         Button buffetButton = new Button("All You Can Eat");
 
 
-
         //Adding Sushi options
         sushiMenu.getItems().addAll(makiItem, nigiriItem, handrollItem, sashimiItem);
         //Adding Noodle options
@@ -163,24 +162,23 @@ public class ClientSide extends Application {
         Label historyLabel1 = new Label("Our restaurant has been serving  delicious sushi dishes for over a decade,");
         Label historyLabel2 = new Label("combining traditional Japanese flavors with innovative recipes.");
         Label ownerMessage = new Label("A message from the owner: We're thrilled to have you dine with us and experience the exquisite taste of our handcrafted sushi rolls. Enjoy your meal! \n");
-        Label buffetLabel = new Label( "Click here for all you can eat!");
+        Label buffetLabel = new Label("Click here for all you can eat!");
 
         //Styles and formatting for welcome message
         welcomeLabel.setStyle("-fx-font-size: 20px;");
         restaurantName.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         italicText.setStyle("-fx-font-size: 20px; -fx-font-style: italic;");
-        historyLabel1.setPadding(new Insets(5, 0, 0 ,0));
+        historyLabel1.setPadding(new Insets(5, 0, 0, 0));
         historyLabel1.setStyle("-fx-font-size: 16px;");
         historyLabel2.setStyle("-fx-font-size: 16px;");
         buffetLabel.setStyle("-fx-font-size: 16px;");
         buffetLabel.setUnderline(true);
         ownerMessage.setStyle("-fx-font-size: 16px; -fx-font-style: italic;");
-        ownerMessage.setPadding(new Insets(5, 0, 15,0));
-
+        ownerMessage.setPadding(new Insets(5, 0, 15, 0));
 
         welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
-
-        // Media setup
+        stage.show();
+        /* Media setup
         String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
         Media media = new Media(videoPath);
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -208,12 +206,9 @@ public class ClientSide extends Application {
         // Set the container as the center of the BorderPane
         borderPane.setCenter(centerContent);
 
-        //Show output
-        stage.show();
+        //Show output*/
 
     }
-
-
     public static void main(String[] args) {
         launch();
     }
