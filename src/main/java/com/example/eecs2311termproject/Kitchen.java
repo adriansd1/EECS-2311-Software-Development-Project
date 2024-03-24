@@ -2,10 +2,7 @@ package com.example.eecs2311termproject;
 import java.util.ArrayList;
 //Why does this extend class, needs GUI follow client side to define functionality
 public class Kitchen {
-    ArrayList<Food> ingredientsStock;
     ArrayList<String> order;
-    Boolean orderstate;
-    public Food[] ingredientStock;
 
     public ArrayList<String> sendOrder() {
         return order;
