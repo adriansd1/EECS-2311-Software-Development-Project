@@ -142,12 +142,15 @@ public class Order {
             updateStatus("Paid");
             return true;
         } else {
-            System.out.println("Insufficient funds. Payment failed.");
+            // Partial payment logic
+            System.out.println("Partial payment of $" + amount + " made.");
+            runningTotal -= amount;
             return false;
         }
     }
 
-    
+
+
     @Override
     public String toString() {
         // Implement the toString method to provide a meaningful representation of the Order
