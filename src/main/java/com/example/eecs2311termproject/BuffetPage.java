@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 public class BuffetPage {
+    protected static Stage diningTypeStage;
     protected static StackPane buffetPane(){
         Rectangle square = new Rectangle(250, 130);
         square.setFill(Color.AZURE);
@@ -50,7 +51,18 @@ public class BuffetPage {
         Button okButton = new Button("OK");
         okButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
+            Food f = new Food("ALL YOU CAN EAT", 30);
+            f.setQuantity(quantity);
+            ClientSide.clientOrder.setRunningTotal(quantity * 30);
+            System.out.println(ClientSide.clientOrder.getRunningTotal());
+            ClientSide.buffetButton.setDisable(true);
+            diningTypeStage.close();
+            PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity);
+            ClientSide.AYCE = true;
+
         });
+
+
 
         //VBox to hold square and add button now
         VBox squareContent = new VBox(5);
@@ -69,7 +81,7 @@ public class BuffetPage {
 
     public static void display(){
         //setting stage
-        Stage diningTypeStage = new Stage();
+        diningTypeStage = new Stage();
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.TOP_CENTER);
 
@@ -81,7 +93,7 @@ public class BuffetPage {
         });
 
         StackPane buffetSquare = buffetPane();
-        Button confirm = new Button("Confirm");
+
 
         //Title for menu
         Label titleLabel = new Label("All You Can Eat!");
@@ -95,7 +107,7 @@ public class BuffetPage {
         noteLabel.setStyle("-fx-font-size: 12px; -fx-font-style: italic;");
         ifNotLabel.setStyle("-fx-font-size: 12px; -fx-font-style: italic;");
 
-        layout.getChildren().addAll(titleLabel, homeButton, buffetSquare, confirm, noteLabel, ifNotLabel);
+        layout.getChildren().addAll(titleLabel, homeButton, buffetSquare, noteLabel, ifNotLabel);
         Scene scene = new Scene(layout, 400, 300);
         diningTypeStage.setScene(scene);
         diningTypeStage.show();

@@ -20,14 +20,14 @@ public class Order {
 
     public void addFood(Food f){
         this.foodOrder.add(f);
-        runningTotal += f.getPrice();
+        setRunningTotal(f.getPrice());
     }
 
-    public void addFood(ArrayList<Food> foods){
+    public void addFood(ArrayList<Food> foods) {
         if (foods != null) {
             for (Food f : foods) {
                 foodOrder.add(f);
-                runningTotal += f.getPrice();
+                setRunningTotal(f.getPrice());
             }
         }
     }
@@ -39,7 +39,9 @@ public class Order {
     }
 
     public void setRunningTotal(double runningTotal){
-        this.runningTotal += runningTotal;
+        if(!ClientSide.AYCE) {
+            this.runningTotal += runningTotal;
+        }
     }
     public double getRunningTotal() {
         return this.runningTotal;

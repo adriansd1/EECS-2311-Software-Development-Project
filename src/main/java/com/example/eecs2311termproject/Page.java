@@ -24,6 +24,10 @@ public abstract class Page {
 
     //Method to create square panes for food
     protected static StackPane createFoodSquare(String name, double price, String imagePath) {
+
+
+
+
         //Style for square
         Rectangle square = new Rectangle(250, 400);
         square.setFill(Color.LIGHTGRAY);
@@ -63,12 +67,15 @@ public abstract class Page {
         Button addButton = new Button("Add");
         addButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
+
             Food f = new Food(name, price);
+
 
             boolean found = false;
 
             for (Food foodItem : ClientSide.clientOrder.getFoodOrder()) {
                 if (foodItem.getName().equals(f.getName()) && foodItem.getPrice() == f.getPrice()) {
+
                     foodItem.setQuantity(quantity);
                     ClientSide.clientOrder.setRunningTotal(quantity * price);
                     found = true;
@@ -86,6 +93,10 @@ public abstract class Page {
                 System.out.println(ClientSide.clientOrder.getRunningTotal());
 
                 PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity);
+
+                if(!ClientSide.buffetButton.isDisabled()) {
+                    ClientSide.buffetButton.setDisable(true);
+                }
             }
         });
 
