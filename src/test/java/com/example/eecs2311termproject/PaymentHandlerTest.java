@@ -11,45 +11,41 @@ class PaymentHandlerTest {
     private Order order;
     private Food californiaRoll;
     private Food salmonNigiri;
+    private PaymentDetails paymentDetails;
 
     @BeforeEach
     void setUp() {
         order = new Order(1); // Order allocated to table 1
-
-        // Creating food items
         californiaRoll = new Food("California Roll", 8.0);
         salmonNigiri = new Food("Salmon Nigiri", 5.0);
-    }
 
-    @Test
-    void calculateTotalPrice() {
+        // Add food items to the order
         order.addFood(californiaRoll);
         order.addFood(salmonNigiri);
 
-        double totalPrice = PaymentHandler.calculateTotalPrice(order);
-
-        assertEquals(13.0, totalPrice, 0.01, "Calculating total price should be correct.");
+        // Initialize PaymentDetails
+        paymentDetails = new PaymentDetails("CreditCard", "1234567890123456");
     }
 
     @Test
-    void processPaymentSuccessfully() {
-        order.setRunningTotal(20.0);
-        double paymentAmount = 20.0;
-
-        boolean result = PaymentHandler.processPayment(order, paymentAmount);
-
-        assertTrue(result, "Payment should be processed successfully.");
-        assertEquals("Paid", order.getStatus(), "Order status should be updated to 'Paid'.");
+    void testCalculateTotalPrice() {
+        double expectedTotalPrice = californiaRoll.getPrice() + salmonNigiri.getPrice();
+        double actualTotalPrice = PaymentHandler.calculateTotalPrice(order);
+        assertEquals(expectedTotalPrice, actualTotalPrice, "The total price should be the sum of the prices of all food items in the order.");
     }
 
     @Test
-    void processPaymentUnsuccessfully() {
-        order.setRunningTotal(25.0);
-        double paymentAmount = 20.0;
+    void testSuccessfulPayment() {
+        // Adjust the payment amount in PaymentDetails as needed or ensure it's valid
+        boolean result = PaymentHandler.processPayment(order, paymentDetails);
+        assertTrue(result, "Payment should be processed successfully when the correct amount is provided.");
+    }
 
-        boolean result = PaymentHandler.processPayment(order, paymentAmount);
-
-        assertFalse(result, "Payment should not be processed due to insufficient funds.");
-        assertNotEquals("Paid", order.getStatus(), "Order status should not be 'Paid' after unsuccessful payment.");
+    @Test
+    void testUnsuccessfulPayment() {
+        // Use a different setup for PaymentDetails to simulate an unsuccessful scenario
+        PaymentDetails insufficientPaymentDetails = new PaymentDetails("InvalidMethod", "000");
+        boolean result = PaymentHandler.processPayment(order, insufficientPaymentDetails);
+        assertFalse(result, "Payment should fail when an invalid payment method is provided.");
     }
 }

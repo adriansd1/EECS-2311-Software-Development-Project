@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject/videos/sushi_video.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/UdonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/UdonPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PaymentHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PaymentHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +51,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -57,7 +66,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="5ff4a353-79c7-473c-a99e-54cb17a8d31c" />
+        <option name="accountId" value="d531fbe7-83d9-4131-8d54-fbac8262bdaa" />
         <option name="url" value="https://github.com/adriansd1/EECS-2311-Software-Development-Project.git" />
       </UrlAndAccount>
     </option>
@@ -76,30 +85,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.ClientSide (1).executor": "Run",
-    "Application.ClientSide.executor": "Run",
-    "Gradle.Build EECS-2311-Software-Development-Project.executor": "Run",
-    "Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor": "Run",
-    "Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/User/Downloads/postgresql-42.7.2.jar",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.ClientSide (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.ClientSide.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build EECS-2311-Software-Development-Project.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/postgresql-42.7.2.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\samda\IdeaProjects\EECS-2311-Term-Project\src\main\resources\com\example\eecs2311termproject\Images" />
@@ -109,7 +118,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientSide">
+  <component name="RunManager" selected="Application.ClientSide (1)">
     <configuration name="ClientSide (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
       <module name="EECS-2311-Term-Project.main" />
@@ -283,7 +292,8 @@
     <MESSAGE value="PostgreSQL database added now with extensive functionality available, stub db(Order class) mostly removed, more removal functionality to come" />
     <MESSAGE value="Commit of login page for shifts" />
     <MESSAGE value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
+    <MESSAGE value="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EECS_2311_Term_Project$ClientSide__1_.ic" NAME="ClientSide (1) Coverage Results" MODIFIED="1710459821623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

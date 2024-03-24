@@ -2,24 +2,50 @@ package com.example.eecs2311termproject;
 
 public class PaymentHandler {
     public static double calculateTotalPrice(Order order) {
-        //Access the Order's totalPrice directly
-        // return order.getPrice();
-        return 0.0; //To prevent errors
+        return order.getRunningTotal();
     }
 
-    public static boolean processPayment(Order order, double amount) {
-        double totalPrice = calculateTotalPrice(order);
-        //Check if the provided amount is sufficient
-        if (amount >= totalPrice) {
-            //Perform the payment processing logic
-            System.out.println("Payment successful! Total Amount: $" + totalPrice);
-            //Optionally, update the order status to "Paid"
-            order.updateStatus("Paid");
+
+    public static boolean validatePaymentMethod(PaymentDetails paymentDetails) {
+        return PostgreSQL.validatePaymentMethod(paymentDetails.getPaymentMethod(), paymentDetails.getIdentifier());
+    }
+
+
+    public static boolean detectFraud(Order order) {
+        // Example: Check if the order size is unusually large
+        if (order.getFoodOrder().size() > 100) { // Arbitrary condition
+            System.out.println("Potential fraud detected. Order size is unusually large.");
             return true;
-        } else {
-            System.out.println("Insufficient funds. Payment failed.");
-            return false;
         }
+        return false;
+    }
+
+    public static boolean processPayment(Order order, PaymentDetails paymentDetails) {
+        boolean paymentSuccess = false;
+        String paymentStatusMessage;
+
+        if (!validatePaymentMethod(paymentDetails)) {
+            paymentStatusMessage = "Payment failed: Invalid payment method.";
+        } else if (detectFraud(order)) {
+            paymentStatusMessage = "Payment failed: Fraud detected.";
+        } else {
+            double totalPrice = calculateTotalPrice(order);
+            paymentStatusMessage = "Processing payment for order total: $" + totalPrice;
+            paymentSuccess = true; // Simulating payment success
+            order.updateStatus("Paid");
+        }
+
+        // Log the payment attempt regardless of success
+        PostgreSQL.logPaymentTransaction(order.getOrderID(), paymentDetails.getPaymentMethod(), paymentDetails.getIdentifier(), order.getRunningTotal(), paymentSuccess);
+
+        // Display the payment status message
+        System.out.println(paymentStatusMessage);
+        if (paymentSuccess) {
+            System.out.println("Payment successful!");
+        } else {
+            System.out.println("Payment failed!");
+        }
+
+        return paymentSuccess;
     }
 }
-

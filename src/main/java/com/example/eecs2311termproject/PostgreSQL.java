@@ -214,5 +214,81 @@ public class PostgreSQL {
         return rowCount;
     }
 
+    // Method with intention to improve PaymentHandler by changing the order's status to "Paid", "Failed".
+    public static void updateOrderStatus(String orderId, String newStatus) {
+        String url = "jdbc:postgresql:postgres";
+        String user = "postgres";
+        String password = "Ahmad";
+
+        try (Connection con = DriverManager.getConnection(url, user, password)) {
+            System.out.println("Connected to PostgreSQL database!");
+
+            String query = "UPDATE Orders SET Status = ? WHERE OrderID = ?";
+
+            try (PreparedStatement pst = con.prepareStatement(query)) {
+                pst.setString(1, newStatus);
+                pst.setString(2, orderId);
+                int rowsAffected = pst.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Order status updated successfully!");
+                } else {
+                    System.out.println("Failed to update order status.");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Database operation failed: " + e.getMessage());
+        }
+    }
+
+    public static void logPaymentTransaction(String orderId, String paymentMethod, String identifier, double amountPaid, boolean success) {
+        String url = "jdbc:postgresql:postgres";
+        String user = "postgres";
+        String password = "Ahmad";
+        String query = "INSERT INTO PaymentLog (OrderID, PaymentMethod, Identifier, AmountPaid, Success) VALUES (?, ?, ?, ?, ?)";
+        try (Connection con = DriverManager.getConnection(url, user, password);
+             PreparedStatement pst = con.prepareStatement(query)) {
+
+            pst.setString(1, orderId);
+            pst.setString(2, paymentMethod);
+            pst.setString(3, identifier); // Consider storing only masked or partial identifiers for security
+            pst.setDouble(4, amountPaid);
+            pst.setBoolean(5, success);
+            pst.executeUpdate();
+
+            System.out.println("Payment transaction logged successfully.");
+        } catch (SQLException e) {
+            System.out.println("Failed to log payment transaction: " + e.getMessage());
+        }
+    }
+
+    public static boolean validatePaymentMethod(String paymentMethod, String identifier) {
+        String url = "jdbc:postgresql://localhost/postgres";
+        String user = "postgres";
+        String password = "Ahmad";
+
+        String query = "SELECT Valid FROM MockPaymentDetails WHERE PaymentMethod = ? AND Identifier = ?";
+
+        try (Connection con = DriverManager.getConnection(url, user, password);
+             PreparedStatement pst = con.prepareStatement(query)) {
+
+            pst.setString(1, paymentMethod);
+            pst.setString(2, identifier);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    // Check if the payment method is marked as valid in the database
+                    return rs.getBoolean("Valid");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Database operation failed: " + e.getMessage());
+        }
+        // Return false if the payment method is not found or an exception occurs
+        return false;
+    }
+
 
 }
+
+
