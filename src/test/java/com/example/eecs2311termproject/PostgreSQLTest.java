@@ -36,13 +36,16 @@ public class PostgreSQLTest {
     public static void cleanup() {
         try {
             if (connection != null) {
-                connection.close();
-                System.out.println("Connection closed.");
+                try (Statement statement = connection.createStatement()) {
+                    statement.executeUpdate("DELETE FROM \"Orders\"");
+                }
+                System.out.println("Deleted all rows in the table.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     @BeforeEach
     public void beforeEach() {
@@ -54,6 +57,8 @@ public class PostgreSQLTest {
             e.printStackTrace();
         }
     }
+
+
 
     @Test
     public void testWriteToDatabase() {
