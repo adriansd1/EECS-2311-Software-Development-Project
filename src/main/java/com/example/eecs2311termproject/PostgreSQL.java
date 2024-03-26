@@ -6,7 +6,7 @@ public class PostgreSQL {
     public static void WriteToDatabase(String foodName, double price, int quantity){
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "shitijagg7";
+        String password = "Adrian";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -213,6 +213,5 @@ public class PostgreSQL {
         }
         return rowCount;
     }
-
 
 }

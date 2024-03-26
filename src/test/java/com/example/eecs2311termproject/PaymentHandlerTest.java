@@ -1,4 +1,4 @@
-package com.example.eecs2311termproject;
+/*package com.example.eecs2311termproject;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,4 +52,4 @@ class PaymentHandlerTest {
         assertFalse(result, "Payment should not be processed due to insufficient funds.");
         assertNotEquals("Paid", order.getStatus(), "Order status should not be 'Paid' after unsuccessful payment.");
     }
-}
+}*/

@@ -1,18 +1,13 @@
 package com.example.eecs2311termproject;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 
 import java.io.IOException;
 
@@ -181,7 +176,7 @@ public class ClientSide extends Application {
         welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
 
         // Media setup
-        String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
+        /*String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
         Media media = new Media(videoPath);
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setVolume(0);
@@ -197,12 +192,12 @@ public class ClientSide extends Application {
         videoBox.setAlignment(Pos.CENTER);
 
         // Start playing the video automatically
-        mediaPlayer.play();
+        mediaPlayer.play();*/
 
         VBox centerContent = new VBox();
         centerContent.setAlignment(Pos.CENTER);
         centerContent.setSpacing(10);
-        centerContent.getChildren().addAll(welcomeMessage, videoBox);
+        centerContent.getChildren().addAll(welcomeMessage);//, videoBox);
 
 
         // Set the container as the center of the BorderPane

@@ -4,10 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject/videos/sushi_video.mp4" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="shifts page now has working timer using Timeline class and has clock in and out button to start and stop timer&#10;TODO: Make employees editable so more can be added(Stored in DB as well)&#10;Make Pin Editable&#10;Send the shift hours to the DB(Payroll table with employee and shift length)">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/ClientSideTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/FoodMenuTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PostgreSQLTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/KitchenTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PaymentHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PaymentHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +59,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -80,19 +97,45 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.ClientSide (1).executor": "Run",
-    "Application.ClientSide.executor": "Run",
+    "Application.ClientSide.executor": "Coverage",
+    "Downloaded.Files.Path.Enabled": "false",
     "Gradle.Build EECS-2311-Software-Development-Project.executor": "Run",
     "Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor": "Run",
+    "Gradle.ClientSideTest (1).executor": "Run",
+    "Gradle.ClientSideTest.executor": "Run",
+    "Gradle.ClientSideTest.testButton.executor": "Run",
+    "Gradle.ClientSideTest.testButtonClick.executor": "Run",
+    "Gradle.ClientSideTest.testButtons.executor": "Run",
+    "Gradle.ClientSideTest.testInitialization.executor": "Run",
+    "Gradle.ClientSideTest.testMenuBarExists.executor": "Run",
+    "Gradle.ClientSideTest.testMenuItems.executor": "Run",
+    "Gradle.ClientSideTest.testStart.executor": "Run",
     "Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor": "Run",
+    "Gradle.EECS-2311-Software-Development-Project [test].executor": "Run",
+    "Gradle.FoodMenuTest.executor": "Run",
+    "Gradle.MenuHandlerTest.executor": "Run",
+    "Gradle.MenuHandlerTest.testHandleMaki.executor": "Run",
+    "Gradle.PaymentHandlerTest.executor": "Run",
+    "Gradle.PostgreSQLTest.executor": "Run",
+    "JUnit.ClientSideTest.executor": "Run",
+    "JUnit.ClientSideTest.testClientOrderNotNull.executor": "Run",
+    "JUnit.ClientSideTest.testDrinkMenuDisplayed.executor": "Run",
+    "JUnit.MenuHandlerTest.handleViewOrder.executor": "Run",
+    "JUnit.PostgreSQLTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project/src/main/java/com/example/eecs2311termproject",
     "last_opened_file_path": "C:/Users/User/Downloads/postgresql-42.7.2.jar",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   },
   "keyToStringList": {
     "ChangesTree.GroupingKeys": [
@@ -105,11 +148,12 @@
       <recent name="C:\Users\samda\IdeaProjects\EECS-2311-Term-Project\src\main\resources\com\example\eecs2311termproject\Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\EECS-2311-Software-Development-Project\src\test\java\com\example\eecs2311termproject" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject/Images" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientSide">
+  <component name="RunManager">
     <configuration name="ClientSide (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
       <module name="EECS-2311-Term-Project.main" />
@@ -123,23 +167,123 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClientSide" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
-      <module name="EECS-2311-Term-Project" />
+    <configuration name="ClientSideTest.testButtonClick" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.eecs2311termproject.ClientSideTest.testButtonClick&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="EECS-2311-Software-Development-Project [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MenuHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.eecs2311termproject.MenuHandlerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MenuHandlerTest.testHandleMaki" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.eecs2311termproject.MenuHandlerTest.testHandleMaki&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MenuHandlerTest.handleViewOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EECS-2311-Term-Project.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.eecs2311termproject.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.example.eecs2311termproject" />
+      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.MenuHandlerTest" />
+      <option name="METHOD_NAME" value="handleViewOrder" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientSide" />
-        <item itemvalue="Application.ClientSide (1)" />
+        <item itemvalue="Gradle.EECS-2311-Software-Development-Project [test]" />
+        <item itemvalue="Gradle.MenuHandlerTest" />
+        <item itemvalue="JUnit.MenuHandlerTest.handleViewOrder" />
+        <item itemvalue="Gradle.MenuHandlerTest.testHandleMaki" />
+        <item itemvalue="Gradle.ClientSideTest.testButtonClick" />
       </list>
     </recent_temporary>
   </component>
@@ -263,7 +407,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -285,8 +441,21 @@
     <MESSAGE value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
     <option name="LAST_COMMIT_MESSAGE" value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EECS_2311_Term_Project$ClientSide__1_.ic" NAME="ClientSide (1) Coverage Results" MODIFIED="1710459821623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.eecs2311termproject.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/EECS_2311_Term_Project$ClientSide.ic" NAME="ClientSide Coverage Results" MODIFIED="1711396605151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.eecs2311termproject.*</FILTER>
     </SUITE>
   </component>
