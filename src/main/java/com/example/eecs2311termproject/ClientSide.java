@@ -9,6 +9,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+/*
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+*/
+
 import java.io.IOException;
 
 /**
@@ -18,7 +24,9 @@ import java.io.IOException;
  */
 public class ClientSide extends Application {
     public static Order clientOrder = new Order(1);
+    public static Boolean AYCE = false;
 
+    public static Button buffetButton;
     @Override
     public void start(Stage stage) throws IOException {
         //Initialize Page Title
@@ -91,7 +99,7 @@ public class ClientSide extends Application {
         Button viewOrderButton = new Button("View My Order");
 
         //Initialize all you can eat and pay as you go buttons
-        Button buffetButton = new Button("All You Can Eat");
+        buffetButton = new Button("All You Can Eat");
 
 
 
@@ -174,7 +182,7 @@ public class ClientSide extends Application {
 
 
         welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
-
+        /*
         // Media setup
         /*String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
         Media media = new Media(videoPath);
@@ -192,6 +200,7 @@ public class ClientSide extends Application {
         videoBox.setAlignment(Pos.CENTER);
 
         // Start playing the video automatically
+
         mediaPlayer.play();*/
 
         VBox centerContent = new VBox();
@@ -200,8 +209,11 @@ public class ClientSide extends Application {
         centerContent.getChildren().addAll(welcomeMessage);//, videoBox);
 
 
+
         // Set the container as the center of the BorderPane
         borderPane.setCenter(centerContent);
+
+
 
         //Show output
         stage.show();
