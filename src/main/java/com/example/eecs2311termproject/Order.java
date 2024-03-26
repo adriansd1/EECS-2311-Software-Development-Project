@@ -20,14 +20,14 @@ public class Order {
 
     public void addFood(Food f){
         this.foodOrder.add(f);
-        runningTotal += f.getPrice();
+        setRunningTotal(f.getPrice());
     }
 
-    public void addFood(ArrayList<Food> foods){
+    public void addFood(ArrayList<Food> foods) {
         if (foods != null) {
             for (Food f : foods) {
                 foodOrder.add(f);
-                runningTotal += f.getPrice();
+                setRunningTotal(f.getPrice());
             }
         }
     }
@@ -39,7 +39,9 @@ public class Order {
     }
 
     public void setRunningTotal(double runningTotal){
-        this.runningTotal += runningTotal;
+        if(!ClientSide.AYCE) {
+            this.runningTotal += runningTotal;
+        }
     }
     public double getRunningTotal() {
         return this.runningTotal;
@@ -140,12 +142,15 @@ public class Order {
             updateStatus("Paid");
             return true;
         } else {
-            System.out.println("Insufficient funds. Payment failed.");
+            // Partial payment logic
+            System.out.println("Partial payment of $" + amount + " made.");
+            runningTotal -= amount;
             return false;
         }
     }
 
-    
+
+
     @Override
     public String toString() {
         // Implement the toString method to provide a meaningful representation of the Order
