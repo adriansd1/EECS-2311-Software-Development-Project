@@ -6,7 +6,11 @@ public class PostgreSQL {
     public static void WriteToDatabase(String foodName, double price, int quantity){
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "shitijagg7";
+        String password = "Adrian";
+
+        if(ClientSide.AYCE){
+            price = 0;
+        }
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -38,11 +42,14 @@ public class PostgreSQL {
         String user = "postgres";
         String password = "Adrian";
 
+
+
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
 
             String selectQuery = "SELECT \"Quantity\" FROM \"Orders\" WHERE \"Food name\" = ?";
             try (PreparedStatement selectPst = con.prepareStatement(selectQuery)) {
+
                 selectPst.setString(1, foodName);
                 ResultSet rs = selectPst.executeQuery();
 
@@ -59,6 +66,7 @@ public class PostgreSQL {
                     updatePst.setString(2, foodName);
 
                     int rowsAffected = updatePst.executeUpdate();
+
                     if (rowsAffected > 0) {
                         System.out.println("Quantity updated successfully!");
                     } else {
