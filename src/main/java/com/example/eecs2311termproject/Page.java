@@ -1,8 +1,6 @@
 package com.example.eecs2311termproject;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -11,24 +9,17 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.animation.TranslateTransition;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public abstract class Page {
-    private static VBox lastDisplayedLayout = null;
-    private static String lastDisplayedFoodName = null;
-
-
-    //Method to create square panes for food
+    private static Map<String, Boolean> foodInfoDisplayed = new HashMap<>();
     protected static StackPane createFoodSquare(String name, double price, String imagePath) {
-
-
-
 
         //Style for square
         Rectangle square = new Rectangle(250, 400);
@@ -131,17 +122,16 @@ public abstract class Page {
 
         return squarePane;
     }
-    private static void displayFoodInfo(String foodName, VBox squareContent) {
 
-        if (lastDisplayedLayout != null) {
-            // If food information is already displayed, hide it by removing it from squareContent
-            squareContent.getChildren().remove(lastDisplayedLayout);
-            // Clear the reference to the last displayed layout
-            lastDisplayedLayout = null;
+    private static void displayFoodInfo(String foodName, VBox squareContent) {
+        // If info for this food is already displayed, hide it
+        if (foodInfoDisplayed.containsKey(foodName) && foodInfoDisplayed.get(foodName)) {
+            squareContent.getChildren().removeIf(node -> node instanceof VBox);
+            foodInfoDisplayed.put(foodName, false);
             return;
         }
 
-
+        // Otherwise, display info for this food
         Food food = getFoodDetails(foodName);
         if (food != null) {
             VBox layout = new VBox(10);
@@ -167,9 +157,12 @@ public abstract class Page {
 
             // Add the food info layout to the square content VBox
             squareContent.getChildren().add(layout);
-            lastDisplayedLayout = layout;
+
+            // Update info display status for this food
+            foodInfoDisplayed.put(foodName, true);
         }
-        }
+    }
+
 
 
 
