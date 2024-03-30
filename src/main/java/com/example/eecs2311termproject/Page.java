@@ -18,9 +18,13 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public abstract class Page {
-    private static VBox lastDisplayedLayout = null;
+    private static Map<String, Boolean> foodInfoDisplayed = new HashMap<>();
+
 
     //Method to create square panes for food
     protected static StackPane createFoodSquare(String name, double price, String imagePath) {
@@ -125,17 +129,19 @@ public abstract class Page {
 
         return squarePane;
     }
-    private static void displayFoodInfo(String foodName, VBox squareContent) {
 
-        if (lastDisplayedLayout != null) {
-            // If food information is already displayed, hide it by removing it from squareContent
-            squareContent.getChildren().remove(lastDisplayedLayout);
-            // Clear the reference to the last displayed layout
-            lastDisplayedLayout = null;
+
+
+
+    private static void displayFoodInfo(String foodName, VBox squareContent) {
+        // If info for this food is already displayed, hide it
+        if (foodInfoDisplayed.containsKey(foodName) && foodInfoDisplayed.get(foodName)) {
+            squareContent.getChildren().removeIf(node -> node instanceof VBox);
+            foodInfoDisplayed.put(foodName, false);
             return;
         }
 
-
+        // Otherwise, display info for this food
         Food food = getFoodDetails(foodName);
         if (food != null) {
             VBox layout = new VBox(10);
@@ -161,9 +167,14 @@ public abstract class Page {
 
             // Add the food info layout to the square content VBox
             squareContent.getChildren().add(layout);
-            lastDisplayedLayout = layout;
+
+            // Update info display status for this food
+            foodInfoDisplayed.put(foodName, true);
         }
     }
+
+
+
 
     private static Food getFoodDetails(String foodName) {
         // Mocking food details based on the food name
