@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Testing added to several class&#10;TODO: Automate tests to run everytime project is ran/built and every commit">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added functionality to the ShiftsPage so now employees can be edited added and deleted&#10;TODO: Have no default employees and add table in DB that holds the employees and gets updated accordingly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/BuffetPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/BuffetPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Kitchen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ShiftsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ShiftsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PostgreSQLTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PostgreSQLTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/TicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/TicketsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,57 +91,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.ClientSide (1).executor": "Run",
-    "Application.ClientSide.executor": "Coverage",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.Build EECS-2311-Software-Development-Project.executor": "Run",
-    "Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor": "Run",
-    "Gradle.ClientSideTest (1).executor": "Run",
-    "Gradle.ClientSideTest.executor": "Run",
-    "Gradle.ClientSideTest.testButton.executor": "Run",
-    "Gradle.ClientSideTest.testButtonClick.executor": "Run",
-    "Gradle.ClientSideTest.testButtons.executor": "Run",
-    "Gradle.ClientSideTest.testInitialization.executor": "Run",
-    "Gradle.ClientSideTest.testMenuBarExists.executor": "Run",
-    "Gradle.ClientSideTest.testMenuItems.executor": "Run",
-    "Gradle.ClientSideTest.testStart.executor": "Run",
-    "Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor": "Run",
-    "Gradle.EECS-2311-Software-Development-Project [test].executor": "Run",
-    "Gradle.FoodMenuTest.executor": "Run",
-    "Gradle.FoodTest.executor": "Run",
-    "Gradle.MenuHandlerTest.executor": "Run",
-    "Gradle.MenuHandlerTest.testHandleMaki.executor": "Run",
-    "Gradle.PaymentHandlerTest.executor": "Run",
-    "Gradle.PostgreSQLTest.executor": "Run",
-    "JUnit.ClientSideTest.executor": "Run",
-    "JUnit.ClientSideTest.testClientOrderNotNull.executor": "Run",
-    "JUnit.ClientSideTest.testDrinkMenuDisplayed.executor": "Run",
-    "JUnit.MenuHandlerTest.handleViewOrder.executor": "Run",
-    "JUnit.PostgreSQLTest.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project/src/main/java/com/example/eecs2311termproject",
-    "last_opened_file_path": "C:/Users/User/Downloads/postgresql-42.7.2.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.ClientSide (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.ClientSide.executor&quot;: &quot;Coverage&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.Build EECS-2311-Software-Development-Project.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest.testButton.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest.testButtonClick.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest.testButtons.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest.testInitialization.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest.testMenuBarExists.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest.testMenuItems.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientSideTest.testStart.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EECS-2311-Software-Development-Project [test].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FoodMenuTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FoodTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MenuHandlerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MenuHandlerTest.testHandleMaki.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PaymentHandlerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PostgreSQLTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientSideTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientSideTest.testClientOrderNotNull.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientSideTest.testDrinkMenuDisplayed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MenuHandlerTest.handleViewOrder.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PostgreSQLTest.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project/src/main/java/com/example/eecs2311termproject&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/postgresql-42.7.2.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\samda\IdeaProjects\EECS-2311-Term-Project\src\main\resources\com\example\eecs2311termproject\Images" />
@@ -257,9 +265,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.EECS-2311-Software-Development-Project [test]" />
         <item itemvalue="Gradle.FoodTest" />
         <item itemvalue="Gradle.PaymentHandlerTest" />
-        <item itemvalue="Gradle.EECS-2311-Software-Development-Project [test]" />
         <item itemvalue="Gradle.MenuHandlerTest" />
         <item itemvalue="JUnit.MenuHandlerTest.handleViewOrder" />
       </list>
@@ -393,7 +401,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711424317606</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added functionality to the ShiftsPage so now employees can be edited added and deleted&#10;TODO: Have no default employees and add table in DB that holds the employees and gets updated accordingly">
+      <option name="closed" value="true" />
+      <created>1711426341263</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1711426341263</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -434,7 +450,8 @@
     <MESSAGE value="Commit of login page for shifts" />
     <MESSAGE value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
     <MESSAGE value="Testing added to several class&#10;TODO: Automate tests to run everytime project is ran/built and every commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing added to several class&#10;TODO: Automate tests to run everytime project is ran/built and every commit" />
+    <MESSAGE value="Added functionality to the ShiftsPage so now employees can be edited added and deleted&#10;TODO: Have no default employees and add table in DB that holds the employees and gets updated accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added functionality to the ShiftsPage so now employees can be edited added and deleted&#10;TODO: Have no default employees and add table in DB that holds the employees and gets updated accordingly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

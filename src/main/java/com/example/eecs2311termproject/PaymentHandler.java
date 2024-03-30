@@ -24,12 +24,12 @@ public class PaymentHandler {
             // Perform the payment processing logic
             System.out.println("Payment successful! Total Amount: $" + totalPrice);
             // Update the order status to "Paid"
-            order.updateStatus("Paid");
+            //order.updateStatus("Paid");
             return true;
         } else {
             System.out.println("Insufficient funds. Payment failed.");
             // Update the order status to "Pending" when payment fails
-            order.updateStatus("Pending");
+            //order.updateStatus("Pending");
             return false;
         }
     }

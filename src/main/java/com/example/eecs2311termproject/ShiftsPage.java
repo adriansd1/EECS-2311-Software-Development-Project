@@ -18,11 +18,12 @@ import java.util.Optional;
 
 public class ShiftsPage {
 
-    private static ObservableList<String[]> employees = FXCollections.observableArrayList(
-            new String[]{"Alice", "Waiter"},
-            new String[]{"Bob", "Chef"},
-            new String[]{"Charlie", "Manager"}
-    );
+    private static ObservableList<String[]> employees = FXCollections.observableArrayList();
+
+    public static void loadEmployees() {
+        employees.clear();
+        employees.addAll(PostgreSQL.getAllEmployees());
+    }
 
     public static void display() {
         Stage employeeStage = new Stage();
@@ -50,6 +51,7 @@ public class ShiftsPage {
         employeeStage.setScene(scene);
         employeeStage.show();
 
+        loadEmployees(); // Load employees from the database
         showShifts(layout, employeeStage);
     }
 
@@ -61,6 +63,8 @@ public class ShiftsPage {
         shiftsGrid.setVgap(10);
         shiftsGrid.setPadding(new Insets(20));
 
+        int rowCount = (int) Math.ceil((double) employees.size() / 3); // Calculate number of rows based on employee count
+
         for (int i = 0; i < employees.size(); i++) {
             String[] employee = employees.get(i);
             Label nameLabel = new Label(employee[0]);
@@ -71,22 +75,27 @@ public class ShiftsPage {
             Button toggleViewButton = new Button("Toggle View");
             Button clockInButton = new Button("Clock In");
             Button clockOutButton = new Button("Clock Out");
+            Button endShiftButton = new Button("End Shift");
 
             VBox personBox = new VBox(5);
             personBox.setAlignment(Pos.CENTER);
-            personBox.getChildren().addAll(nameLabel, roleLabel, timeLabel, editButton, deleteButton, toggleViewButton, clockInButton, clockOutButton);
+            personBox.getChildren().addAll(nameLabel, roleLabel, timeLabel, editButton, deleteButton, toggleViewButton, clockInButton, clockOutButton, endShiftButton);
             personBox.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-padding: 10px;");
 
             editButton.setVisible(false);
             deleteButton.setVisible(false);
 
-            int index = i;
+            int rowIndex = i % rowCount; // Calculate row index based on current employee index
+            int colIndex = i / rowCount; // Calculate column index based on current employee index
+
+            int finalI = i;
             editButton.setOnAction(e -> {
-                editEmployee(index, layout, stage);
+                editEmployee(finalI, layout, stage);
             });
 
+            int finalI1 = i;
             deleteButton.setOnAction(e -> {
-                deleteEmployee(index, layout, stage);
+                deleteEmployee(finalI1, layout, stage);
             });
 
             toggleViewButton.setOnAction(e -> {
@@ -96,12 +105,14 @@ public class ShiftsPage {
                     deleteButton.setVisible(true);
                     clockInButton.setVisible(false);
                     clockOutButton.setVisible(false);
+                    endShiftButton.setVisible(false);
                 } else {
                     timeLabel.setVisible(true);
                     editButton.setVisible(false);
                     deleteButton.setVisible(false);
                     clockInButton.setVisible(true);
                     clockOutButton.setVisible(true);
+                    endShiftButton.setVisible(true);
                 }
             });
 
@@ -130,10 +141,16 @@ public class ShiftsPage {
 
             clockOutButton.setOnAction(e -> {
                 clockInTimer.stop();
-                System.out.println("Clock Out: " + employee[0] + " Total Time Worked: " + timeLabel.getText());
+                System.out.println("Clock Out: " + employee[0] + " " + timeLabel.getText());
             });
 
-            shiftsGrid.add(personBox, i % 3, i / 3);
+            endShiftButton.setOnAction(e -> {
+                clockInTimer.stop();
+                System.out.println("Shift Ended: " + employee[0] + " " + timeLabel.getText());
+                timeLabel.setText("Time Worked: 0 hours 0 minutes 0 seconds");
+            });
+
+            shiftsGrid.add(personBox, colIndex, rowIndex);
         }
 
         layout.getChildren().add(shiftsGrid);
@@ -141,13 +158,17 @@ public class ShiftsPage {
     }
 
 
+
+
     private static void addEmployee(VBox layout, Stage stage) {
         TextField nameField = new TextField();
         nameField.setPromptText("Name");
         TextField roleField = new TextField();
         roleField.setPromptText("Role");
+        TextField salaryField = new TextField();
+        salaryField.setPromptText("Salary");
 
-        HBox inputBox = new HBox(10, nameField, roleField);
+        HBox inputBox = new HBox(10, nameField, roleField, salaryField);
 
         Alert addEmployeeDialog = new Alert(Alert.AlertType.CONFIRMATION);
         addEmployeeDialog.setTitle("Add Employee");
@@ -158,7 +179,9 @@ public class ShiftsPage {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             String name = nameField.getText();
             String role = roleField.getText();
-            employees.add(new String[]{name, role});
+            double salary = Double.parseDouble(salaryField.getText());
+            employees.add(new String[]{name, role, String.valueOf(salary)});
+            PostgreSQL.addEmployee(name, role, salary);
             showShifts(layout, stage);
         }
     }
@@ -168,8 +191,9 @@ public class ShiftsPage {
 
         TextField nameField = new TextField(employee[0]);
         TextField roleField = new TextField(employee[1]);
+        TextField salaryField = new TextField(employee[2]);
 
-        HBox inputBox = new HBox(10, nameField, roleField);
+        HBox inputBox = new HBox(10, nameField, roleField, salaryField);
 
         Alert editEmployeeDialog = new Alert(Alert.AlertType.CONFIRMATION);
         editEmployeeDialog.setTitle("Edit Employee");
@@ -180,10 +204,14 @@ public class ShiftsPage {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             String name = nameField.getText();
             String role = roleField.getText();
-            employees.set(index, new String[]{name, role});
+            double salary = Double.parseDouble(salaryField.getText());
+            employees.set(index, new String[]{name, role, String.valueOf(salary)});
+            PostgreSQL.updateEmployee(employee[0], name, role, salary);
             showShifts(layout, stage);
         }
     }
+
+
 
     private static void deleteEmployee(int index, VBox layout, Stage stage) {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
@@ -193,9 +221,19 @@ public class ShiftsPage {
 
         Optional<ButtonType> result = confirmation.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Get the employee's name and role
+            String[] employee = employees.get(index);
+            String name = employee[0];
+            String role = employee[1];
+
+            // Delete the employee from the database
+            PostgreSQL.deleteEmployee(name, role);
+
+            // Remove the employee from the list and update the UI
             employees.remove(index);
             showShifts(layout, stage);
         }
     }
+
 
 }

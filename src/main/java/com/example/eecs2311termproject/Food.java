@@ -54,6 +54,12 @@ public class Food {
         this.price = price;
     }
 
+    public Food(String foodName, double price, int quantity) {
+        this.foodName = foodName;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     // Getter methods
     public int getCalories() {
         return calories;
@@ -97,6 +103,7 @@ public class Food {
         return price;
     }
 
+    //MIGHT BE ISSUE
     public void setQuantity(int quantity) {
         this.quantity += quantity;
     }

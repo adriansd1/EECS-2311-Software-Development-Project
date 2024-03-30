@@ -23,7 +23,6 @@ import java.io.IOException;
  * and paths to various menus for the user to choose from
  */
 public class ClientSide extends Application {
-    public static Order clientOrder = new Order(1);
     public static Boolean AYCE = false;
 
     public static Button buffetButton;

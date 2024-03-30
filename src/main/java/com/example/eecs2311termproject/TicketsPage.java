@@ -37,7 +37,7 @@ public class TicketsPage {
         Button completeButton = new Button("Complete");
         completeButton.setOnAction(e -> {
             foodItems.getChildren().remove(square.getParent());
-            PostgreSQL.deleteFood(foodName);
+            PostgreSQL.markCompleted(foodName);
         });
 
         //VBox to hold square and complete button now
@@ -65,28 +65,30 @@ public class TicketsPage {
         Label titleLabel = new Label("Current Orders");
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
-
         //HBox to hold the squares containing the foods
         HBox foodItems = new HBox(10);
         foodItems.setAlignment(Pos.TOP_LEFT);
         foodItems.setPadding(new Insets(10));
         foodItems.setAlignment(Pos.CENTER);
 
-        for (int i = 1; i<=PostgreSQL.getRowCount(); i++) {
-            //Squares containing foods and quantity
-            String name = PostgreSQL.readFoodNameFromDatabase(i);
-            int quantity = PostgreSQL.readQuantityFromDatabase(i);
-            StackPane foodSquare = createTicketSquare(name, quantity, foodItems);
-            //Adding foods to VBox
-            foodItems.getChildren().add(foodSquare);
+        for (int i = 1; i <= PostgreSQL.getRowCount(); i++) {
+            // Check if the order is not completed
+            if (!PostgreSQL.isOrderCompleted(i)) {
+                // Squares containing foods and quantity
+                String name = PostgreSQL.readFoodNameFromDatabase(i);
+                int quantity = PostgreSQL.readQuantityFromDatabase(i);
+                StackPane foodSquare = createTicketSquare(name, quantity, foodItems);
+                // Adding foods to VBox
+                foodItems.getChildren().add(foodSquare);
+            }
         }
 
-        //On action to close menu when pressing home button
+        // On action to close menu when pressing home button
         homeButton.setOnAction(e -> {
             ticketStage.close();
         });
 
-        //Add title, homeButton and menu options to scene
+        // Add title, homeButton and menu options to scene
         layout.getChildren().addAll(titleLabel, homeButton, foodItems);
 
         // Wrap the layout in a ScrollPane
@@ -96,12 +98,9 @@ public class TicketsPage {
 
         Scene scene = new Scene(scrollPane, 400, 300);
 
-        //Set and show scene
+        // Set and show scene
         ticketStage.setScene(scene);
         ticketStage.show();
     }
-
-
-
 
 }

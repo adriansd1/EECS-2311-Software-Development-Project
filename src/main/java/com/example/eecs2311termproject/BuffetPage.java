@@ -53,8 +53,12 @@ public class BuffetPage {
             int quantity = Integer.parseInt(itemQuantity.getText());
             Food f = new Food("ALL YOU CAN EAT", 30);
             f.setQuantity(quantity);
-            ClientSide.clientOrder.setRunningTotal(quantity * 30);
-            System.out.println(ClientSide.clientOrder.getRunningTotal());
+
+            //I commented this out while fixing other stuff
+            //ClientSide.clientOrder.setRunningTotal(quantity * 30);
+            //System.out.println(ClientSide.clientOrder.getRunningTotal());
+
+
             ClientSide.buffetButton.setDisable(true);
             diningTypeStage.close();
             PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity);

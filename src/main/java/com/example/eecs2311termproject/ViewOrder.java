@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -14,12 +15,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ViewOrder {
     //Set-up and display GUI
-    public static Order currentOrder;
+    public static Order currentOrder = new Order();
     public static void display() {
         //Setting stage and container
         Stage orderStage = new Stage();
@@ -45,23 +45,43 @@ public class ViewOrder {
         orderItems.setAlignment(Pos.CENTER);
 
 
-        for (int i = 1; i<=PostgreSQL.getRowCount(); i++) {
+        //for (int i = 1; i<=PostgreSQL.getRowCount(); i++) {\
+        for(int i = 0; i<currentOrder.getFoodOrder().size(); i++){
             //Squares containing foods and prices
-            StackPane foodSquare = createFoodSquare(PostgreSQL.readFoodNameFromDatabase(i), PostgreSQL.readPriceFromDatabase(i), PostgreSQL.readQuantityFromDatabase(i), orderItems);
+            //StackPane foodSquare = createFoodSquare(PostgreSQL.readFoodNameFromDatabase(i), PostgreSQL.readPriceFromDatabase(i), PostgreSQL.readQuantityFromDatabase(i), orderItems);
+            StackPane foodSquare = createFoodSquare(currentOrder.getFoodOrder().get(i).foodName,
+                    currentOrder.getFoodOrder().get(i).price,
+                    currentOrder.getFoodOrder().get(i).quantity,
+                    orderItems);
             //Adding foods to VBox
             orderItems.getChildren().add(foodSquare);
         }
 
+        // Create a ComboBox for table numbers
+        ComboBox<Integer> tableNumberComboBox = new ComboBox<>();
+        tableNumberComboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
+        tableNumberComboBox.setValue(1); // Set default value
+        tableNumberComboBox.setPromptText("Select table number");
 
         //On action to close menu when pressing home button
         confirmOrderButton.setOnAction(e -> {
+            // Get the selected table number
+            Integer selectedTableNumber = tableNumberComboBox.getValue();
+            // Do something with the selectedTableNumber, e.g., send it to the server
             orderItems.getChildren().clear();
-            ClientSide.clientOrder.getFoodOrder().clear();
+
+            for(int i = 0; i<currentOrder.getFoodOrder().size(); i++){
+                PostgreSQL.WriteToDatabase(currentOrder.getFoodOrder().get(i).getName(),
+                        currentOrder.getFoodOrder().get(i).price,
+                        currentOrder.getFoodOrder().get(i).quantity);
+            }
+
+            currentOrder.getFoodOrder().clear();
             orderStage.close();
         });
 
-        //Add title, homeButton and menu options to scene
-        layout.getChildren().addAll(titleLabel, confirmOrderButton, orderItems);
+        //Add title, tableNumberComboBox, homeButton and menu options to scene
+        layout.getChildren().addAll(titleLabel, confirmOrderButton, tableNumberComboBox, orderItems);
 
         // Wrap the layout in a ScrollPane
         ScrollPane scrollPane = new ScrollPane();
@@ -89,8 +109,6 @@ public class ViewOrder {
         //Button to remove food item
         Button removeItemButton = new Button("x");
 
-
-
         //Item quantity field MAKE THIS LABEL
         TextField itemQuantity = new TextField(String.valueOf(quantity));
         itemQuantity.setMaxWidth(40);
@@ -115,7 +133,8 @@ public class ViewOrder {
             int index = itemContainer.getChildren().indexOf(squarePane);
             // Remove the StackPane containing the square from the VBox
             itemContainer.getChildren().remove(index);
-            PostgreSQL.deleteFood(name);
+            //PostgreSQL.deleteFood(name);
+            currentOrder.getFoodOrder().remove(index);
         });
 
         return squarePane;

@@ -24,10 +24,6 @@ public abstract class Page {
 
     //Method to create square panes for food
     protected static StackPane createFoodSquare(String name, double price, String imagePath) {
-
-
-
-
         //Style for square
         Rectangle square = new Rectangle(250, 400);
         square.setFill(Color.LIGHTGRAY);
@@ -68,31 +64,31 @@ public abstract class Page {
         addButton.setOnAction(e -> {
             int quantity = Integer.parseInt(itemQuantity.getText());
 
-            Food f = new Food(name, price);
+            Food f = new Food(name, price);//, quantity);
 
 
             boolean found = false;
 
-            for (Food foodItem : ClientSide.clientOrder.getFoodOrder()) {
+            for (Food foodItem : ViewOrder.currentOrder.getFoodOrder()) {
                 if (foodItem.getName().equals(f.getName()) && foodItem.getPrice() == f.getPrice()) {
 
                     foodItem.setQuantity(quantity);
-                    ClientSide.clientOrder.setRunningTotal(quantity * price);
+                    //ClientSide.clientOrder.setRunningTotal(quantity * price);
                     found = true;
 
-                    PostgreSQL.updateQuantity(f.getName(), quantity);
+                    //PostgreSQL.updateQuantity(f.getName(), quantity);
 
                     break;
                 }
             }
-
+//LOGIC ISSUE HERE
             if (!found) {
                 f.setQuantity(quantity);
-                ClientSide.clientOrder.addFood(f);
-                ClientSide.clientOrder.setRunningTotal(quantity * price);
-                System.out.println(ClientSide.clientOrder.getRunningTotal());
+                ViewOrder.currentOrder.addFood(f);
+                //ClientSide.clientOrder.setRunningTotal(quantity * price);
+                //System.out.println(ClientSide.clientOrder.getRunningTotal());
 
-                PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity);
+                //PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity);
 
                 if(!ClientSide.buffetButton.isDisabled()) {
                     ClientSide.buffetButton.setDisable(true);
