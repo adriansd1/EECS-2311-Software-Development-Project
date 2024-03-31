@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -47,7 +48,15 @@ public class ShiftsPage {
         });
 
         layout.getChildren().addAll(titleLabel, homeButton, addEmployeeButton);
-        Scene scene = new Scene(layout, 400, 300);
+
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(layout);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+
+        VBox.setVgrow(scrollPane, Priority.ALWAYS);
+
+        Scene scene = new Scene(scrollPane, 400, 300);
         employeeStage.setScene(scene);
         employeeStage.show();
 
@@ -234,6 +243,5 @@ public class ShiftsPage {
             showShifts(layout, stage);
         }
     }
-
 
 }

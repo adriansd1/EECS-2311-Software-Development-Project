@@ -49,7 +49,14 @@ public class PaymentPage extends Application {
             }
         });
 
-        vbox.getChildren().addAll(titleLabel, tableComboBox, getBillButton);
+        // Button to view payment history
+        Button paymentHistoryButton = new Button("Payment History");
+        paymentHistoryButton.setOnAction(e -> {
+            PaymentHistory paymentHistoryPage = new PaymentHistory();
+            paymentHistoryPage.start(new Stage());
+        });
+
+        vbox.getChildren().addAll(titleLabel, tableComboBox, getBillButton, paymentHistoryButton);
 
         Scene scene = new Scene(vbox, 300, 200);
         primaryStage.setScene(scene);
@@ -106,14 +113,32 @@ public class PaymentPage extends Application {
 
                 double totalAfterTip = total + tip;
 
-                // Display receipt
-                StringBuilder receiptText = new StringBuilder();
-                receiptText.append("Total before tip: $").append(total).append("\n");
-                receiptText.append("Tip: $").append(tip).append("\n");
-                receiptText.append("Total after tip: $").append(totalAfterTip).append("\n\n");
-                receiptText.append("Items:\n");
-
                 try (Connection con = DriverManager.getConnection(url, user, password)) {
+                    // Insert payment information into PaymentHistory table
+                    String insertQuery = "INSERT INTO \"PaymentHistory\" (\"TableNumber\", \"TotalBeforeTip\", \"TipAmount\", \"TotalAfterTip\") VALUES (?, ?, ?, ?)";
+                    try (PreparedStatement insertPst = con.prepareStatement(insertQuery)) {
+                        insertPst.setInt(1, tableNumber);
+                        insertPst.setDouble(2, total);
+                        insertPst.setDouble(3, tip);
+                        insertPst.setDouble(4, totalAfterTip);
+                        insertPst.executeUpdate();
+                    }
+
+                    // Delete the row from the Tables table
+                    String deleteTableQuery = "DELETE FROM \"Tables\" WHERE \"TableNumber\" = ?";
+                    try (PreparedStatement deleteTablePst = con.prepareStatement(deleteTableQuery)) {
+                        deleteTablePst.setInt(1, tableNumber);
+                        deleteTablePst.executeUpdate();
+                    }
+
+                    // Display receipt and delete items from Orders table
+                    StringBuilder receiptText = new StringBuilder();
+                    receiptText.append("Total before tip: $").append(total).append("\n");
+                    receiptText.append("Tip: $").append(tip).append("\n");
+                    receiptText.append("Total after tip: $").append(totalAfterTip).append("\n\n");
+                    receiptText.append("Items:\n");
+
+                    // Retrieve and display order items
                     String query = "SELECT * FROM \"Orders\" WHERE \"TableNumber\" = ?";
                     try (PreparedStatement pst = con.prepareStatement(query)) {
                         pst.setInt(1, tableNumber);
@@ -127,32 +152,27 @@ public class PaymentPage extends Application {
                         }
                     }
 
-                    // Delete all items from the table
+                    // Delete all items from the Orders table
                     String deleteQuery = "DELETE FROM \"Orders\" WHERE \"TableNumber\" = ?";
                     try (PreparedStatement deletePst = con.prepareStatement(deleteQuery)) {
                         deletePst.setInt(1, tableNumber);
                         deletePst.executeUpdate();
                     }
 
-                    // Delete the row from the "Tables" table
-                    deleteQuery = "DELETE FROM \"Tables\" WHERE \"TableNumber\" = ?";
-                    try (PreparedStatement deletePst = con.prepareStatement(deleteQuery)) {
-                        deletePst.setInt(1, tableNumber);
-                        deletePst.executeUpdate();
-                    }
+                    // Show receipt
+                    Alert receiptAlert = new Alert(Alert.AlertType.INFORMATION);
+                    receiptAlert.setTitle("Receipt");
+                    receiptAlert.setHeaderText(null);
+                    receiptAlert.setContentText(receiptText.toString());
+                    receiptAlert.showAndWait();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
-                // Show receipt
-                Alert receiptAlert = new Alert(Alert.AlertType.INFORMATION);
-                receiptAlert.setTitle("Receipt");
-                receiptAlert.setHeaderText(null);
-                receiptAlert.setContentText(receiptText.toString());
-                receiptAlert.showAndWait();
             }
         });
     }
+
+
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
