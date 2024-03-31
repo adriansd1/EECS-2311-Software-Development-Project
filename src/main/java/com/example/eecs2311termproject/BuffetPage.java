@@ -15,13 +15,15 @@ import javafx.stage.Stage;
 public class BuffetPage {
     protected static Stage diningTypeStage;
     protected static StackPane buffetPane(){
-        Rectangle square = new Rectangle(250, 160);
+        Rectangle square = new Rectangle(300, 200);
         square.setFill(Color.AZURE);
         square.setStroke(Color.BLACK);
 
         Label buffetLabel = new Label("Select the number of guests");
         Label selectTableLabel = new Label("Select you table number");
         Label priceLabel = new Label("$30 per person");
+        Label tableSelectedLabel = new Label("This table is already selected, please choose another");
+        tableSelectedLabel.setVisible(false);
 
         // Create a ComboBox for table numbers
         ComboBox<Integer> tableNumberComboBox = new ComboBox<>();
@@ -58,17 +60,19 @@ public class BuffetPage {
         //Button to confirm number of people
         Button okButton = new Button("OK");
         okButton.setOnAction(e -> {
-            int quantity = Integer.parseInt(itemQuantity.getText());
-            Food f = new Food("ALL YOU CAN EAT", 30);
-            f.setQuantity(quantity);
-
             int tableNumber = tableNumberComboBox.getValue();
+            if(!PostgreSQL.isTableActive(tableNumber)) {
+                int quantity = Integer.parseInt(itemQuantity.getText());
+                Food f = new Food("ALL YOU CAN EAT", 30);
+                f.setQuantity(quantity);
 
-            ClientSide.buffetButton.setDisable(true);
-            diningTypeStage.close();
-            PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity, tableNumber);
-            PostgreSQL.WriteTableToDatabase(tableNumber, true);
 
+                diningTypeStage.close();
+                PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity, tableNumber);
+                PostgreSQL.WriteTableToDatabase(tableNumber, true);
+            } else{
+                tableSelectedLabel.setVisible(true);
+            }
 
         });
 
@@ -77,7 +81,7 @@ public class BuffetPage {
         //VBox to hold square and add button now
         VBox squareContent = new VBox(5);
         squareContent.setAlignment(Pos.CENTER);
-        squareContent.getChildren().addAll(selectTableLabel, tableNumberComboBox, buffetLabel, priceLabel, quantityControls, okButton);
+        squareContent.getChildren().addAll(selectTableLabel, tableNumberComboBox, buffetLabel, priceLabel, quantityControls, okButton, tableSelectedLabel);
 
         //Stack pane to hold all previous items
         StackPane squarePane = new StackPane();

@@ -8,7 +8,7 @@ public class PostgreSQL {
     public static void WriteToDatabase(String foodName, double price, int quantity, Integer selectedTableNumber){
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         if(isAYCE(selectedTableNumber)){
             if(!(foodName.equals("Beer. 5%") || foodName.equals("Sake. 37%") || foodName.equals("Maragrita. 8%") || foodName.equals("ALL YOU CAN EAT"))){
@@ -48,7 +48,7 @@ public class PostgreSQL {
     public static void WriteTableToDatabase(Integer selectedTableNumber, boolean AYCE){
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
 
 
@@ -88,7 +88,7 @@ public class PostgreSQL {
     public static void updateQuantity(String foodName, int quantityToAdd) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
 
 
@@ -131,7 +131,7 @@ public class PostgreSQL {
     public static void deleteFood(String foodName) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -160,7 +160,7 @@ public class PostgreSQL {
     public static String readFoodNameFromDatabase(int rowNum) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         String foodName = null;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -189,7 +189,7 @@ public class PostgreSQL {
     public static double readPriceFromDatabase(int rowNum) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         double price = 0.0;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -218,7 +218,7 @@ public class PostgreSQL {
     public static int readQuantityFromDatabase(int rowNum) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         int quantity = 0;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -247,7 +247,7 @@ public class PostgreSQL {
     public static int getRowCount() {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         int rowCount = 0;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -273,7 +273,7 @@ public class PostgreSQL {
     public static void addEmployee(String name, String role, double wage) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -303,7 +303,7 @@ public class PostgreSQL {
     public static void updateEmployee(String oldName, String newName, String role, double wage) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -335,7 +335,7 @@ public class PostgreSQL {
     public static void deleteEmployee(String name, String role) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -365,7 +365,7 @@ public class PostgreSQL {
         List<String[]> employees = new ArrayList<>();
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -394,7 +394,7 @@ public class PostgreSQL {
     public static void markCompleted(String foodName) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -422,7 +422,7 @@ public class PostgreSQL {
     public static boolean isOrderCompleted(int orderId) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
         boolean completed = false;
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -450,7 +450,7 @@ public class PostgreSQL {
     public static int readTableNumberFromDataBase(int rowNum) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
 
         int tableNumber = 0;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -481,7 +481,7 @@ public class PostgreSQL {
     public static boolean isAYCE(int tableNumber) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "";
         boolean AYCE = false;
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -505,23 +505,20 @@ public class PostgreSQL {
         return AYCE;
     }
 
-
-
-    public static int findRowNumber(int tableNumber) {
+    public static boolean isTableActive(int tableNumber) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian"; // Replace with your password
-        int foundRowNumber = -1;
+        String password = "";
+        boolean isActive = false;
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
-            String query = "SELECT \"TableNumber\", ROW_NUMBER() OVER () as row_num FROM \"Tables\"";
-            try (Statement statement = con.createStatement();
-                 ResultSet resultSet = statement.executeQuery(query)) {
-                while (resultSet.next()) {
-                    int currentTableNumber = resultSet.getInt("TableNumber");
-                    if (currentTableNumber == tableNumber) {
-                        foundRowNumber = resultSet.getInt("row_num");
-                        break;
+            String query = "SELECT COUNT(*) AS count FROM \"Tables\" WHERE \"TableNumber\" = ?";
+            try (PreparedStatement pst = con.prepareStatement(query)) {
+                pst.setInt(1, tableNumber);
+                try (ResultSet rs = pst.executeQuery()) {
+                    if (rs.next()) {
+                        int count = rs.getInt("count");
+                        isActive = count > 0; // If count > 0, table is active
                     }
                 }
             } catch (SQLException e) {
@@ -533,8 +530,9 @@ public class PostgreSQL {
             e.printStackTrace();
         }
 
-        return foundRowNumber;
+        return isActive;
     }
+
 
 
 
