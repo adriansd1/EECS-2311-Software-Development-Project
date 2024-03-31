@@ -537,5 +537,43 @@ public class PostgreSQL {
     }
 
 
+    public static void addShiftHistory(String name, String shiftLength) {
+        String url = "jdbc:postgresql:postgres";
+        String user = "postgres";
+        String password = "Adrian";
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            // Establish a connection to the database
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Define the SQL query to insert the shift history
+            String query = "INSERT INTO \"ShiftHistory\" (\"employee_name\", \"shift_length\") VALUES (?, ?)";
+            preparedStatement = connection.prepareStatement(query);
+
+            // Set the parameters for the query
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, shiftLength);
+
+            // Execute the query
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the preparedStatement and connection
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

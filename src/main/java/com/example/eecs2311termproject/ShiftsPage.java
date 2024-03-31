@@ -38,6 +38,7 @@ public class ShiftsPage {
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         Button addEmployeeButton = new Button("Add Employee");
+        Button shiftHistoryButton = new Button("Shift History");
 
         homeButton.setOnAction(e -> {
             employeeStage.close();
@@ -47,7 +48,11 @@ public class ShiftsPage {
             addEmployee(layout, employeeStage);
         });
 
-        layout.getChildren().addAll(titleLabel, homeButton, addEmployeeButton);
+        shiftHistoryButton.setOnAction(e -> {
+            ShiftHistoryPage.display();
+        });
+
+        layout.getChildren().addAll(titleLabel, homeButton, addEmployeeButton, shiftHistoryButton);
 
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(layout);
@@ -62,6 +67,21 @@ public class ShiftsPage {
 
         loadEmployees(); // Load employees from the database
         showShifts(layout, employeeStage);
+    }
+
+
+    private static void endShift(int index, VBox layout, Stage stage, Label timeLabel) {
+        String[] employee = employees.get(index);
+        String name = employee[0];
+        String shiftLength = timeLabel.getText().replace("Time Worked: ", "");
+
+        // Store shift history in the database
+        PostgreSQL.addShiftHistory(name, shiftLength);
+
+        // Reset timeLabel
+        timeLabel.setText("Time Worked: 0 hours 0 minutes 0 seconds");
+
+        showShifts(layout, stage);
     }
 
     private static void showShifts(VBox layout, Stage stage) {
@@ -153,9 +173,11 @@ public class ShiftsPage {
                 System.out.println("Clock Out: " + employee[0] + " " + timeLabel.getText());
             });
 
+            int finalI2 = i;
             endShiftButton.setOnAction(e -> {
                 clockInTimer.stop();
                 System.out.println("Shift Ended: " + employee[0] + " " + timeLabel.getText());
+                endShift(finalI2, layout, stage, timeLabel);
                 timeLabel.setText("Time Worked: 0 hours 0 minutes 0 seconds");
             });
 
