@@ -62,13 +62,12 @@ public class BuffetPage {
             Food f = new Food("ALL YOU CAN EAT", 30);
             f.setQuantity(quantity);
 
-            ClientSide.tableNumber = tableNumberComboBox.getValue();
-            ClientSide.AYCE = true;
+            int tableNumber = tableNumberComboBox.getValue();
 
             ClientSide.buffetButton.setDisable(true);
             diningTypeStage.close();
-            PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity, ClientSide.tableNumber);
-            PostgreSQL.WriteTableToDatabase(ClientSide.tableNumber, true);
+            PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity, tableNumber);
+            PostgreSQL.WriteTableToDatabase(tableNumber, true);
 
 
         });

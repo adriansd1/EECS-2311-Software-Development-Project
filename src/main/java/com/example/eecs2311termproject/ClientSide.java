@@ -9,25 +9,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-/*
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-*/
-
 import java.io.IOException;
 
-/**
- * @author samda
- * @Description: This class contains the client side of the application and contains the GUI
- * and paths to various menus for the user to choose from
- */
 public class ClientSide extends Application {
-    public static Boolean AYCE = false;
-
-    public static Integer tableNumber = 0;
 
     public static Button buffetButton;
+
     @Override
     public void start(Stage stage) throws IOException {
         //Initialize Page Title
@@ -101,8 +88,6 @@ public class ClientSide extends Application {
 
         //Initialize all you can eat and pay as you go buttons
         buffetButton = new Button("All You Can Eat");
-
-
 
         //Adding Sushi options
         sushiMenu.getItems().addAll(makiItem, nigiriItem, handrollItem, sashimiItem);
@@ -209,12 +194,17 @@ public class ClientSide extends Application {
         centerContent.setSpacing(10);
         centerContent.getChildren().addAll(welcomeMessage);//, videoBox);
 
+        // Checkout button
+        Button checkoutButton = new Button("Checkout");
+        checkoutButton.setOnAction(e -> {
+            PaymentPage paymentPage = new PaymentPage();
+            paymentPage.start(new Stage());
+        });
 
+        centerContent.getChildren().add(checkoutButton);
 
         // Set the container as the center of the BorderPane
         borderPane.setCenter(centerContent);
-
-
 
         //Show output
         stage.show();

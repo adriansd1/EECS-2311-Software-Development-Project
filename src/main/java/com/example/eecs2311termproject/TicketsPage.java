@@ -76,7 +76,7 @@ public class TicketsPage {
                 String name = PostgreSQL.readFoodNameFromDatabase(i);
                 int quantity = PostgreSQL.readQuantityFromDatabase(i);
                 int tableNumber = PostgreSQL.readTableNumberFromDataBase(i);
-                StackPane foodSquare = createTicketSquare(name, quantity, foodItems, ClientSide.tableNumber);
+                StackPane foodSquare = createTicketSquare(name, quantity, foodItems, tableNumber);
                 // Adding foods to VBox
                 foodItems.getChildren().add(foodSquare);
             }

@@ -85,7 +85,7 @@ public abstract class Page {
                     break;
                 }
             }
-//LOGIC ISSUE HERE
+
             if (!found) {
                 f.setQuantity(quantity);
                 ViewOrder.currentOrder.addFood(f);
