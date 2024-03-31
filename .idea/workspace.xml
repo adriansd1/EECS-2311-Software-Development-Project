@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PaymentPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/UdonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/UdonPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PaymentHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PaymentHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +56,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Ahmad-V2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -98,10 +101,10 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/postgresql-42.7.2.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;ChangesTree.GroupingKeys&quot;: [
@@ -147,8 +150,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientSide" />
         <item itemvalue="Application.ClientSide (1)" />
+        <item itemvalue="Application.ClientSide" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710868097007</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience.&#10;&#10;What to do next:&#10;- Add tipping functionality">
+      <created>1711316368885</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1711316368885</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -293,7 +303,8 @@
     <MESSAGE value="Commit of login page for shifts" />
     <MESSAGE value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
     <MESSAGE value="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience." />
+    <MESSAGE value="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience.&#10;&#10;What to do next:&#10;- Add tipping functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance payment processing with improved logic, UI, and tests&#10;&#10;- Updated PaymentHandler to include new processing logic and integration with PaymentDetails for enriched transaction handling.&#10;- Updated comprehensive tests in PaymentHandlerTest to cover both successful and unsuccessful payment scenarios, ensuring robustness in payment processing.&#10;- Introduced new attributes in PaymentDetails to capture more detailed transaction information, enhancing auditability and transaction tracking.&#10;- Integrated PostgreSQL database for persisting payment&#10;- Created JavaFX payment page, for a more intuitive payment experience.&#10;&#10;What to do next:&#10;- Add tipping functionality" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EECS_2311_Term_Project$ClientSide__1_.ic" NAME="ClientSide (1) Coverage Results" MODIFIED="1710459821623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

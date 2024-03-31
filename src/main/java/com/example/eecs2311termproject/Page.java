@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.animation.TranslateTransition;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import java.time.LocalDateTime;
 
 
 public abstract class Page {
@@ -85,7 +86,7 @@ public abstract class Page {
                 ClientSide.clientOrder.setRunningTotal(quantity * price);
                 System.out.println(ClientSide.clientOrder.getRunningTotal());
 
-                PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity);
+                PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity, ClientSide.clientOrder.getTableNumber(), ClientSide.clientOrder.isOrderCompleted(),LocalDateTime.now());
             }
         });
 
