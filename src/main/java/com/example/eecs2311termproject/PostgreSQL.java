@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PostgreSQL {
-    public static void WriteToDatabase(String foodName, double price, int quantity){
+    public static void WriteToDatabase(String foodName, double price, int quantity, Integer selectedTableNumber){
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
         String password = "Adrian";
@@ -17,11 +17,12 @@ public class PostgreSQL {
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
 
-            String query = "INSERT INTO \"Orders\"(\"Food name\", \"Price\", \"Quantity\", \"IsCompleted\") VALUES(?, ?, ?, false)";
+            String query = "INSERT INTO \"Orders\"(\"Food name\", \"Price\", \"Quantity\", \"IsCompleted\", \"TableNumber\") VALUES(?, ?, ?, false, ?)";
             try (PreparedStatement pst = con.prepareStatement(query)) {
                 pst.setString(1, foodName);
                 pst.setDouble(2, price);
                 pst.setInt(3, quantity);
+                pst.setInt(4, selectedTableNumber);
 
                 int rowsAffected = pst.executeUpdate();
                 if (rowsAffected > 0) {
@@ -402,4 +403,32 @@ public class PostgreSQL {
         return completed;
     }
 
+    public static int readTableNumberFromDataBase(int rowNum) {
+        String url = "jdbc:postgresql:postgres";
+        String user = "postgres";
+        String password = "Adrian";
+
+        int tableNumber = 0;
+        try (Connection con = DriverManager.getConnection(url, user, password)) {
+            System.out.println("Connected to PostgreSQL database!");
+
+            String query = "SELECT \"TableNumber\" FROM \"Orders\" OFFSET ? LIMIT 1";
+            try (PreparedStatement pst = con.prepareStatement(query)) {
+                pst.setInt(1, rowNum - 1); // Offset starts from 0, so subtract 1 from rowNum
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+                    tableNumber = rs.getInt("TableNumber");
+                } else {
+                    System.out.println("TableNumber " + rowNum + " not found!");
+                }
+            } catch (SQLException e) {
+                System.out.println("Error executing query!");
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            System.out.println("Connection failed!");
+            e.printStackTrace();
+        }
+        return tableNumber;
+    }
 }

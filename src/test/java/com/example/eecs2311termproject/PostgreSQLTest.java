@@ -62,7 +62,7 @@ public class PostgreSQLTest {
 
     @Test
     public void testWriteToDatabase() {
-        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2);
+        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2, selectedTableNumber);
 
         // Verify that data was inserted successfully
         assertEquals(1, PostgreSQL.getRowCount());
@@ -70,7 +70,7 @@ public class PostgreSQLTest {
 
     @Test
     public void testUpdateQuantity() {
-        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2);
+        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2, selectedTableNumber);
         PostgreSQL.updateQuantity("Test Food", 1);
 
         // Verify that quantity was updated successfully
@@ -79,7 +79,7 @@ public class PostgreSQLTest {
 
     @Test
     public void testDeleteFood() {
-        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2);
+        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2, selectedTableNumber);
         PostgreSQL.deleteFood("Test Food");
 
         // Verify that food was deleted successfully
@@ -88,7 +88,7 @@ public class PostgreSQLTest {
 
     @Test
     public void testReadFoodNameFromDatabase() {
-        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2);
+        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2, selectedTableNumber);
         String foodName = PostgreSQL.readFoodNameFromDatabase(1);
 
         // Verify that the correct food name was read from the database
@@ -97,7 +97,7 @@ public class PostgreSQLTest {
 
     @Test
     public void testReadPriceFromDatabase() {
-        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2);
+        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2, selectedTableNumber);
         double price = PostgreSQL.readPriceFromDatabase(1);
 
         // Verify that the correct price was read from the database
@@ -106,7 +106,7 @@ public class PostgreSQLTest {
 
     @Test
     public void testReadQuantityFromDatabase() {
-        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2);
+        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2, selectedTableNumber);
         int quantity = PostgreSQL.readQuantityFromDatabase(1);
 
         // Verify that the correct quantity was read from the database
@@ -115,7 +115,7 @@ public class PostgreSQLTest {
 
     @Test
     public void testGetRowCount() {
-        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2);
+        PostgreSQL.WriteToDatabase("Test Food", 10.99, 2, selectedTableNumber);
         int rowCount = PostgreSQL.getRowCount();
 
         // Verify that the row count is correct

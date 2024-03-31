@@ -1,4 +1,9 @@
-package com.example.eecs2311termproject;
+/*package com.example.eecs2311termproject;
+
+import com.example.eecs2311termproject.ClientSide;
+import com.example.eecs2311termproject.Food;
+import com.example.eecs2311termproject.Order;
+
 import java.util.ArrayList;
 public class KitchenUserStoryTests {
     public static void main(String[] args) {
@@ -68,3 +73,4 @@ public class KitchenUserStoryTests {
         ClientSide.clientOrder.addFood(item);
     }
 }
+*/

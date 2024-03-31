@@ -73,7 +73,8 @@ public class ViewOrder {
             for(int i = 0; i<currentOrder.getFoodOrder().size(); i++){
                 PostgreSQL.WriteToDatabase(currentOrder.getFoodOrder().get(i).getName(),
                         currentOrder.getFoodOrder().get(i).price,
-                        currentOrder.getFoodOrder().get(i).quantity);
+                        currentOrder.getFoodOrder().get(i).quantity,
+                        selectedTableNumber);
             }
 
             currentOrder.getFoodOrder().clear();

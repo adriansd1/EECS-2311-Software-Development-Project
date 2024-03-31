@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -18,7 +17,7 @@ public class TicketsPage {
 
     public static Order currentTicket;
 
-    protected static StackPane createTicketSquare(String foodName, int quantity, HBox foodItems) {
+    protected static StackPane createTicketSquare(String foodName, int quantity, HBox foodItems, int tableNumber) {
         //Style for square
         Rectangle square = new Rectangle(250, 250);
         square.setFill(Color.LIGHTGRAY);
@@ -29,7 +28,7 @@ public class TicketsPage {
         Label nameLabel = new Label("Table Number: 1");
         Label orderItemsLabel = new Label("Items: " + foodName);
         Label orderItemQuantityLabel = new Label("Quantity: " + quantity);
-
+        Label orderItemTableNumberLabel = new Label("Table Number: " + tableNumber);
 
 
 
@@ -43,7 +42,7 @@ public class TicketsPage {
         //VBox to hold square and complete button now
         VBox squareContent = new VBox(5);
         squareContent.setAlignment(Pos.CENTER);
-        squareContent.getChildren().addAll(nameLabel, orderItemsLabel, orderItemQuantityLabel, completeButton);
+        squareContent.getChildren().addAll(nameLabel, orderItemsLabel, orderItemQuantityLabel, orderItemTableNumberLabel, completeButton);
 
         //Stack pane to hold all previous items
         StackPane squarePane = new StackPane();
@@ -77,7 +76,8 @@ public class TicketsPage {
                 // Squares containing foods and quantity
                 String name = PostgreSQL.readFoodNameFromDatabase(i);
                 int quantity = PostgreSQL.readQuantityFromDatabase(i);
-                StackPane foodSquare = createTicketSquare(name, quantity, foodItems);
+                int tableNumber = PostgreSQL.readTableNumberFromDataBase(i);
+                StackPane foodSquare = createTicketSquare(name, quantity, foodItems, tableNumber);
                 // Adding foods to VBox
                 foodItems.getChildren().add(foodSquare);
             }
