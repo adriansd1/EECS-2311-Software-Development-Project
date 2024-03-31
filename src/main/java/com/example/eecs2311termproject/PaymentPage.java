@@ -2,15 +2,11 @@ package com.example.eecs2311termproject;
 import com.example.eecs2311termproject.PaymentHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Insets;
-
 
 
 public class PaymentPage {
@@ -19,21 +15,50 @@ public class PaymentPage {
         Stage window = new Stage();
         window.setTitle("Payment");
 
-        // Labels and fields for payment information
-        Label paymentMethodLabel = new Label("Payment Method (CreditCard/PayPal):");
-        TextField paymentMethodField = new TextField();
+        Label paymentMethodLabel = new Label("Payment Method:");
+        ToggleButton paypalButton = new ToggleButton("PayPal");
+        ToggleButton creditCardButton = new ToggleButton("Credit Card");
+
+        // Create a toggle group for the buttons
+        ToggleGroup paymentMethodGroup = new ToggleGroup();
+        paypalButton.setToggleGroup(paymentMethodGroup);
+        creditCardButton.setToggleGroup(paymentMethodGroup);
+
+        PaymentDetails paymentDetails = new PaymentDetails(""); // Initialize with an empty string or appropriate default value
+
+
+        // Handle button selection events
+        paymentMethodGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                String selectedMethod = ((ToggleButton) newValue).getText();
+                paymentDetails.setPaymentMethod(selectedMethod);
+            }
+        });
 
         Label identifierLabel = new Label("Card Number or PayPal Email:");
         TextField identifierField = new TextField();
 
+        Label addTipLabel = new Label("Add Tip?");
+        TextField tipField = new TextField();
+
+
         Label amountLabel = new Label("Amount:");
-        TextField amountField = new TextField(String.valueOf(currentOrder.getRunningTotal()));
+        TextField amountField = new TextField(String.valueOf(ClientSide.clientOrder.getRunningTotal()));
         amountField.setEditable(false);
+
 
         Button submitPaymentButton = new Button("Submit Payment");
         submitPaymentButton.setOnAction(e -> {
-            PaymentDetails paymentDetails = new PaymentDetails(paymentMethodField.getText(), identifierField.getText());
-            boolean paymentSuccess = PaymentHandler.processPayment(currentOrder, paymentDetails);
+            paymentDetails.setIdentifier(identifierField.getText());
+            double tip = 0;
+            try {
+                tip = Double.parseDouble(tipField.getText()); // Safely parse the tip amount
+            } catch (NumberFormatException ex) {
+                processPaymentAlert("Invalid Tip", null, "Please enter a valid tip amount.");
+                return; // Stop processing since the tip amount is invalid
+            }
+
+            boolean paymentSuccess = PaymentHandler.processPayment(currentOrder, paymentDetails, tip);
 
             // Feedback to the user
             if (paymentSuccess) {
@@ -44,7 +69,18 @@ public class PaymentPage {
         });
 
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(paymentMethodLabel, paymentMethodField, identifierLabel, identifierField, amountLabel, amountField, submitPaymentButton);
+        layout.getChildren().addAll(
+                paymentMethodLabel,
+                paypalButton,
+                creditCardButton,
+                identifierLabel,
+                identifierField,
+                addTipLabel,
+                tipField,
+                amountLabel,
+                amountField,
+                submitPaymentButton
+        );
         layout.setAlignment(Pos.CENTER);
         // Adjusting VBox padding
         layout.setPadding(new Insets(20, 20, 20, 20));

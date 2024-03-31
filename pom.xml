@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>19</version>
+            <version>19</version> <!-- Use the version that matches your JavaFX version -->
         </dependency>
         <dependency>
             <groupId>org.controlsfx</groupId>

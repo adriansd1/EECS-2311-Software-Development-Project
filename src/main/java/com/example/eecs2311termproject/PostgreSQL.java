@@ -1,21 +1,26 @@
 package com.example.eecs2311termproject;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class PostgreSQL {
-    public static void WriteToDatabase(String foodName, double price, int quantity){
+
+    public static void WriteToDatabase(String foodName, double price, int quantity, int tableNo, boolean orderCompleted, LocalDateTime orderTime){
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "shitijagg7";
+        String password = "*";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
 
-            String query = "INSERT INTO \"Orders\"(\"Food name\", \"Price\", \"Quantity\") VALUES(?, ?, ?)";
+            String query = "INSERT INTO orders (\"FoodName\", \"price\", \"Quantity\", \"TableNo\", \"OrderCompleted\", \"OrderTime\") VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement pst = con.prepareStatement(query)) {
                 pst.setString(1, foodName);
                 pst.setDouble(2, price);
                 pst.setInt(3, quantity);
+                pst.setInt(4, tableNo);
+                pst.setBoolean(5, orderCompleted);
+                pst.setObject(6, orderTime); // Assuming orderTime is passed as LocalDateTime
 
                 int rowsAffected = pst.executeUpdate();
                 if (rowsAffected > 0) {
@@ -36,7 +41,7 @@ public class PostgreSQL {
     public static void updateQuantity(String foodName, int quantityToAdd) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "*";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -75,7 +80,7 @@ public class PostgreSQL {
     public static void deleteFood(String foodName) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "*";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -104,7 +109,7 @@ public class PostgreSQL {
     public static String readFoodNameFromDatabase(int rowNum) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "*";
 
         String foodName = null;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -133,7 +138,7 @@ public class PostgreSQL {
     public static double readPriceFromDatabase(int rowNum) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "*";
 
         double price = 0.0;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -162,7 +167,7 @@ public class PostgreSQL {
     public static int readQuantityFromDatabase(int rowNum) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "*";
 
         int quantity = 0;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -191,7 +196,7 @@ public class PostgreSQL {
     public static int getRowCount() {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Adrian";
+        String password = "*";
 
         int rowCount = 0;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
@@ -218,7 +223,7 @@ public class PostgreSQL {
     public static void updateOrderStatus(String orderId, String newStatus) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Ahmad";
+        String password = "*";
 
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to PostgreSQL database!");
@@ -241,19 +246,24 @@ public class PostgreSQL {
         }
     }
 
-    public static void logPaymentTransaction(String orderId, String paymentMethod, String identifier, double amountPaid, boolean success) {
+    public static void logPaymentTransaction(String orderId, String paymentMethod, String identifier, double totalAmount, double tipPercentage, boolean success) {
+        double baseAmount = totalAmount / (1 + tipPercentage);
+        double tipAmount = totalAmount - baseAmount;
+
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";
-        String password = "Ahmad";
-        String query = "INSERT INTO PaymentLog (OrderID, PaymentMethod, Identifier, AmountPaid, Success) VALUES (?, ?, ?, ?, ?)";
+        String password = "*";
+        String query = "INSERT INTO PaymentLog (OrderID, PaymentMethod, Identifier, BaseAmount, TipAmount, TotalAmount, Success) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
 
             pst.setString(1, orderId);
             pst.setString(2, paymentMethod);
             pst.setString(3, identifier); // Consider storing only masked or partial identifiers for security
-            pst.setDouble(4, amountPaid);
-            pst.setBoolean(5, success);
+            pst.setDouble(4, baseAmount);
+            pst.setDouble(5, tipAmount);
+            pst.setDouble(6, totalAmount);
+            pst.setBoolean(7, success);
             pst.executeUpdate();
 
             System.out.println("Payment transaction logged successfully.");
@@ -265,9 +275,9 @@ public class PostgreSQL {
     public static boolean validatePaymentMethod(String paymentMethod, String identifier) {
         String url = "jdbc:postgresql://localhost/postgres";
         String user = "postgres";
-        String password = "Ahmad";
+        String password = "*";
 
-        String query = "SELECT Valid FROM MockPaymentDetails WHERE PaymentMethod = ? AND Identifier = ?";
+        String query = "SELECT Valid FROM MockPayment WHERE PaymentMethod = ? AND Identifier = ?";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
@@ -288,7 +298,65 @@ public class PostgreSQL {
         return false;
     }
 
+    public static double getTotal(String orderId) {
+        String url = "jdbc:postgresql://localhost/postgres";
+        String user = "postgres";
+        String password = "*";
+        double totalPrice = 0.0;
 
+
+        String query = "SELECT SUM(Price * Quantity) AS TotalPrice FROM Orders WHERE OrderID = ?;";
+        try (Connection con = DriverManager.getConnection(url, user, password);
+             PreparedStatement pst = con.prepareStatement(query)) {
+
+            // Set the OrderID in the query
+            pst.setString(1, orderId);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    totalPrice = rs.getDouble("TotalPrice");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Database operation failed: " + e.getMessage());
+        }
+        return totalPrice;
+    }
+
+    public static boolean subtractFunds(String identifier, double amount) {
+        String url = "jdbc:postgresql://localhost/postgres";
+        String user = "postgres";
+        String password = "*";
+
+        // SQL query to subtract funds from the MockPayment table
+        String query = "UPDATE MockPayment SET Funds = Funds - ? WHERE Identifier = ? AND Funds >= ?";
+
+        try (Connection con = DriverManager.getConnection(url, user, password);
+             PreparedStatement pst = con.prepareStatement(query)) {
+
+            // Set the parameters for the prepared statement
+            pst.setDouble(1, amount);
+            pst.setString(2, identifier);
+            pst.setDouble(3, amount);  // Ensure sufficient funds
+
+            // Execute the update
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Funds subtracted successfully.");
+                return true;
+            } else {
+                System.out.println("Failed to subtract funds: Insufficient balance or identifier not found.");
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("Database operation failed: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+
+
+
 
 

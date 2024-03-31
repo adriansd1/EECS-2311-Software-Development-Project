@@ -10,9 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
+//import javafx.media.*;
 
 import java.io.IOException;
 
@@ -56,6 +54,15 @@ public class ClientSide extends Application {
 
         //Set height of Menu Bars
         menuBar.setStyle("-fx-pref-height:  100;");
+
+        Button paymentButton = new Button("Proceed to Payment");
+
+        // Define an event handler for the payment button
+        paymentButton.setOnAction(event -> {
+            // Display the payment page when the payment button is clicked
+            PaymentPage.display(clientOrder); // Pass the client order to the payment page
+        });
+
 
         //Menu Initializations with styles
         Menu sushiMenu = new Menu("Sushi");
@@ -178,8 +185,9 @@ public class ClientSide extends Application {
         ownerMessage.setPadding(new Insets(5, 0, 15,0));
 
 
-        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
+        welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton, paymentButton);
 
+        /*
         // Media setup
         String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
         Media media = new Media(videoPath);
@@ -198,11 +206,11 @@ public class ClientSide extends Application {
 
         // Start playing the video automatically
         mediaPlayer.play();
-
+        */
         VBox centerContent = new VBox();
         centerContent.setAlignment(Pos.CENTER);
         centerContent.setSpacing(10);
-        centerContent.getChildren().addAll(welcomeMessage, videoBox);
+        centerContent.getChildren().addAll(welcomeMessage);
 
 
         // Set the container as the center of the BorderPane

@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  * add them to the users order so that they choose quantities of different items which will be
  * added to their order
  */
-public class UdonPage extends Page{
+public class UdonPage extends Page {
     //Set-up and display GUI
     public static void display() {
         //Setting stage and container
@@ -32,13 +32,13 @@ public class UdonPage extends Page{
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
 
         //Udon Food items for menu
-        Food beefUdon = new Food("Beef Udon", 8.50,  680, 19.0, 38.0, 16.0);
+        Food beefUdon = new Food("Beef Udon", 8.50, 680, 19.0, 38.0, 16.0);
         Food curryUdon = new Food("Curry Udon", 7.75, 720, 14.13, 37.0, 19.2);
         Food tempuraUdon = new Food("Tempura Udon", 7.65, 570, 22.0, 42.0, 8.8);
 
         String imagePathForbeefUdon = "com/example/eecs2311termproject/Images/beef udon.jpeg";
         String imagePathForcurryUdon = "com/example/eecs2311termproject/Images/curry udon.jpg";
-        String imagePathFortempuraUdon  = "com/example/eecs2311termproject/Images/tempura udon.jpg";
+        String imagePathFortempuraUdon = "com/example/eecs2311termproject/Images/tempura udon.jpg";
 
         //Added items to food menu
         FoodMenu udonMenu = new FoodMenu();
@@ -73,3 +73,4 @@ public class UdonPage extends Page{
         udonStage.show();
     }
 }
+
