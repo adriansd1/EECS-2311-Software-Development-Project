@@ -25,7 +25,6 @@ public class TicketsPage {
 
 
         //Labels for order's table number
-        Label nameLabel = new Label("Table Number: 1");
         Label orderItemsLabel = new Label("Items: " + foodName);
         Label orderItemQuantityLabel = new Label("Quantity: " + quantity);
         Label orderItemTableNumberLabel = new Label("Table Number: " + tableNumber);
@@ -42,7 +41,7 @@ public class TicketsPage {
         //VBox to hold square and complete button now
         VBox squareContent = new VBox(5);
         squareContent.setAlignment(Pos.CENTER);
-        squareContent.getChildren().addAll(nameLabel, orderItemsLabel, orderItemQuantityLabel, orderItemTableNumberLabel, completeButton);
+        squareContent.getChildren().addAll(orderItemsLabel, orderItemQuantityLabel, orderItemTableNumberLabel, completeButton);
 
         //Stack pane to hold all previous items
         StackPane squarePane = new StackPane();
@@ -77,7 +76,7 @@ public class TicketsPage {
                 String name = PostgreSQL.readFoodNameFromDatabase(i);
                 int quantity = PostgreSQL.readQuantityFromDatabase(i);
                 int tableNumber = PostgreSQL.readTableNumberFromDataBase(i);
-                StackPane foodSquare = createTicketSquare(name, quantity, foodItems, tableNumber);
+                StackPane foodSquare = createTicketSquare(name, quantity, foodItems, ClientSide.tableNumber);
                 // Adding foods to VBox
                 foodItems.getChildren().add(foodSquare);
             }

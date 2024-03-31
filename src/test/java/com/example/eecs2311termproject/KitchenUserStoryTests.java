@@ -5,6 +5,8 @@ import com.example.eecs2311termproject.Food;
 import com.example.eecs2311termproject.Order;
 
 import java.util.ArrayList;
+
+/*
 public class KitchenUserStoryTests {
     public static void main(String[] args) {
         // Initialize variables

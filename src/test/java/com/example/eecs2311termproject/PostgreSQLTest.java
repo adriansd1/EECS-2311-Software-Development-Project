@@ -17,7 +17,7 @@ public class PostgreSQLTest {
 
     private static final String url = "jdbc:postgresql:postgres";
     private static final String user = "postgres";
-    private static final String password = "Adrian";
+    private static final String password = "";
 
     private static Connection connection;
 

@@ -7,6 +7,7 @@ public class Order {
     //protected int tableNumber;
     protected boolean orderCompleted;
     protected ArrayList<Food> foodOrder;
+    protected static boolean AYCE;
 
     public Order(){
         foodOrder = new ArrayList<>();
@@ -15,40 +16,10 @@ public class Order {
 
     public void addFood(Food f){
         this.foodOrder.add(f);
-        setRunningTotal(f.getPrice());
+
     }
 
-    public void addFood(ArrayList<Food> foods) {
-        if (foods != null) {
-            for (Food f : foods) {
-                foodOrder.add(f);
-                setRunningTotal(f.getPrice());
-            }
-        }
-    }
 
-    public void removeFood(Food foodToRemove) {
-        if (foodOrder.remove(foodToRemove)) {
-            runningTotal -= foodToRemove.getPrice();
-        }
-    }
-
-    public void setRunningTotal(double runningTotal){
-        if(!ClientSide.AYCE) {
-            this.runningTotal += runningTotal;
-        }
-    }
-    public double getRunningTotal() {
-        return this.runningTotal;
-    }
-
-    public void setOrderCompleted(boolean orderCompleted) {
-        this.orderCompleted = orderCompleted;
-    }
-
-    public boolean isOrderCompleted() {
-        return this.orderCompleted;
-    }
 
     public ArrayList<Food> getFoodOrder() {
         return this.foodOrder;

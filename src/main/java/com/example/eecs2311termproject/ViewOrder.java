@@ -57,16 +57,12 @@ public class ViewOrder {
             orderItems.getChildren().add(foodSquare);
         }
 
-        // Create a ComboBox for table numbers
-        ComboBox<Integer> tableNumberComboBox = new ComboBox<>();
-        tableNumberComboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
-        tableNumberComboBox.setValue(1); // Set default value
-        tableNumberComboBox.setPromptText("Select table number");
+
 
         //On action to close menu when pressing home button
         confirmOrderButton.setOnAction(e -> {
             // Get the selected table number
-            Integer selectedTableNumber = tableNumberComboBox.getValue();
+
             // Do something with the selectedTableNumber, e.g., send it to the server
             orderItems.getChildren().clear();
 
@@ -74,7 +70,7 @@ public class ViewOrder {
                 PostgreSQL.WriteToDatabase(currentOrder.getFoodOrder().get(i).getName(),
                         currentOrder.getFoodOrder().get(i).price,
                         currentOrder.getFoodOrder().get(i).quantity,
-                        selectedTableNumber);
+                        0);
             }
 
             currentOrder.getFoodOrder().clear();
@@ -82,7 +78,7 @@ public class ViewOrder {
         });
 
         //Add title, tableNumberComboBox, homeButton and menu options to scene
-        layout.getChildren().addAll(titleLabel, confirmOrderButton, tableNumberComboBox, orderItems);
+        layout.getChildren().addAll(titleLabel, confirmOrderButton, orderItems);
 
         // Wrap the layout in a ScrollPane
         ScrollPane scrollPane = new ScrollPane();

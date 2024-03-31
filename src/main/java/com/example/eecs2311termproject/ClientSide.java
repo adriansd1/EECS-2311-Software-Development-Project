@@ -25,6 +25,8 @@ import java.io.IOException;
 public class ClientSide extends Application {
     public static Boolean AYCE = false;
 
+    public static Integer tableNumber = 0;
+
     public static Button buffetButton;
     @Override
     public void start(Stage stage) throws IOException {

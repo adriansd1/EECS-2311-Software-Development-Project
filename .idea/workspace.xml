@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources add.">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-03-19_6_00_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-03-19_6_00_p_m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-02-14_8_30_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-02-14_8_30_p_m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-02-24_5_07_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-02-24_5_07_p_m___Changes_.xml" afterDir="false" />
@@ -14,11 +16,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-03-30_6_28_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-03-30_6_28_p_m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/BuffetPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/BuffetPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ClientSide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/TicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/TicketsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ViewOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/KitchenUserStoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/KitchenUserStoryTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PaymentHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PaymentHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PostgreSQLTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PostgreSQLTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,31 +101,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.ClientSide (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.ClientSide.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build EECS-2311-Software-Development-Project.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/postgresql-42.7.2.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.ClientSide (1).executor": "Run",
+    "Application.ClientSide.executor": "Run",
+    "Gradle.Build EECS-2311-Software-Development-Project.executor": "Run",
+    "Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor": "Run",
+    "Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ToolWindowRun.ShowToolbar": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Downloads/postgresql-42.7.2.jar",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\samda\IdeaProjects\EECS-2311-Term-Project\src\main\resources\com\example\eecs2311termproject\Images" />
@@ -130,7 +136,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ClientSide (1)">
     <configuration name="ClientSide (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
       <module name="EECS-2311-Term-Project.main" />

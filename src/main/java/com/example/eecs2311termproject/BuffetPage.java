@@ -3,6 +3,7 @@ package com.example.eecs2311termproject;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -14,12 +15,19 @@ import javafx.stage.Stage;
 public class BuffetPage {
     protected static Stage diningTypeStage;
     protected static StackPane buffetPane(){
-        Rectangle square = new Rectangle(250, 130);
+        Rectangle square = new Rectangle(250, 160);
         square.setFill(Color.AZURE);
         square.setStroke(Color.BLACK);
 
-        Label buffetLabel = new Label("Please select the number of guests");
+        Label buffetLabel = new Label("Select the number of guests");
+        Label selectTableLabel = new Label("Select you table number");
         Label priceLabel = new Label("$30 per person");
+
+        // Create a ComboBox for table numbers
+        ComboBox<Integer> tableNumberComboBox = new ComboBox<>();
+        tableNumberComboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
+        tableNumberComboBox.setValue(1); // Set default value
+        tableNumberComboBox.setPromptText("Select table number");
 
         //textfield
         TextField itemQuantity = new TextField("1");
@@ -54,12 +62,14 @@ public class BuffetPage {
             Food f = new Food("ALL YOU CAN EAT", 30);
             f.setQuantity(quantity);
 
-            int selectedTableNumber =1;
+            ClientSide.tableNumber = tableNumberComboBox.getValue();
+            ClientSide.AYCE = true;
 
             ClientSide.buffetButton.setDisable(true);
             diningTypeStage.close();
-            PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity, selectedTableNumber);
-            ClientSide.AYCE = true;
+            PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity, ClientSide.tableNumber);
+            PostgreSQL.WriteTableToDatabase(ClientSide.tableNumber, true);
+
 
         });
 
@@ -68,7 +78,7 @@ public class BuffetPage {
         //VBox to hold square and add button now
         VBox squareContent = new VBox(5);
         squareContent.setAlignment(Pos.CENTER);
-        squareContent.getChildren().addAll(buffetLabel, priceLabel, quantityControls, okButton);
+        squareContent.getChildren().addAll(selectTableLabel, tableNumberComboBox, buffetLabel, priceLabel, quantityControls, okButton);
 
         //Stack pane to hold all previous items
         StackPane squarePane = new StackPane();
@@ -105,8 +115,17 @@ public class BuffetPage {
         Label noteLabel = new Label("Once you confirm you cannot go back");
         Label ifNotLabel = new Label("If you do not want to eat buffet-style, return home");
 
+
         noteLabel.setStyle("-fx-font-size: 12px; -fx-font-style: italic;");
         ifNotLabel.setStyle("-fx-font-size: 12px; -fx-font-style: italic;");
+
+
+
+
+
+
+
+
 
         layout.getChildren().addAll(titleLabel, homeButton, buffetSquare, noteLabel, ifNotLabel);
         Scene scene = new Scene(layout, 400, 300);
