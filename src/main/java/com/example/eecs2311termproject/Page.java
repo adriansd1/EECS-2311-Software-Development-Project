@@ -94,9 +94,7 @@ public abstract class Page {
 
                 //PostgreSQL.WriteToDatabase(f.getName(), f.getPrice(), quantity);
 
-                if(!ClientSide.buffetButton.isDisabled()) {
-                    ClientSide.buffetButton.setDisable(true);
-                }
+
             }
         });
 

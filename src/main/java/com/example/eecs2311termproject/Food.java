@@ -15,26 +15,9 @@ public class Food {
     protected double fat;
 
     protected int quantity = 0;
-    protected ArrayList<String> ingredients;
-    protected ArrayList<String> dietaryRestrictions;
-    protected ArrayList<String> allergies;
+
 
     public Food(){
-    }
-
-    // Constructor
-    public Food(String foodName, double price, int calories, double protein, double carbs, double fat,
-                ArrayList<String> ingredients, ArrayList<String> dietaryRestrictions,
-                ArrayList<String> allergies) {
-        this.calories = calories;
-        this.protein = protein;
-        this.carbs = carbs;
-        this.fat = fat;
-        this.price = price;
-        this.ingredients = ingredients;
-        this.dietaryRestrictions = dietaryRestrictions;
-        this.allergies = allergies;
-        this.foodName = foodName;
     }
 
     public Food(String foodName, double price, int calories, double protein, double carbs, double fat){
@@ -42,9 +25,6 @@ public class Food {
         this.protein = protein;
         this.carbs = carbs;
         this.fat = fat;
-        this.ingredients = new ArrayList<>();
-        this.dietaryRestrictions = new ArrayList<>();
-        this.allergies = new ArrayList<>();
         this.foodName = foodName;
         this.price = price;
     }
@@ -77,22 +57,9 @@ public class Food {
         return fat;
     }
 
-    public  ArrayList<String> getIngredients() {
-       // return ingredients;
-        return ingredients;
-    }
-
     @Override
     public String toString() {
         return "Food Name: " + foodName + " Price: " + price + " Quantity: " + quantity;
-    }
-
-    public ArrayList<String> getDietaryRestrictions() {
-        return dietaryRestrictions;
-    }
-
-    public ArrayList<String> getAllergies() {
-        return allergies;
     }
 
     public String getName() {
@@ -108,7 +75,4 @@ public class Food {
         this.quantity += quantity;
     }
 
-    public void setIngredients(ArrayList<String> ingredients) {
-        this.ingredients = ingredients;
-    }
 }

@@ -13,7 +13,6 @@ import java.io.IOException;
 
 public class ClientSide extends Application {
 
-    public static Button buffetButton;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -87,7 +86,7 @@ public class ClientSide extends Application {
         Button viewOrderButton = new Button("View My Order");
 
         //Initialize all you can eat and pay as you go buttons
-        buffetButton = new Button("All You Can Eat");
+        Button buffetButton = new Button("All You Can Eat");
 
         //Adding Sushi options
         sushiMenu.getItems().addAll(makiItem, nigiriItem, handrollItem, sashimiItem);
@@ -168,31 +167,11 @@ public class ClientSide extends Application {
 
 
         welcomeMessage.getChildren().addAll(welcomeLabel, restaurantName, italicText, historyLabel1, historyLabel2, ownerMessage, buffetLabel, buffetButton, viewOrderButton);
-        /*
-        // Media setup
-        /*String videoPath = getClass().getResource("/com/example/eecs2311termproject/videos/sushi_video.mp4").toExternalForm();
-        Media media = new Media(videoPath);
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setVolume(0);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        MediaView mediaView = new MediaView(mediaPlayer);
-
-        // Customize mediaView properties
-        mediaView.setFitWidth(640);
-        mediaView.setPreserveRatio(true);
-
-        // Adding mediaView to the scene
-        VBox videoBox = new VBox(mediaView);
-        videoBox.setAlignment(Pos.CENTER);
-
-        // Start playing the video automatically
-
-        mediaPlayer.play();*/
 
         VBox centerContent = new VBox();
         centerContent.setAlignment(Pos.CENTER);
         centerContent.setSpacing(10);
-        centerContent.getChildren().addAll(welcomeMessage);//, videoBox);
+        centerContent.getChildren().addAll(welcomeMessage);
 
         // Checkout button
         Button checkoutButton = new Button("Checkout");
