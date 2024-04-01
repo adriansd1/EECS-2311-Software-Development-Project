@@ -15,7 +15,7 @@ public class PaymentPage extends Application {
 
     private static final String url = "jdbc:postgresql:postgres";
     private static final String user = "postgres";
-    private static final String password = "";
+    private static final String password = "Adrian";
 
     public static void main(String[] args) {
         launch(args);
