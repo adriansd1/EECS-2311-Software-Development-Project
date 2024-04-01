@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Payment history added and made shifts page scrollable">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ShiftHistoryPage.java" afterDir="false" />
+    <list default="true" id="290a0dde-070b-48f4-885d-3b443cbc056e" name="Changes" comment="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources add.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/FoodAndQuantity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/MenuHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/PostgreSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ShiftsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/eecs2311termproject/ShiftsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/FoodTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/FoodTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/KitchenUserStoryTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PostgreSQLTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/eecs2311termproject/PostgreSQLTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,9 +97,25 @@
     "Application.ClientSide.executor": "Run",
     "Gradle.Build EECS-2311-Software-Development-Project.executor": "Run",
     "Gradle.C:/Users/User/IdeaProjects/EECS-2311-Software-Development-Project [ClientSide.main()].executor": "Run",
+    "Gradle.ClientSideTest.executor": "Run",
     "Gradle.EECS-2311-Software-Development-Project [:ClientSide.main()].executor": "Run",
-    "Gradle.EECS-2311-Software-Development-Project [:PaymentHistory.main()].executor": "Run",
     "Gradle.EECS-2311-Software-Development-Project [:PaymentPage.main()].executor": "Run",
+    "Gradle.FoodMenuTest.executor": "Run",
+    "Gradle.FoodTest.executor": "Run",
+    "Gradle.OrderTest.executor": "Run",
+    "Gradle.OrderTest.testAddNullFood.executor": "Run",
+    "Gradle.OrderTest.testToStringEmptyOrder2.executor": "Run",
+    "Gradle.OrderTest.testToStringSingleFood.executor": "Run",
+    "Gradle.OrderTest.testToStringSingleItemOrder.executor": "Run",
+    "Gradle.OrderTest.testToStringWithMixedFoods.executor": "Run",
+    "Gradle.PostgreSQLTest.executor": "Run",
+    "Gradle.PostgreSQLTest.testAddEmployee.executor": "Run",
+    "Gradle.PostgreSQLTest.testReadFoodNameFromDatabase.executor": "Run",
+    "Gradle.PostgreSQLTest.testUpdateEmployee.executor": "Run",
+    "Gradle.PostgreSQLTest.testWriteTableToDatabase_WithInvalidInput_ShouldThrowException.executor": "Run",
+    "Gradle.PostgreSQLTest.testWriteTableToDatabase_WithValidInput.executor": "Run",
+    "Gradle.PostgreSQLTest.testWriteToDatabase.executor": "Run",
+    "Gradle.PostgreSQLTest.testWriteToDatabase1.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ToolWindowRun.ShowToolbar": "false",
@@ -122,53 +143,134 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/eecs2311termproject" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="ClientSide (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
-      <module name="EECS-2311-Term-Project.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.eecs2311termproject.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="Gradle.PostgreSQLTest">
+    <configuration name="ClientSideTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.eecs2311termproject.ClientSideTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
-    <configuration name="ClientSide" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.ClientSide" />
-      <module name="EECS-2311-Term-Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.eecs2311termproject.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="FoodMenuTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.eecs2311termproject.FoodMenuTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
-    <configuration name="OrderSystemTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.eecs2311termproject.OrderSystemTest" />
-      <module name="EECS-2311-Term-Project.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.eecs2311termproject.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="FoodTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.eecs2311termproject.FoodTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="OrderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.eecs2311termproject.OrderTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="PostgreSQLTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.eecs2311termproject.PostgreSQLTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientSide" />
-        <item itemvalue="Application.OrderSystemTest" />
-        <item itemvalue="Application.ClientSide (1)" />
-        <item itemvalue="Application.ClientSide" />
-        <item itemvalue="Application.ClientSide" />
+        <item itemvalue="Gradle.PostgreSQLTest" />
+        <item itemvalue="Gradle.OrderTest" />
+        <item itemvalue="Gradle.FoodTest" />
+        <item itemvalue="Gradle.FoodMenuTest" />
+        <item itemvalue="Gradle.ClientSideTest" />
       </list>
     </recent_temporary>
   </component>
@@ -291,23 +393,7 @@
       <option name="project" value="LOCAL" />
       <updated>1711207428337</updated>
     </task>
-    <task id="LOCAL-00015" summary="Added Payment functionality to wrap up project plus fixed AYCE functionality">
-      <option name="closed" value="true" />
-      <created>1711903774839</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1711903774839</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Payment history added and made shifts page scrollable">
-      <option name="closed" value="true" />
-      <created>1711907900780</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1711907900780</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -336,9 +422,7 @@
     <MESSAGE value="Commit of login page for shifts" />
     <MESSAGE value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources" />
     <MESSAGE value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources add." />
-    <MESSAGE value="Added Payment functionality to wrap up project plus fixed AYCE functionality" />
-    <MESSAGE value="Payment history added and made shifts page scrollable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment history added and made shifts page scrollable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added javafx.media&#10;implemented video into ClientSide&#10;added video into resources add." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EECS_2311_Term_Project$ClientSide__1_.ic" NAME="ClientSide (1) Coverage Results" MODIFIED="1710459821623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

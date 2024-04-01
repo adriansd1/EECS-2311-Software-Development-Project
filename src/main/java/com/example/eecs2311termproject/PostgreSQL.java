@@ -77,14 +77,6 @@ public class PostgreSQL {
         }
     }
 
-
-
-
-
-
-
-
-
     public static void updateQuantity(String foodName, int quantityToAdd) {
         String url = "jdbc:postgresql:postgres";
         String user = "postgres";

@@ -13,86 +13,51 @@ import java.io.InputStream;
 
 public class FoodTest {
 
-    private Food food;
-
-    @BeforeEach
-    void setUp() {
-        ArrayList<String> ingredients = new ArrayList<>();
-        ingredients.add("Ingredient1");
-        ingredients.add("Ingredient2");
-
-        ArrayList<String> restrictions = new ArrayList<>();
-        restrictions.add("Restriction1");
-        restrictions.add("Restriction2");
-
-        ArrayList<String> allergies = new ArrayList<>();
-        allergies.add("Allergy1");
-        allergies.add("Allergy2");
-
-        food = new Food("Test Food", 10.0, 200, 15.5, 20.0, 5.0, ingredients, restrictions, allergies);
-        ArrayList<String> returnedIngredients = food.getIngredients();
+    @Test
+    public void testGetCalories() {
+        Food food = new Food("Apple", 1.5, 100, 0.5, 25, 0.3);
+        assertEquals(100, food.getCalories());
     }
 
     @Test
-    void testGetCalories() {
-        assertEquals(200, food.getCalories());
+    public void testGetProtein() {
+        Food food = new Food("Chicken Breast", 5.0, 150, 25, 0, 3.5);
+        assertEquals(25, food.getProtein());
     }
 
     @Test
-    void testGetProtein() {
-        assertEquals(15.5, food.getProtein());
+    public void testGetCarbs() {
+        Food food = new Food("Rice", 2.0, 130, 2.5, 30, 0.5);
+        assertEquals(30, food.getCarbs());
     }
 
     @Test
-    void testGetCarbs() {
-        assertEquals(20.0, food.getCarbs());
+    public void testGetFat() {
+        Food food = new Food("Olive Oil", 3.0, 120, 0, 0, 14);
+        assertEquals(14, food.getFat());
     }
 
     @Test
-    void testGetFat() {
-        assertEquals(5.0, food.getFat());
+    public void testToString() {
+        Food food = new Food("Banana", 0.5, 105, 1.3, 27, 0.4);
+        assertEquals("Food Name: Banana Price: 0.5 Quantity: 0", food.toString());
     }
 
     @Test
-    void testGetIngredients() {
-        assertEquals(2, food.getIngredients().size());
-        assertTrue(food.getIngredients().contains("Ingredient1"));
-        assertTrue(food.getIngredients().contains("Ingredient2"));
-    }
-
-
-
-    @Test
-    void testToString() {
-        assertEquals("Food Name: Test Food Price: 10.0 Quantity: 0", food.toString());
+    public void testGetName() {
+        Food food = new Food("Milk", 2.0, 150);
+        assertEquals("Milk", food.getName());
     }
 
     @Test
-    void testGetDietaryRestrictions() {
-        assertEquals(2, food.getDietaryRestrictions().size());
-        assertTrue(food.getDietaryRestrictions().contains("Restriction1"));
-        assertTrue(food.getDietaryRestrictions().contains("Restriction2"));
+    public void testGetPrice() {
+        Food food = new Food("Bread", 1.0);
+        assertEquals(1.0, food.getPrice());
     }
 
     @Test
-    void testGetAllergies() {
-        assertEquals(2, food.getAllergies().size());
-        assertTrue(food.getAllergies().contains("Allergy1"));
-        assertTrue(food.getAllergies().contains("Allergy2"));
-    }
-
-    @Test
-    void testGetName() {
-        assertEquals("Test Food", food.getName());
-    }
-
-    @Test
-    void testGetPrice() {
-        assertEquals(10.0, food.getPrice());
-    }
-
-    @Test
-    void testSetQuantity() {
+    public void testSetQuantity() {
+        Food food = new Food("Orange", 0.75);
         food.setQuantity(5);
         assertEquals(5, food.quantity);
     }

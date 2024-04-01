@@ -11,111 +11,91 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 
-/*
+
 class OrderTest {
-    private Order order;
-    private Food californiaRoll;
-    private Food salmonNigiri;
-    private final InputStream systemIn = System.in;
-    private ByteArrayInputStream testIn;
+    @Test
+public void testAddFood() {
+    Order order = new Order();
+    Food food1 = new Food("Pizza", 10.0);
+    order.addFood(food1);
+    assertEquals(1, order.getFoodOrder().size());
+}
 
-
-    @BeforeEach
-    void setUp() {
-        order = new Order(); // Order allocated to table 1
-
-        // Example nutritional info and ingredients for a California Roll
-        int calories = 255;
-        double protein = 9.0;
-        double carbs = 38.0;
-        double fat = 7.0;
-        double price = 8.0;
-        ArrayList<String> ingredients = new ArrayList<>(Arrays.asList("Rice", "Cucumber", "Crab meat", "Avocado", "Seaweed"));
-        ArrayList<String> dietaryRestrictions = new ArrayList<>(Arrays.asList("Gluten-Free"));
-        ArrayList<String> allergies = new ArrayList<>(Arrays.asList("Shellfish"));
-
-        californiaRoll = new Food("California Roll", price, calories, protein, carbs, fat, ingredients, dietaryRestrictions, allergies);
-
-        double priceSalmonNigiri = 5.0; // Assuming the price for Salmon Nigiri
-        int caloriesSalmonNigiri = 70; // Approximate calories for one piece of Salmon Nigiri
-        double proteinSalmonNigiri = 5.0; // Grams of protein per piece
-        double carbsSalmonNigiri = 9.0; // Grams of carbs per piece
-        double fatSalmonNigiri = 1.0; // Grams of fat per piece
-        ArrayList<String> ingredientsSalmonNigiri = new ArrayList<>(Arrays.asList("Rice", "Salmon"));
-        ArrayList<String> dietaryRestrictionsSalmonNigiri = new ArrayList<>(); // Assuming none specified
-        ArrayList<String> allergiesSalmonNigiri = new ArrayList<>(Arrays.asList("Fish")); // Allergy warning for fish
-
-        salmonNigiri = new Food("Salmon Nigiri", priceSalmonNigiri, caloriesSalmonNigiri, proteinSalmonNigiri, carbsSalmonNigiri, fatSalmonNigiri, ingredientsSalmonNigiri, dietaryRestrictionsSalmonNigiri, allergiesSalmonNigiri);
-
+    @Test
+    public void testAddMultipleFoods() {
+        Order order = new Order();
+        Food food1 = new Food("Burger", 5.0);
+        Food food2 = new Food("Fries", 3.0);
+        Food food3 = new Food("Soda", 1.5);
+        order.addFood(food1);
+        order.addFood(food2);
+        order.addFood(food3);
+        assertEquals(3, order.getFoodOrder().size());
     }
 
     @Test
-    void addSingleFoodCorrectlyIncreasesTotal() {
-        order.addFood(californiaRoll);
-        assertEquals(8.0, order.getRunningTotal(), "Adding a California Roll should update the running total correctly.");
+    public void testEmptyOrder() {
+        Order order = new Order();
+        assertTrue(order.getFoodOrder().isEmpty());
     }
 
     @Test
-    void addMultipleFoodCorrectlyIncreasesTotal() {
-        ArrayList<Food> foods = new ArrayList<Food>();
-        foods.add(californiaRoll);
-        foods.add(salmonNigiri);
-        order.addFood(foods);
-        assertEquals(13.0, order.getRunningTotal(), "Adding list of foods should update running total correctly.");
-    }
-    @Test
-    void removeFoodCorrectlyDecreasesTotal(){
-        order.addFood(salmonNigiri);
-        order.addFood(californiaRoll);
-        order.removeFood(californiaRoll);
-        assertEquals(5.0, order.getRunningTotal(), "Removing a food item should decrease the running total correctly.");
+    public void testRemoveFood() {
+        Order order = new Order();
+        Food food1 = new Food("Salad", 4.0);
+        Food food2 = new Food("Soup", 3.0);
+        order.addFood(food1);
+        order.addFood(food2);
+        order.getFoodOrder().remove(food1);
+        assertEquals(1, order.getFoodOrder().size());
     }
 
     @Test
-    void setOrderCompletedUpdatesStatusCorrectly() {
-        order.setOrderCompleted(true);
-        assertTrue(order.isOrderCompleted(), "Setting order to completed should update the status correctly.");
+    public void testOrderContainsFood() {
+        Order order = new Order();
+        Food food1 = new Food("Ice Cream", 2.5);
+        order.addFood(food1);
+        assertTrue(order.getFoodOrder().contains(food1));
     }
 
     @Test
-    void addingFoodUpdatesFoodListCorrectly() {
-        ArrayList<Food> foods = new ArrayList<Food>();
-        foods.add(californiaRoll);
-        foods.add(salmonNigiri);
-        order.addFood(foods);
-        assertTrue(order.getFoodOrder().contains(californiaRoll), "Adding food should update the food list correctly.");
+    public void testOrderDoesNotContainFood() {
+        Order order = new Order();
+        Food food1 = new Food("Sandwich", 4.0);
+        Food food2 = new Food("Pasta", 7.0);
+        order.addFood(food1);
+        assertFalse(order.getFoodOrder().contains(food2));
     }
 
     @Test
-    void processPaymentSuccessfully() {
-        order.setRunningTotal(20.0);
-        double paymentAmount = 20.0;
-        //boolean result = order.processPayment(paymentAmount);
-        //assertTrue(result, "Payment should be processed successfully.");
-        //assertEquals("Paid", order.getStatus(), "Order status should be updated to 'Paid'.");
+    public void testAddNullFood() {
+        Order order = new Order();
+        order.addFood(null);
+        assertTrue(order.getFoodOrder().contains(null));
     }
 
     @Test
-    void processPaymentUnsuccessfully() {
-        order.setRunningTotal(25.0);
-        double paymentAmount = 20.0;
-        //boolean result = order.processPayment(paymentAmount);
-        //assertFalse(result, "Payment should not be processed due to insufficient funds.");
-        //assertNotEquals("Paid", order.getStatus(), "Order status should not be 'Paid' after unsuccessful payment.");
+    public void testAddDuplicateFood() {
+        Order order = new Order();
+        Food food1 = new Food("Steak", 15.0);
+        order.addFood(food1);
+        order.addFood(food1);
+        assertEquals(2, order.getFoodOrder().size());
     }
 
     @Test
-    void cancelOrder() {
-        order.addFood(new Food("Test Food", 10.0)); // Ensure this Food has a non-zero price
-        double initialTotalPrice = order.getRunningTotal(); // Assuming getRunningTotal() returns totalPrice
-        //order.cancelOrder();
-
-        assertTrue(initialTotalPrice > 0, "Initial total price should be greater than 0.");
-        assertEquals(0, order.getRunningTotal(), "Total price should be reset to 0 after cancellation.");
-        assertTrue(order.getFoodOrder().isEmpty(), "Order list should be empty.");
+    public void testGetFoodOrder() {
+        Order order = new Order();
+        ArrayList<Food> foodList = new ArrayList<>();
+        Food food1 = new Food("Chicken", 8.0);
+        Food food2 = new Food("Rice", 2.0);
+        foodList.add(food1);
+        foodList.add(food2);
+        order.addFood(food1);
+        order.addFood(food2);
+        assertEquals(foodList, order.getFoodOrder());
     }
 
 
 }
 
- */
